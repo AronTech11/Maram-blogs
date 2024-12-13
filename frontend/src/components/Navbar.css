@@ -1,0 +1,133 @@
+/* Navbar.css */
+
+/* General Styles */
+.navbar {
+    background-color: white;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #eaeaea;
+  }
+  
+  .navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1.25rem;
+  }
+  
+  .navbar-logo img {
+    height: 3rem;
+  }
+  
+  /* Desktop Styles */
+  .navbar-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+  
+  .navbar-links li {
+    list-style: none;
+  }
+  
+  .navbar-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+  }
+  
+  .navbar-links .active {
+    color: #1e73be;
+  }
+  
+  .navbar-avatar {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .navbar-avatar img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+  }
+  
+  .navbar-avatar button {
+    background-color: #1e73be;
+    padding: 0.5rem 1.25rem;
+    color: white;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .navbar-avatar button:hover {
+    background-color: #166a9b;
+  }
+  
+  .navbar-login {
+    display: inline-block;
+  }
+  
+  /* Mobile Styles */
+  .navbar-menu-toggle {
+    display: none;
+  }
+  
+  /* Mobile Menu */
+  .navbar-mobile-menu {
+    position: fixed;
+    top: 108px;
+    left: 0;
+    width: 100%;
+    padding-bottom: 2rem;
+    background-color: white;
+    border-bottom: 1px solid #eaeaea;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+  }
+  
+  .navbar-mobile-menu li {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-top: 1.25rem;
+  }
+  
+  .navbar-mobile-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+  }
+  
+  .navbar-mobile-menu .active {
+    color: #1e73be;
+  }
+  
+  .navbar-mobile-menu button {
+    background-color: #1e73be;
+    padding: 0.5rem 1.25rem;
+    color: white;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .navbar-mobile-menu button:hover {
+    background-color: #166a9b;
+  }
+  
+  /* Mobile Styles: Hide desktop menu and show hamburger button */
+  @media (max-width: 768px) {
+    .navbar-links {
+      display: none;
+    }
+  
+    .navbar-menu-toggle {
+      display: flex;
+    }
+  
+    .navbar-mobile-menu {
+      display: block;
+    }
+  }
+  
