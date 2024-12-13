@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const blogsApi = createApi({
   reducerPath: 'blogsApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://maram-blogs-backend.onrender.com/api/',  credentials: 'include'}),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://maram-blogs-backend.onrender.com/api',  credentials: 'include'}),
   tagTypes: ['Blogs'],
   endpoints: (builder) => ({
 
