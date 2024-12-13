@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://maram-blogs-backend.onrender.com/api/auth",
+    baseUrl: "https://maram-blogs-backend.onrender.com/",
     credentials: "include",
   }),
   endpoints: (builder) => ({
