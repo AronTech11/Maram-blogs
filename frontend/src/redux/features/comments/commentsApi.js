@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const commentApi = createApi({
   reducerPath: 'commentApi',
   baseQuery: fetchBaseQuery({ 
-    baseUrl: 'https://maram-blogs-backend.onrender.com',
+    baseUrl: 'https://maram-blogs-backend.onrender.com/api/comments',
     credentials: 'include',
   }),
   tagTypes: ['Comments'], // Define the tag types
