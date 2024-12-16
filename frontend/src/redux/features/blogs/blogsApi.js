@@ -1,15 +1,18 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-
-
 export const blogsApi = createApi({
   reducerPath: 'blogsApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:4000/api/',  credentials: 'include'}),
+  baseQuery: fetchBaseQuery({
+    baseUrl: `${import.meta.env.VITE_BACKEND_BASE_URL}/api`, // Corrected base URL
+    credentials: 'include', // Ensure credentials are included globally
+  }),
   tagTypes: ['Blogs'],
   endpoints: (builder) => ({
-
     fetchBlogs: builder.query({
-      query: ({ search = '', category = '', location='' }) => `blogs?search=${search}&category=${category}&location=${location}`,
+      query: ({ search = '', category = '', location = '' }) => {
+        // Ensure URL parameters are properly encoded if needed
+        return `blogs?search=${encodeURIComponent(search)}&category=${encodeURIComponent(category)}&location=${encodeURIComponent(location)}`;
+      },
       providesTags: ['Blogs'],
     }),
 
@@ -27,7 +30,7 @@ export const blogsApi = createApi({
         url: '/blogs/create-post',
         method: 'POST',
         body: newBlog,
-        credentials: 'include',
+        // credentials: 'include' // No need to repeat it, it's already set globally
       }),
       invalidatesTags: ['Blogs'],
     }),
@@ -37,7 +40,6 @@ export const blogsApi = createApi({
         url: `blogs/update-post/${id}`,
         method: 'PATCH',
         body: rest,
-        credentials: 'include',
       }),
       invalidatesTags: (result, error, { id }) => [{ type: 'Blogs', id }],
     }),
@@ -46,18 +48,17 @@ export const blogsApi = createApi({
       query: (id) => ({
         url: `blogs/${id}`,
         method: 'DELETE',
-        credentials: 'include',
       }),
       invalidatesTags: (result, error, id) => [{ type: 'Blogs', id }],
     }),
   }),
 });
 
-export const { 
-  useFetchBlogsQuery, 
-  useFetchBlogByIdQuery, 
-  usePostBlogMutation, 
-  useUpdateBlogMutation, 
-  useDeleteBlogMutation ,
+export const {
+  useFetchBlogsQuery,
+  useFetchBlogByIdQuery,
+  usePostBlogMutation,
+  useUpdateBlogMutation,
+  useDeleteBlogMutation,
   useFetchRelatedBlogsQuery,
 } = blogsApi;

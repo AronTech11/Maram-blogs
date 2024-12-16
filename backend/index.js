@@ -12,7 +12,7 @@ require('dotenv').config();
 
 const port = process.env.PORT || 4000; 
 
-// console.log(process.env,"pssssort")
+console.log(process.env.PORT,"pssssort")
 
 // Middleware setup
 app.use(express.json());

@@ -3,9 +3,10 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://maram-blogs-backend.onrender.com/api/auth",
-    credentials: "include",
+    baseUrl: `${import.meta.env.VITE_BACKEND_BASE_URL}/api/auth`, // Fixed the malformed baseUrl
+    credentials: "include", // No need to repeat in individual queries
   }),
+  tagTypes: ["User"], // This is important for cache invalidation and refetching.
   endpoints: (builder) => ({
     registerUser: builder.mutation({
       query: (newUser) => ({
@@ -32,15 +33,15 @@ export const authApi = createApi({
         url: "/users",
         method: "GET",
       }),
-      refetchOnMount: true,
-      invalidatesTags: ["User"],
+      refetchOnMountOrArgChange: true, // Adjusted for better refetching logic.
+      providesTags: ["User"], // Properly link cache invalidation
     }),
     deleteUser: builder.mutation({
       query: (userId) => ({
         url: `/users/${userId}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["User"],
+      invalidatesTags: ["User"], // Invalidate the "User" cache after deleting
     }),
     updateUserRole: builder.mutation({
       query: ({ userId, role }) => ({
@@ -48,8 +49,8 @@ export const authApi = createApi({
         method: "PUT",
         body: { role },
       }),
-      refetchOnMount: true,
-      invalidatesTags: ["User"],
+      refetchOnMountOrArgChange: true, // Adjusted for better refetching logic
+      invalidatesTags: ["User"], // Invalidate cache after updating the user role
     }),
   }),
 });

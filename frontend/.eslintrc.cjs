@@ -1,6 +1,10 @@
 module.exports = {
   root: true,
-  env: { browser: true, es2020: true },
+  env: {
+    browser: true,
+    es2020: true,
+    node: true,  // Add this line to enable Node.js globals like `process`
+  },
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
@@ -17,7 +21,7 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    'no-unused-vars' : 'off',
-    'react/prop-types' : 'off',
+    'no-unused-vars': 'off',
+    'react/prop-types': 'off',
   },
-}
+};
