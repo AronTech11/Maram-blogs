@@ -12,76 +12,56 @@ const About = () => {
           alt="Emma Smith"
           className="rounded-full w-40 h-40 object-cover mr-6" // Increase size and add margin to the right
         />
-    
       </div>
 
-      <div className="mt-10 md:px-24 space-y-8">
-
+      <div className="mt-10 md:px-24 space-y-8" style={{fontSize:"20px"}}>
+        <h1 style={{fontSize:"25px"}}>Hello, my name is Taluba Aron Hopson.</h1>
+        <h4 style={{fontSize:"20px"}}>
+          From Remote Hills to Cutting-Edge Tech: My Journey into Computer
+          Science
+        </h4>
         <p>
-          Hello, my name is Taluba Aron Hopson. I&apos;m a passionate Software
-          Engineer and Full Stack Developer based in Dayton, OH. I am currently
-          pursuing a Master of Science in Computer Science at the University of
-          Dayton, with an expected graduation in May 2025. My journey in the
-          world of technology began in my hometown of Manipur, India, where I
-          overcame significant challenges, including limited access to education
-          and resources. These early experiences shaped my resilience and
-          determination to succeed in technology and beyond.
-        </p>
-
-        <p>
-          I hold a Bachelor&apos;s degree in Electronics and Telecommunication
-          Engineering from the Indian Institute of Engineering Science and
-          Technology, Shibpur, and have had the privilege of working at several
-          impactful companies. At TurboCom Technologies in Bangalore, India, I
-          contributed to complex projects and led efforts in optimizing database
-          queries and enhancing user experience. I also worked at Roamhome Pvt
-          Ltd, where I redesigned key features of a vacation rental platform,
-          significantly improving user engagement and session duration.
-        </p>
-
-        <p>
-          My professional expertise includes full-stack development with
-          technologies like React.js, Node.js, and Django, and I have worked
-          extensively with cloud tools like AWS and DevOps tools like Docker,
-          Jenkins, and Kubernetes. Additionally, I have experience in AI and ML
-          frameworks, including Hugging Face and LangChain, which I am
-          particularly excited to apply in research environments.
-        </p>
-
-        <p>
-          Beyond my work, I actively engage in various academic and
-          extracurricular pursuits. I recently completed cybersecurity
-          challenges as part of the National Cyber League, focused on network
-          security, cryptography, and risk management. Additionally, I worked on
-          a hospital database management system project that integrated patient
-          records and medication prescriptions, streamlining healthcare
-          communication.
-        </p>
-
-        <p>
-          My commitment to education, problem-solving, and technology has led me
-          to apply for a Ph.D. program in Technology at Purdue Polytechnic
-          Institute, where I am excited to contribute to advancements in digital
-          manufacturing and intelligent design systems, particularly in the
-          integration of AI/ML with CAD. I&apos;m passionate about leveraging my
-          skills and experiences to develop technologies that address real-world
-          challenges and make a meaningful impact on society.
-        </p>
-
-        <p>
-          In my free time, I enjoy football, having been the captain of my
-          college team, and I take pride in my leadership roles, including being
-          the president of the North East Naga Students Union. These experiences
-          have equipped me with strong communication, teamwork, and leadership
-          skills that I apply in both professional and academic settings.
-        </p>
-
-        <p>
-          Thank you for taking the time to learn more about me. I&apos;m always
-          open to discussing opportunities, collaborations, or just sharing
-          knowledge with fellow enthusiasts in technology.
-        </p>
+        Growing up in the remote hills of Manipur, India, where access to
+        education and technology was scarce, I never imagined that I would one
+        day pursue a Master’s in Computer Science at the University of Dayton,
+        Ohio. As a member of the Maram Naga Tribe, a Particularly Vulnerable
+        Tribal Group (PVTG), my path to higher education was not just a personal
+        goal, but a responsibility to my community and heritage.
+      </p>
+      <p>
+        My passion for technology began with a simple mobile phone. This spark
+        of curiosity, combined with a deep desire to innovate, drove me to
+        pursue a Bachelor’s in Electronics and Telecommunications Engineering
+        from the Indian Institute of Engineering Science and Technology (IIEST)
+        in Shibpur. I was the first from my tribe to achieve this milestone, a
+        feat that made me realize the power of education to transform lives.
+      </p>
+      <p>
+        After graduating, I joined TurboCom in Bangalore as a Software Engineer
+        and Full Stack Developer, where I led projects that optimized database
+        queries, improved system performance, and delivered solutions that
+        supported higher user traffic. My time at Roamhome Pvt Ltd further
+        strengthened my focus on user-centric technology, enhancing user
+        engagement and building data-driven solutions.
+      </p>
+      <p>
+        Currently, at the University of Dayton, I am honing my skills in
+        algorithms, artificial intelligence, and data visualization. Beyond
+        academics, I have actively participated in the National Cyber League,
+        where I tackled cybersecurity challenges, and led a project developing a
+        Hospital Management Database System, integrating real-time patient data
+        to improve healthcare delivery.
+      </p>
+      <p>
+        With a solid technical foundation and hands-on experience, I am
+        committed to using technology to solve real-world problems, especially
+        in underserved communities. My journey from the hills of Manipur to
+        becoming a graduate student in the U.S. is just the beginning, and I am
+        excited for the impact I can make in the world of technology.
+      </p>
+      <h3>Stay tuned for more updates on my projects and experiences!</h3>
       </div>
+     
     </div>
   );
 };
