@@ -16,8 +16,15 @@ import ManageUser from "../pages/admin/user/ManageUser";
 import Dashboard from "../pages/admin/dashboard/Dashboard";
 import UpdatePosts from "../pages/admin/post/UpdatePosts";
 import ErrorPage from "../components/ErrorPage";
-
-
+import Education from "../pages/AboutMaram/Education";
+import News from "../pages/AboutMaram/News";
+import MKS from "../pages/AboutMaram/MKS";
+import MaramUnion from "../pages/AboutMaram/MaramUnion";
+import Festival from "../pages/AboutMaram/Festival";
+import Village from "../pages/AboutMaram/Village";
+import Culture from "../pages/AboutMaram/Culture";
+import CareerGuidance from "../pages/Resources/CareerCounselling";
+import Scholarship from "../pages/Resources/Scolarship";
 
 const router = createBrowserRouter([
   {
@@ -27,67 +34,97 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home/>
+        element: <Home />,
       },
       {
         path: "/blogs",
-        element: <Blogs/>
+        element: <Blogs />,
       },
       {
         path: "/blogs/:id",
-        element:<SingleBlog /> ,
+        element: <SingleBlog />,
       },
       {
         path: "/about-us",
-        element: <About/>
+        element: <About />,
       },
-      // {
-      //   path: "/privacy-policy",
-      //   element: <PrivacyPolicy/>
-      // },
+      {
+        path: "/about-maram/education",
+        element: <Education />,
+      },
+      {
+        path: "/about-maram/news",
+        element: <News />,
+      },
+      {
+        path: "/about-maram/mks",
+        element: <MKS />,
+      },
+      {
+        path: "/about-maram/maram-union",
+        element: <MaramUnion />,
+      },
+      {
+        path: "/about-maram/festival",
+        element: <Festival />,
+      },
+      {
+        path: "/about-maram/village",
+        element: <Village />,
+      },
+      {
+        path: "/about-maram/culture",
+        element: <Culture />,
+      },
+      {
+        path: "/resources/career-guidance",
+        element: <CareerGuidance />,
+      },
+      {
+        path: "/resources/scholarship",
+        element: <Scholarship />,
+      },
       {
         path: "/contact-us",
-        element: <ContactUs/>
+        element: <ContactUs />,
       },
       // login & registration
       {
         path: "/login",
-        element: <Login/>
+        element: <Login />,
       },
       {
         path: "/register",
-        element: <Register/>
+        element: <Register />,
       },
       {
-        path: 'dashboard',
+        path: "dashboard",
         element: <PrivateRoute><AdminLayout /></PrivateRoute>, // Use AdminLayout for admin routes
         children: [
           // Define admin routes here
           {
-            path: '',
-            element: <Dashboard/>,
+            path: "",
+            element: <Dashboard />,
           },
           {
-            path: 'add-new-post',
-            element: <AddPost/>,
+            path: "add-new-post",
+            element: <AddPost />,
           },
           {
-            path: 'manage-items',
-            element: <ManagePost/>,
+            path: "manage-items",
+            element: <ManagePost />,
           },
           {
             path: "update-items/:id",
-            element: <UpdatePosts/>
+            element: <UpdatePosts />,
           },
           {
-            path: 'users',
-            element: <ManageUser/>,
-          }
-          
+            path: "users",
+            element: <ManageUser />,
+          },
         ],
       },
-
-    ]
+    ],
   },
 ]);
 

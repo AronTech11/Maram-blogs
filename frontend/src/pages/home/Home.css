@@ -1,0 +1,137 @@
+/* General Container Styles */
+.home-container {
+    background-color: white; /* Equivalent to bg-white */
+    color: #3e3e3e; /* Primary text color */
+    margin-top: 2rem; /* Equivalent to mt-8 */
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 100%; /* Ensures container is full-width on smaller screens */
+    margin-left: auto; /* Equivalent to mx-auto */
+    margin-right: auto; /* Equivalent to mx-auto */
+}
+
+/* Content Container */
+.home-content-container {
+    text-align: center; /* Equivalent to text-center */
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2rem;
+}
+
+/* Heading Styles */
+.home-heading {
+    font-size: 2.25rem; /* Default size */
+    font-weight: bold; /* Equivalent to font-bold */
+    line-height: 1.3;
+}
+
+/* Additional utility styles */
+.home-text-primary {
+    color: #3e3e3e; /* Primary text color */
+}
+
+.home-mt-8 {
+    margin-top: 2rem;
+}
+
+.home-p-8 {
+    padding: 2rem;
+}
+
+/* Content Section Styles */
+.home-website-purpose,
+.home-culture-description,
+.home-language-description,
+.home-festivals-description,
+.home-monarchy-description,
+.home-challenges-description,
+.home-call-to-action {
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Heading for Specific Sections */
+.home-why-this-website,
+.home-story-of-culture {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* List Styles */
+.home-goals-list {
+    padding-left: 1.5rem;
+    list-style-type: disc;
+    list-style-position: inside;
+}
+
+/* Paragraph and Text */
+.home-intro-text,
+.home-website-goals,
+.home-invitation {
+    font-size: 1.25rem;
+    line-height: 1.6;
+}
+
+/* Padding & Margin Utilities */
+.home-py-4 {
+    padding: 1.2rem;
+}
+
+.home-py-6 {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.home-font-semibold {
+    font-weight: 600;
+}
+
+.home-text-2xl {
+    font-size: 1.5rem;
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (min-width: 768px) {
+    /* Styles for medium screens and up */
+    .home-heading {
+        font-size: 3rem; /* Equivalent to md:text-5xl */
+        line-height: 1.2;
+    }
+
+    .home-content-container {
+        width: 88.6667%;
+    }
+
+    .home-website-purpose,
+    .home-culture-description,
+    .home-language-description,
+    .home-festivals-description,
+    .home-monarchy-description,
+    .home-challenges-description,
+    .home-call-to-action {
+        font-size: 1.5rem;
+    }
+
+    .home-goals-list p{
+        font-size: 1.2rem;
+    }
+
+
+    /* Adding responsive size adjustments */
+    .home-text-2xl {
+        font-size: 2rem; /* Medium screens, 2xl */
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .home-website-purpose,
+    .home-culture-description,
+    .home-language-description,
+    .home-festivals-description,
+    .home-monarchy-description,
+    .home-challenges-description,
+    .home-call-to-action {
+        font-size: 1.5rem;
+    }
+}

@@ -1,0 +1,89 @@
+/* Village.css */
+
+/* Container for the entire page */
+.village-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+  }
+  
+  /* Heading styles */
+  .village-heading {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Paragraphs and description */
+  .village-description {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 30px;
+    text-align: justify;
+  }
+  
+  /* Section info box */
+  .village-info {
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .village-info h2 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .village-info p {
+    font-size: 1.1em;
+    color: #666;
+    text-align: justify;
+  }
+  
+  /* Responsive Styling */
+  @media (max-width: 768px) {
+    .village-heading {
+      font-size: 2em;
+    }
+  
+    .village-description {
+      font-size: 1em;
+    }
+  
+    .village-info {
+      padding: 15px;
+    }
+  
+    .village-info h2 {
+      font-size: 1.5em;
+    }
+  
+    .village-info p {
+      font-size: 1em;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .village-heading {
+      font-size: 1.8em;
+    }
+  
+    .village-description {
+      font-size: 0.95em;
+    }
+  
+    .village-info h2 {
+      font-size: 1.3em;
+    }
+  
+    .village-info p {
+      font-size: 0.95em;
+    }
+  }
+  

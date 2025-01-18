@@ -65,7 +65,7 @@ const Blogs = () => {
       )}
 
       {/* Display Blogs by Category */}
-      {['village','culture', 'festival', 'education', 'news'].map((cat) => {
+      {['village','culture', 'festival', 'education', 'news',"l`ivelihood",].map((cat) => {
         const categoryBlogs = groupedBlogs[cat];
 
         return categoryBlogs && categoryBlogs.length > 0 ? (

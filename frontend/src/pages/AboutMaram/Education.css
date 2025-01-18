@@ -1,0 +1,49 @@
+/* Basic styling */
+.EducationContainer {
+    padding: 5rem;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .EducationContainer h2 {
+    font-size: 5em;
+    color: #4CAF50; /* Change this to your preferred color */
+    margin-bottom: 20px;
+  }
+  
+  .EducationContainer p {
+    font-size: 1em;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* Media Queries for responsiveness */
+  
+  /* For screens larger than 768px (tablets and desktops) */
+  @media (min-width: 768px) {
+    .EducationContainer h2 {
+      font-size: 3em;
+    }
+    .EducationContainer h3 {
+        font-size: 1.6em;
+      }
+  
+    .EducationContainer p {
+      font-size: 1.3em;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+  }
+  
+  /* For screens smaller than 768px (mobile) */
+  @media (max-width: 767px) {
+    .EducationContainer h2 {
+      font-size: 2.2em; /* Slightly smaller for mobile */
+    }
+  
+    .EducationContainer p {
+      font-size: 1em;
+      padding: 10px;
+    }
+  }
+  
