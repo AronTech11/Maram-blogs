@@ -1,0 +1,23 @@
+# Render Blueprint — auto-deploys backend on every git push
+# https://render.com/docs/blueprint-spec
+
+services:
+  # ─── Backend API ───
+  - type: web
+    name: maram-blogs-api
+    runtime: node
+    region: oregon
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node index.js
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URL
+        sync: false
+      - key: JWT_SECRET_KEY
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
+
