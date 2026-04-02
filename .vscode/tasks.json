@@ -1,0 +1,40 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Backend Server",
+      "type": "shell",
+      "command": "cd /Users/aronhopson/Desktop/Winter-Project/Maram-Blogs/backend && node index.js",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "servers",
+        "clear": true
+      }
+    },
+    {
+      "label": "Frontend Server",
+      "type": "shell",
+      "command": "cd /Users/aronhopson/Desktop/Winter-Project/Maram-Blogs/frontend && npm run dev",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "servers",
+        "clear": true
+      }
+    },
+    {
+      "label": "Start All Servers",
+      "dependsOn": ["Backend Server", "Frontend Server"],
+      "dependsOrder": "parallel",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always"
+      }
+    }
+  ]
+}

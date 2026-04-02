@@ -1,68 +1,96 @@
-import React from 'react';
-import './Education.css'; // Import the CSS file
+import React from "react";
+
+const sections = [
+  {
+    icon: "🏛️",
+    title: "Traditional Education",
+    content:
+      "Before formal schooling became widespread, traditional education in Maram Naga society was primarily oral and practical. Knowledge was passed down through elders, with a focus on life skills, cultural practices, agriculture, and community values. The Morung (youth dormitory) served as an informal school where young men learned warfare, craftsmanship, folklore, and governance.",
+  },
+  {
+    icon: "🏫",
+    title: "Government Initiatives",
+    content:
+      "The Government of Manipur has worked to improve education in the rural and tribal areas, including the Senapati district. Efforts include building schools, providing scholarships, and increasing literacy rates. Programs like the Post Matric Scholarship for ST Students and the Top Class Education Scheme provide critical financial support.",
+  },
+  {
+    icon: "📚",
+    title: "Current Progress",
+    content:
+      "Today, many young Maram Naga people attend schools and pursue higher education in cities like Imphal, Delhi, and abroad. The community has produced engineers, doctors, teachers, and tech professionals. Organizations like the Maram Union and MKS actively promote education and skill development.",
+  },
+  {
+    icon: "⚠️",
+    title: "Challenges",
+    content:
+      "Challenges persist including inadequate infrastructure, teacher shortages, geographical isolation, and language barriers. The medium of instruction is often English or Hindi, while the Maram language remains the mother tongue. Bridging this gap is essential for inclusive education.",
+  },
+  {
+    icon: "🌱",
+    title: "Language Preservation",
+    content:
+      "Recent efforts aim to promote education in the Maram language and incorporate it into school curricula. Local NGOs and community leaders are working on literacy programs, skill development workshops, and higher education opportunities for the younger generation.",
+  },
+];
 
 const Education = () => {
   return (
-    <div className="EducationContainer">
-      
-      <h2>Maram Naga</h2>
-      <p>
-        The Maram Naga are one of the indigenous Naga tribes in the state of Manipur, India. They mainly inhabit the
-        Senapati district, which is located in the northern part of Manipur, near the border with Nagaland. The Maram
-        people have a rich cultural heritage, with their own traditions, customs, and language (Maram). They are primarily
-        agrarian, with farming being the main livelihood, though they also engage in other forms of work.
-      </p>
+    <div className="pt-20">
+      {/* Hero */}
+      <section className="bg-deep-brown py-20">
+        <div className="container mx-auto px-6 max-w-4xl text-center">
+          <p className="text-warm-gold font-medium text-sm tracking-[0.15em] uppercase mb-3">
+            Knowledge & Growth
+          </p>
+          <h1 className="font-heading text-3xl md:text-5xl font-bold text-white mb-4">
+            Education Among the Maram Naga
+          </h1>
+          <p className="text-white/60 max-w-2xl mx-auto">
+            From the traditional Morung system to modern universities: the
+            evolving journey of education in the Maram community.
+          </p>
+        </div>
+      </section>
 
-      <h2>Education of the Maram Naga People:</h2>
-      <p>
-        Education among the Maram Naga people, as with many indigenous groups, has evolved over time, with various efforts
-        being made by both the state government and non-governmental organizations to improve literacy and access to formal
-        education.
-      </p>
+      {/* Content */}
+      <section className="py-16">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <div className="space-y-8">
+            {sections.map((s, i) => (
+              <div
+                key={i}
+                className="flex items-start gap-5 bg-white rounded-xl p-6 md:p-8 shadow-sm border border-soft-gray/50"
+              >
+                <span className="text-3xl mt-1">{s.icon}</span>
+                <div>
+                  <h3 className="font-heading text-xl font-bold text-primary mb-2">
+                    {s.title}
+                  </h3>
+                  <p className="text-primary/70 leading-relaxed">{s.content}</p>
+                </div>
+              </div>
+            ))}
+          </div>
 
-      <h3>1. Government Initiatives:</h3>
-      <p>
-        The Government of Manipur has worked to improve education in the rural and tribal areas, including the Senapati
-        district. There have been efforts to build schools, provide scholarships, and increase literacy rates. However,
-        challenges such as inadequate infrastructure, teacher shortages, and geographical isolation have at times hindered
-        the pace of development in these areas.
-      </p>
-
-      <h3>2. Traditional Education:</h3>
-      <p>
-        Before formal schooling became widespread, traditional education in Maram Naga society was primarily oral and
-        practical. Knowledge was passed down through elders, with a focus on life skills, cultural practices, agriculture,
-        and community values. This system of education was integral to preserving their customs and identity.
-      </p>
-
-      <h3>3. Challenges:</h3>
-      <p>
-        While the situation has improved in recent decades, challenges still exist. Factors such as poor infrastructure,
-        insufficient educational materials, and a lack of qualified teachers can hinder educational progress in remote
-        areas where many Maram Naga people live. Moreover, the language barrier can also be an issue, as the medium of
-        instruction is often English or Hindi, whereas the Maram Naga people primarily speak the Maram language.
-      </p>
-
-      <h3>4. Recent Progress:</h3>
-      <p>
-        In recent years, there have been efforts to promote education in the Maram language and incorporate it into schools.
-        Additionally, there are some initiatives by local NGOs and community leaders to improve literacy, skill development,
-        and higher education opportunities for the younger generation.
-      </p>
-
-      <h3>5. Current State:</h3>
-      <p>
-        Today, many young Maram Naga people attend schools, and some pursue higher education in nearby cities like Imphal
-        or other states in India. However, there are still significant gaps in educational outcomes when compared to other
-        more urbanized regions of the state.
-      </p>
-
-      <h2>Conclusion:</h2>
-      <p>
-        Education among the Maram Naga people has come a long way, but it is still an area in need of development, especially
-        in remote and rural areas. Continued government support, community involvement, and targeted interventions could help
-        address the existing challenges and further improve educational outcomes for this indigenous group in Manipur.
-      </p>
+          {/* CTA */}
+          <div className="mt-16 bg-warm-cream rounded-xl p-8 text-center">
+            <h2 className="font-heading text-2xl font-bold text-primary mb-3">
+              Support Education in Maram
+            </h2>
+            <p className="text-primary/60 mb-6 max-w-xl mx-auto">
+              Education is the key to preserving culture while embracing the
+              future. Explore scholarship opportunities available to Maram
+              students.
+            </p>
+            <a
+              href="/resources/scholarship"
+              className="inline-block bg-accent text-white font-medium px-6 py-3 rounded-lg hover:bg-accent/90 transition"
+            >
+              View Scholarships
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

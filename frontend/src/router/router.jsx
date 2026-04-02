@@ -8,6 +8,8 @@ import ContactUs from "../pages/miniPage/ContactUs";
 import SingleBlog from "../pages/blogs/singleBlog/SingleBlog";
 import Login from "../pages/user/Login";
 import Register from "../pages/user/Register";
+import ForgotPassword from "../pages/user/ForgotPassword";
+import ResetPassword from "../pages/user/ResetPassword";
 import PrivateRoute from "./PrivateRoute";
 import AdminLayout from "../pages/admin/AdminLayout";
 import AddPost from "../pages/admin/post/AddPost";
@@ -25,6 +27,7 @@ import Village from "../pages/AboutMaram/Village";
 import Culture from "../pages/AboutMaram/Culture";
 import CareerGuidance from "../pages/Resources/CareerCounselling";
 import Scholarship from "../pages/Resources/Scolarship";
+import Disclaimer from "../pages/miniPage/Disclaimer";
 
 const router = createBrowserRouter([
   {
@@ -88,6 +91,14 @@ const router = createBrowserRouter([
         path: "/contact-us",
         element: <ContactUs />,
       },
+      {
+        path: "/privacy-policy",
+        element: <PrivacyPolicy />,
+      },
+      {
+        path: "/disclaimer",
+        element: <Disclaimer />,
+      },
       // login & registration
       {
         path: "/login",
@@ -98,8 +109,20 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
+        path: "/forgot-password",
+        element: <ForgotPassword />,
+      },
+      {
+        path: "/reset-password/:token",
+        element: <ResetPassword />,
+      },
+      {
         path: "dashboard",
-        element: <PrivateRoute><AdminLayout /></PrivateRoute>, // Use AdminLayout for admin routes
+        element: (
+          <PrivateRoute>
+            <AdminLayout />
+          </PrivateRoute>
+        ), // Use AdminLayout for admin routes
         children: [
           // Define admin routes here
           {

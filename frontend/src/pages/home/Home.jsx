@@ -1,45 +1,354 @@
-import React from 'react'
-import Hero from './Hero'
-import "./Home.css"
+import React from "react";
+import Hero from "./Hero";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useFetchBlogsQuery } from "../../redux/features/blogs/blogsApi";
+import Img5 from "../../assets/hero-carousel/wm5.jpg";
+
+const FeatureCard = ({ icon, title, description, link }) => (
+  <Link
+    to={link}
+    className="group bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-soft-gray/50 hover:border-accent/20"
+  >
+    <div className="text-3xl mb-4">{icon}</div>
+    <h3 className="font-heading text-lg font-semibold mb-2 group-hover:text-accent transition-colors">
+      {title}
+    </h3>
+    <p className="text-primary/60 text-sm leading-relaxed">{description}</p>
+  </Link>
+);
 
 const Home = () => {
-  return (
-    <div className='home-container'>
-      <Hero />
-      <div className='home-content-container'>
-        <h1 className='home-heading'>
-          Maram Naga Tribe in the hills of Manipur, India
-        </h1>
-        <p className='home-intro-text home-py-4'>
-          Welcome to <strong>Maram Tribe Stories</strong>, a platform dedicated to preserving and sharing the vibrant culture, traditions, and wisdom of the <strong>Maram Naga</strong> community. Nestled in the hilly terrain of <strong>Senapati District</strong> in <strong>Manipur, India</strong>, the Maram people are an integral part of the Naga ethnic group, with a rich cultural heritage shaped by centuries of traditions, stories, and rituals. Despite their challenges and the passage of time, the Marams continue to hold onto their unique identity through their language, festivals, and lifestyle.
-        </p>
-        <p className='home-website-purpose home-py-4'>
-          This website is a space to showcase the stories of the Maram community, explore their customs, and honor the resilience of a tribe that has weathered many challenges, including the pressures of modernization, socio-political unrest, and a declining population. It is also a tribute to the people who continue to fight for the survival of their language and heritage in the face of these difficulties. Here, we aim to celebrate the Maram Naga tribe&apos;s essence, highlight their struggles, and share their journey towards ensuring their legacy continues for future generations.
-        </p>
-        <h2 className='home-why-this-website home-text-2xl home-font-semibold home-py-6'>
-          Why This Website?
-        </h2>
-        <p className='home-website-goals home-text-lg home-py-4'>
-          The <strong>Maram Tribe Stories</strong> website serves as a vital resource for anyone interested in understanding the Maram Naga tribe and the ongoing efforts to preserve their cultural heritage. This site aims to:
-        </p>
-        <div className='home-goals-list'>
-          <p><strong>Raise awareness</strong> about the Maram people&apos;s struggles, including their classification as a <strong>Particularly Vulnerable Tribal Group (PVTG)</strong> and their socio-economic challenges.</p>
-          <p><strong>Preserve their cultural identity</strong>, including their language, festivals, traditional practices, and community life, which are at risk of fading due to modern influences.</p>
-          <p><strong>Educate</strong> the public about the Marams&apos; distinctive customs, stories, and lifestyles, ensuring that these traditions are passed down to future generations and shared with a global audience.</p>
-        </div>
-        <p className='home-invitation home-py-4'>
-          The stories shared on this website are crafted with the intention of fostering a deeper connection between the Maram community and the world outside, helping bridge gaps in understanding, empathy, and respect.
-        </p>
-        <h2 className='home-story-of-culture home-text-2xl home-font-semibold home-py-6'>
-          Story of the Maram Community and Culture
-        </h2>
-        <p className='home-culture-description home-py-4'>
-          The <strong>Maram Naga</strong> tribe traces its roots to the hills of <strong>Manipur</strong>, where they live in small villages scattered across the land. These people are united by a shared history, language, and set of customs that have endured through generations. <strong>Maram Khullen</strong>, the largest village in the region, stands as the epicenter of Maram culture. It is here that the tribe&apos;s deep connection to the land, their rituals, and their way of life continue to thrive despite external pressures.
-        </p>
-        {/* Rest of the content */}
-      </div>
-    </div>
-  )
-}
+  const { user } = useSelector((state) => state.auth);
+  const isAdminOrAbove = user?.role === "admin" || user?.role === "superadmin";
+  const isLoggedIn = !!user;
+  const { data: blogs = [] } = useFetchBlogsQuery({
+    search: "",
+    category: "",
+  });
+  const recentBlogs = blogs.slice(0, 3);
 
-export default Home
+  return (
+    <div>
+      <Hero />
+
+      {/* Quick Stats Bar */}
+      <section className="bg-deep-brown text-white py-6">
+        <div className="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          {[
+            { number: "30+", label: "Villages" },
+            { number: "37,300+", label: "Population" },
+            { number: "3", label: "Major Festivals" },
+            { number: "100+", label: "Years of Heritage" },
+          ].map((stat, i) => (
+            <div key={i}>
+              <p className="font-heading text-2xl md:text-3xl font-bold text-warm-gold">
+                {stat.number}
+              </p>
+              <p className="text-white/60 text-sm mt-1">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ====== WHY THIS WEBSITE ====== */}
+      <section className="py-16 md:py-20 bg-warm-cream">
+        <div className="container mx-auto px-6">
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="text-accent font-medium text-sm tracking-[0.15em] uppercase mb-3">
+              Our Mission
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary mb-6">
+              Why <span className="text-accent">Maram Heritage?</span>
+            </h2>
+            <p className="text-primary/70 leading-relaxed mb-4 text-base md:text-lg">
+              In a world that is rapidly modernizing, the stories, languages,
+              and traditions of indigenous communities like the Maram Naga are
+              at risk of being lost forever. Our elders carry a wealth of
+              knowledge, from folk tales to farming wisdom, from ceremonial
+              songs to the art of weaving, that no textbook can capture.
+            </p>
+            <p className="text-primary/70 leading-relaxed mb-4 text-base md:text-lg">
+              <strong className="text-primary">Maram Heritage</strong> was born
+              from a simple belief:{" "}
+              <em>
+                if we don&apos;t document our past, our future generations
+                won&apos;t know where they came from.
+              </em>{" "}
+              This website is a digital home for our community, a place where
+              anyone, from a student in Imphal to a Maram diaspora member
+              abroad, can learn about, contribute to, and celebrate the rich
+              tapestry of Maram culture.
+            </p>
+            <div className="flex flex-wrap justify-center gap-6 mt-8">
+              {[
+                { icon: "📝", text: "Document Our Stories" },
+                { icon: "🌍", text: "Connect the Diaspora" },
+                { icon: "📚", text: "Educate Future Generations" },
+                { icon: "🤝", text: "Unite the Community" },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="flex items-center gap-2 bg-white px-4 py-2.5 rounded-full shadow-sm"
+                >
+                  <span className="text-lg">{item.icon}</span>
+                  <span className="text-sm font-medium text-primary/80">
+                    {item.text}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ====== ABOUT THE MARAM TRIBE (Story) ====== */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-accent font-medium text-sm tracking-[0.15em] uppercase mb-3">
+                Our Roots
+              </p>
+              <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary mb-6">
+                The Story of the{" "}
+                <span className="text-accent">Maram Naga People</span>
+              </h2>
+              <p className="text-primary/70 leading-relaxed mb-4">
+                The Maram Naga are a Tibeto-Burman people inhabiting the
+                Senapati district of Manipur, Northeast India. According to oral
+                tradition, the first ancestors were{" "}
+                <strong>Madungkasyii</strong> and{" "}
+                <strong>S&apos;mutingdangpui</strong>, from whom the entire
+                tribe descends. Maram Khullen (Maramei Namdi), the largest and
+                oldest village, remains the spiritual and cultural epicenter.
+              </p>
+              <p className="text-primary/70 leading-relaxed mb-4">
+                Historically a warrior tribe with a chieftainship system, the
+                Marams are known for their fierce independence, deep respect for
+                nature, and elaborate rituals tied to agriculture. The terraced
+                rice fields, dense forests, and misty hilltops of Maram are not
+                just landscapes; they are sacred spaces woven into every folk
+                song and ceremony.
+              </p>
+              <p className="text-primary/70 leading-relaxed mb-6">
+                Today, the Maram community numbers over 37,000 and is united
+                under the Maram Union and MKS (Maram Khullen Students&apos;
+                Union). While modernization has brought schools and
+                infrastructure, the community continues to celebrate its
+                identity through festivals like <strong>Punghi</strong> (harvest
+                festival in July), <strong>Kanghi</strong> (December), and the
+                grand <strong>Mangkang</strong>.
+              </p>
+              <Link
+                to="/about-maram/culture"
+                className="inline-flex items-center gap-2 text-accent font-semibold hover:gap-3 transition-all"
+              >
+                Dive deeper into our history
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Link>
+            </div>
+            <div className="relative">
+              <img
+                src={Img5}
+                alt="Maram landscape"
+                className="rounded-2xl shadow-xl w-full h-[400px] object-cover"
+              />
+              <div className="absolute -bottom-4 -left-4 bg-accent text-white px-6 py-3 rounded-lg shadow-lg">
+                <p className="font-heading text-lg font-bold">
+                  Since Time Immemorial
+                </p>
+                <p className="text-white/80 text-xs">
+                  Senapati District, Manipur
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features / Explore Grid */}
+      <section className="py-16 bg-warm-cream">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <p className="text-accent font-medium text-sm tracking-[0.15em] uppercase mb-3">
+              Explore
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary">
+              Discover the Maram World
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <FeatureCard
+              icon="🏔️"
+              title="Villages & Geography"
+              description="Over 30 villages scattered across the hills, with Maram Khullen as the cultural epicenter."
+              link="/about-maram/village"
+            />
+            <FeatureCard
+              icon="🎭"
+              title="Festivals & Rituals"
+              description="Punghi (July), Kanghi (December) & Mangkang: vibrant celebrations of life and harvest."
+              link="/about-maram/festival"
+            />
+            <FeatureCard
+              icon="📖"
+              title="History & Culture"
+              description="Centuries of traditions, monarchy, folk tales, songs, and the unique Maram way of life."
+              link="/about-maram/culture"
+            />
+            <FeatureCard
+              icon="🗣️"
+              title="Language & Identity"
+              description="The Maram language, classified as 'vulnerable' by UNESCO, is a treasure worth preserving."
+              link="/about-maram/education"
+            />
+            <FeatureCard
+              icon="📰"
+              title="News & Updates"
+              description="Stay updated with the latest happenings in the Maram community and beyond."
+              link="/about-maram/news"
+            />
+            <FeatureCard
+              icon="✍️"
+              title="Community Blogs"
+              description="Read and write stories, share knowledge, and connect with the Maram community worldwide."
+              link="/blogs"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Recent Blogs */}
+      {recentBlogs.length > 0 && (
+        <section className="py-16 md:py-24">
+          <div className="container mx-auto px-6">
+            <div className="flex justify-between items-end mb-10">
+              <div>
+                <p className="text-accent font-medium text-sm tracking-[0.15em] uppercase mb-3">
+                  Latest Stories
+                </p>
+                <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary">
+                  From the Community
+                </h2>
+              </div>
+              <Link
+                to="/blogs"
+                className="hidden md:inline-flex items-center gap-2 text-accent font-semibold hover:gap-3 transition-all"
+              >
+                View all blogs
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Link>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              {recentBlogs.map((blog) => (
+                <Link
+                  key={blog._id}
+                  to={`/blogs/${blog._id}`}
+                  className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-soft-gray/50"
+                >
+                  <div className="img-hover-zoom">
+                    <img
+                      src={blog.coverImg}
+                      alt={blog.title}
+                      className="w-full h-48 md:h-56 object-contain bg-soft-gray/10"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <span className="text-xs font-medium text-accent bg-accent/10 px-2.5 py-1 rounded-full">
+                      {blog.category}
+                    </span>
+                    <h3 className="font-heading text-lg font-semibold mt-3 mb-2 group-hover:text-accent transition-colors line-clamp-2">
+                      {blog.title}
+                    </h3>
+                    <p className="text-primary/50 text-sm line-clamp-2">
+                      {blog.description}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <div className="text-center mt-8 md:hidden">
+              <Link
+                to="/blogs"
+                className="inline-flex items-center gap-2 text-accent font-semibold"
+              >
+                View all blogs →
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* CTA Section */}
+      <section className="py-16 bg-accent">
+        <div className="container mx-auto px-6 text-center">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mb-4">
+            {isAdminOrAbove ? "Ready to Write?" : "Share Your Story"}
+          </h2>
+          <p className="text-white/80 max-w-xl mx-auto mb-8">
+            {isAdminOrAbove
+              ? "You have admin access. Create a new blog post and share the rich heritage of the Maram tribe with the world."
+              : "Have a story, memory, or piece of knowledge about the Maram tribe? Join our community and help preserve our heritage for future generations."}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            {isAdminOrAbove ? (
+              <Link
+                to="/dashboard/add-new-post"
+                className="bg-white text-accent font-semibold px-8 py-3.5 rounded-lg hover:bg-white/90 transition-all"
+              >
+                ✍️ Write a Blog
+              </Link>
+            ) : isLoggedIn ? (
+              <Link
+                to="/blogs"
+                className="bg-white text-accent font-semibold px-8 py-3.5 rounded-lg hover:bg-white/90 transition-all"
+              >
+                Explore Blogs
+              </Link>
+            ) : (
+              <Link
+                to="/register"
+                className="bg-white text-accent font-semibold px-8 py-3.5 rounded-lg hover:bg-white/90 transition-all"
+              >
+                Create an Account
+              </Link>
+            )}
+            <Link
+              to="/contact-us"
+              className="border-2 border-white/40 text-white font-semibold px-8 py-3.5 rounded-lg hover:bg-white/10 transition-all"
+            >
+              Get in Touch
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Home;

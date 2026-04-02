@@ -1,28 +1,27 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
   return (
-    <main className="h-screen w-full flex flex-col justify-center items-center bg-[#1A2238]">
-	<h1 className="text-9xl font-extrabold text-white tracking-widest">404</h1>
-	<div className="bg-[#FF6A3D] px-2 text-sm rounded rotate-12 absolute">
-		Page Not Found
-	</div>
-	<button className="mt-5">
-      <a
-        className="relative inline-block text-sm font-medium text-[#FF6A3D] group active:text-orange-500 focus:outline-none focus:ring"
+    <main className="min-h-screen w-full flex flex-col justify-center items-center bg-bgPrimary px-6">
+      <h1 className="font-heading text-8xl md:text-9xl font-bold text-accent tracking-wider">
+        404
+      </h1>
+      <p className="font-heading text-xl md:text-2xl font-bold text-primary mt-4 mb-2">
+        Page Not Found
+      </p>
+      <p className="text-primary/50 text-center max-w-md mb-8">
+        The page you are looking for might have been removed, had its name
+        changed, or is temporarily unavailable.
+      </p>
+      <Link
+        to="/"
+        className="bg-accent text-white font-medium px-8 py-3 rounded-lg hover:bg-accent/90 transition"
       >
-        <span
-          className="absolute inset-0 transition-transform translate-x-0.5 translate-y-0.5 bg-[#FF6A3D] group-hover:translate-y-0 group-hover:translate-x-0"
-        ></span>
+        Back to Home
+      </Link>
+    </main>
+  );
+};
 
-        <span className="relative block px-8 py-3 bg-[#1A2238] border border-current">
-          <Link to="/">Go Home</Link>
-        </span>
-      </a>
-    </button>
-</main>
-  )
-}
-
-export default ErrorPage
+export default ErrorPage;

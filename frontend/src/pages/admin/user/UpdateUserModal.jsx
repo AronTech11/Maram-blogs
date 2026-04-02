@@ -16,45 +16,48 @@ const UpdateUserModal = ({ user, onClose, onRoleUpdate }) => {
     }
   };
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white p-4 rounded shadow-lg w-1/3">
-        <h2 className="text-xl mb-4">Edit User</h2>
-        <div className="mb-4 space-y-4">
-          <label className="block text-sm font-medium text-gray-700">
-            Email:
+    <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+      <div className="bg-white p-6 rounded-xl shadow-lg w-full max-w-md mx-4">
+        <h2 className="font-heading text-xl font-bold text-primary mb-6">
+          Edit User Role
+        </h2>
+        <div className="mb-4 space-y-2">
+          <label className="block text-sm font-medium text-primary/70">
+            Email
           </label>
           <input
             type="text"
             value={user.email}
             readOnly
-            className="mt-1 bg-bgPrimary block w-full shadow-sm sm:text-sm border-gray-300 rounded-md py-1.5 px-5 focus:outline-none"
+            className="mt-1 bg-bgPrimary block w-full shadow-sm text-sm border border-soft-gray/50 rounded-lg py-2.5 px-4 focus:outline-none text-primary/50"
           />
         </div>
-        <div className="mb-4 space-y-4">
-          <label className="block text-sm font-medium text-gray-700">
-            Role:
+        <div className="mb-6 space-y-2">
+          <label className="block text-sm font-medium text-primary/70">
+            Role
           </label>
           <select
             value={role}
             onChange={(e) => setRole(e.target.value)}
-            className="block w-full shadow-sm sm:text-sm border-gray-300 rounded-md py-1.5 px-5 focus:outline-none"
+            className="block w-full shadow-sm text-sm border border-soft-gray/50 rounded-lg py-2.5 px-4 focus:outline-none focus:ring-2 focus:ring-accent/30"
           >
             <option value="user">User</option>
             <option value="admin">Admin</option>
+            <option value="superadmin">Super Admin</option>
           </select>
         </div>
-        <div className="flex justify-end pt-5">
+        <div className="flex justify-end gap-3">
           <button
             onClick={onClose}
-            className="bg-gray-500 text-white px-4 py-2 rounded mr-2"
+            className="px-4 py-2.5 rounded-lg text-sm font-medium text-primary/70 bg-soft-gray/50 hover:bg-soft-gray transition"
           >
             Cancel
           </button>
           <button
             onClick={handleUpdateRole}
-            className="bg-indigo-500 text-white px-4 py-2 rounded"
+            className="px-4 py-2.5 rounded-lg text-sm font-medium text-white bg-accent hover:bg-accent/90 transition"
           >
-            Save
+            Save Changes
           </button>
         </div>
       </div>

@@ -1,48 +1,53 @@
 import React from "react";
-import CommentorIcon from "../../../assets/commentor.png";
 import { formatDate } from "../../../utilis/dateFormater";
 import PostAComment from "./PostAComment";
-import { useSelector } from "react-redux";
 
 const CommentCard = ({ comments }) => {
-  const user = useSelector((state) => state.auth.user); 
-  console.log(user?.username)
-  // console.log(comments);
-
   return (
-    <div className="my-6 bg-white p-8">
-     <div>
-      {
-        comments.length > 0 ? <div>
-           <h3 className="text-lg font-medium">All Comments...</h3>
-      <div>
-        {comments.map((comment, index) => (
-          <div key={index} className="mt-4">
-            <div className="flex gap-4 items-center">
-              <img src={CommentorIcon} alt="" className="h-14" />
-              <div className="space-y-1">
-                <p className="text-lg font-medium underline capitalize underline-offset-4 text-blue-400">
-                  {comment.user.username}
-                </p>
-                <p className="text-[12px] italic">
-                  {formatDate(comment.createdAt)}
-                </p>
+    <div className="mt-6 bg-white rounded-xl shadow-sm border border-soft-gray/50 p-6 md:p-8">
+      <h3 className="font-heading text-xl font-semibold mb-6">
+        {comments && comments.length > 0
+          ? `Comments (${comments.length})`
+          : "Comments"}
+      </h3>
+
+      {comments && comments.length > 0 ? (
+        <div className="space-y-5">
+          {comments.map((comment, index) => (
+            <div
+              key={index}
+              className="border-b border-soft-gray/50 pb-5 last:border-b-0"
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-9 h-9 bg-earth-green/20 rounded-full flex items-center justify-center">
+                  <span className="text-sm font-bold text-earth-green">
+                    {comment.user?.username?.charAt(0).toUpperCase() || "U"}
+                  </span>
+                </div>
+                <div>
+                  <p className="font-medium text-sm text-primary capitalize">
+                    {comment.user?.username || "User"}
+                  </p>
+                  <p className="text-xs text-primary/40">
+                    {formatDate(comment.createdAt)}
+                  </p>
+                </div>
               </div>
+              <p className="text-primary/70 text-sm leading-relaxed pl-12">
+                {comment.comment}
+              </p>
             </div>
+          ))}
+        </div>
+      ) : (
+        <p className="text-primary/40 text-sm">
+          No comments yet. Be the first to share your thoughts!
+        </p>
+      )}
 
-            {/* comment details */}
-            <div className="text-gray-600 mt-5 border p-8">
-              <p className="md:w-4/5">{comment.comment}</p>
-            </div>
-          </div>
-        ))}
+      <div className="mt-6 pt-6 border-t border-soft-gray/50">
+        <PostAComment />
       </div>
-        </div> : (<div className="text-lg font-medium">No commnets found!</div>)
-      }
-     </div>
-
-      {/* add comment section */}
-      <PostAComment/>
     </div>
   );
 };

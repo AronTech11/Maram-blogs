@@ -1,65 +1,102 @@
-/* eslint-disable react/no-unescaped-entities */
-import React, { useState } from 'react';
-import { useLoginUserMutation, useLogoutUserMutation } from '../../redux/features/auth/authApi';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { setUser } from '../../redux/features/auth/authSlice';
+import React, { useState } from "react";
+import { useLoginUserMutation } from "../../redux/features/auth/authApi";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/features/auth/authSlice";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-
-  const [loginUser, { isLoading: loginLoading }] = useLoginUserMutation();
-
+  const [loginUser, { isLoading }] = useLoginUserMutation();
   const navigate = useNavigate();
-    // console.log("Loging user Api", loginUser);
+
   const handleLogin = async (e) => {
     e.preventDefault();
-    const data = {
-        email,
-        password,
-      }
-    
     try {
-      const response= await loginUser(data).unwrap();
-      console.log(response)
-      const { token, user } = response;
+      const response = await loginUser({ email, password }).unwrap();
+      const { user } = response;
       dispatch(setUser({ user }));
-      alert('Login successful');
-      navigate('/');
-      
+      navigate("/");
     } catch (err) {
-      setMessage("Please provide a valid email and password!");
+      setMessage("Invalid email or password. Please try again.");
     }
   };
 
-
-
   return (
-    <div className='max-w-sm bg-white mx-auto p-8 mt-36'>
-      <h2 className='text-2xl font-semibold pt-5'>Please login</h2>
-      <form onSubmit={handleLogin} className='space-y-5 max-w-sm mx-auto pt-8'>
-        <input type="text" value={email} 
-         className='w-full bg-bgPrimary focus:outline-none px-5 py-3'
-        onChange={(e) => setEmail(e.target.value)} 
-        placeholder="Email" required />
+    <div className="pt-20 min-h-screen flex items-center justify-center px-6">
+      <div className="w-full max-w-md">
+        <div className="bg-white rounded-2xl shadow-sm border border-soft-gray/50 p-8">
+          <div className="text-center mb-8">
+            <h1 className="font-heading text-2xl font-bold text-primary">
+              Welcome Back
+            </h1>
+            <p className="text-primary/50 text-sm mt-1">
+              Sign in to your Maram Heritage account
+            </p>
+          </div>
 
-        <input type="password" value={password} 
-        className='w-full bg-bgPrimary focus:outline-none px-5 py-3'
-        onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
-        {
-          message && <p className="text-red-500">{message}</p>  // Display error message if any
-        }
-        <button type="submit" disabled={loginLoading}
-         className='w-full mt-5 bg-primary hover:bg-indigo-500 text-white font-medium py-3 rounded-md'
-        >Login</button>
-      </form>
-     
-        <p className='my-5 text-center'>Don't have an account? 
-          <Link to="/register" className='text-red-700 italic'> Register </Link> here.
-        </p>
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-primary/70 mb-1">
+                Email
+              </label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full bg-bgPrimary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/30 px-4 py-3 text-sm"
+                placeholder="your@email.com"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-primary/70 mb-1">
+                Password
+              </label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full bg-bgPrimary rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/30 px-4 py-3 text-sm"
+                placeholder="Your password"
+                required
+              />
+            </div>
+            {message && (
+              <p className="text-red-500 text-sm bg-red-50 p-3 rounded-lg">
+                {message}
+              </p>
+            )}
+            <div className="flex justify-end">
+              <Link
+                to="/forgot-password"
+                className="text-sm text-accent hover:underline"
+              >
+                Forgot Password?
+              </Link>
+            </div>
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="w-full bg-accent text-white font-medium py-3 rounded-lg hover:bg-accent-dark transition-colors disabled:opacity-50"
+            >
+              {isLoading ? "Signing in..." : "Sign In"}
+            </button>
+          </form>
+
+          <p className="text-center text-sm text-primary/50 mt-6">
+            Don&apos;t have an account?{" "}
+            <Link
+              to="/register"
+              className="text-accent font-medium hover:underline"
+            >
+              Create one
+            </Link>
+          </p>
+        </div>
+      </div>
     </div>
   );
 };

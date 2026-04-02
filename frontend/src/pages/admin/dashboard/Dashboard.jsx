@@ -10,7 +10,7 @@ import { useGetCommentsQuery } from "../../../redux/features/comments/commentsAp
 import BlogsChart from "./BlogsChart";
 
 const Dashboard = () => {
-  const [query, setQuery] = useState({ search: '', category: '' });
+  const [query, setQuery] = useState({ search: "", category: "" });
   const { data: blogs = [], error, isLoading } = useFetchBlogsQuery(query);
   const { data: users = [] } = useGetUserQuery();
   const { data: comments = [] } = useGetCommentsQuery();
@@ -18,44 +18,55 @@ const Dashboard = () => {
   const { user } = useSelector((state) => state.auth);
 
   // Calculate the number of "admin" role
-  const adminCount = users.filter(user => user.role === "admin").length;
+  const adminCount = users.filter(
+    (u) => u.role === "admin" || u.role === "superadmin",
+  ).length;
+  const isSuperAdmin = user?.role === "superadmin";
 
   return (
     <>
       {isLoading && <div>Loading...</div>}
       <div className="space-y-6">
-        <div className="bg-bgPrimary p-5">
-          <h1>Hi, {user.username}!</h1>
-          <p>Welcome to the admin dashboard</p>
-          <p>
-            Here you can manage your blog posts, and other
-            administrative tasks.
+        <div className="bg-warm-cream p-5 rounded-xl">
+          <h1 className="font-heading text-xl font-bold text-primary">
+            Hi, {user.username}!
+          </h1>
+          <p className="text-primary/60 mt-1">
+            Welcome to the admin dashboard. Manage your blog posts, users, and
+            content.
           </p>
         </div>
         {/* cards grid */}
-        <div className="flex flex-col md:flex-row justify-between gap-8 pt-8">
-          {/* certain grid to calculate total blogs, users */}
-          <div className="bg-indigo-100 py-6 w-full rounded-sm space-y-1 flex flex-col items-center">
-            <FiUsers className="size-8 text-indigo-600" />
-            <p>{users.length} Users</p>
+        <div className="flex flex-col md:flex-row justify-between gap-6 pt-8">
+          <div className="bg-warm-cream py-6 w-full rounded-xl space-y-1 flex flex-col items-center">
+            <FiUsers className="size-8 text-accent" />
+            <p className="font-heading font-bold text-primary">
+              {users.length} Users
+            </p>
           </div>
-          <div className="bg-red-100 py-6 w-full rounded-sm space-y-1 flex flex-col items-center">
-            <FaBlog className="size-8 text-red-600" />
-            <p>{blogs.length} Blogs</p>
+          <div className="bg-warm-cream py-6 w-full rounded-xl space-y-1 flex flex-col items-center">
+            <FaBlog className="size-8 text-earth-green" />
+            <p className="font-heading font-bold text-primary">
+              {blogs.length} Blogs
+            </p>
           </div>
-          <div className="bg-lime-100 py-6 w-full rounded-sm space-y-1 flex flex-col items-center">
-            <RiAdminLine className="size-8 text-lime-600" />
-            <p>{adminCount} Admin{adminCount !== 1 ? 's' : ''}</p>
+          <div className="bg-warm-cream py-6 w-full rounded-xl space-y-1 flex flex-col items-center">
+            <RiAdminLine className="size-8 text-warm-gold" />
+            <p className="font-heading font-bold text-primary">
+              {adminCount} Admin{adminCount !== 1 ? "s" : ""}
+            </p>
           </div>
-          <div className="bg-orange-100 py-6 w-full rounded-sm space-y-1 flex flex-col items-center">
-            <FaRegComment className="size-8 text-orange-600" />
-            <p>{comments.totalComments} Comments</p>
+          <div className="bg-warm-cream py-6 w-full rounded-xl space-y-1 flex flex-col items-center">
+            <FaRegComment className="size-8 text-tribal-red" />
+            <p className="font-heading font-bold text-primary">
+              {comments.totalComments} Comments
+            </p>
           </div>
         </div>
 
         {/* graph charts */}
         <div className="pt-5 pb-5">
-          <BlogsChart blogs={blogs}/>
+          <BlogsChart blogs={blogs} />
         </div>
       </div>
     </>

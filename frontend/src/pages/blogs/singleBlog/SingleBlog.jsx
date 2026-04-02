@@ -7,26 +7,32 @@ import RelatedBlogs from "./RelatedBlogs";
 
 const SingleBlog = () => {
   const { id } = useParams();
-  // console.log(id);
-
   const { data: blog = {}, error, isLoading } = useFetchBlogByIdQuery(id);
-  // console.log(blog);
-  // console.log(blog.comments);
 
   return (
-    <div className="text-primary container mx-auto mt-8">
-      <div>
-        {isLoading && <div>Loading...</div>}
-        {error && <div>{error.message}</div>}
+    <div className="pt-20 pb-16">
+      <div className="container mx-auto px-6">
+        {isLoading && (
+          <div className="flex justify-center py-20">
+            <div className="w-10 h-10 border-4 border-accent/20 border-t-accent rounded-full animate-spin"></div>
+          </div>
+        )}
+        {error && (
+          <div className="text-center py-20 text-red-500">
+            Something went wrong. Please try again.
+          </div>
+        )}
         {blog.post && (
-          <div className="flex flex-col lg:flex-row justify-between items-start md:gap-12 gap-8">
+          <div className="flex flex-col lg:flex-row gap-8">
             <div className="lg:w-2/3">
               <SingleBlogCard blog={blog.post} />
-             <CommentCard comments={blog.comments}/>
+              <CommentCard comments={blog.comments} />
             </div>
-            <div className="bg-white lg:w-1/3 w-full">
-            <RelatedBlogs/>
-            </div>
+            <aside className="lg:w-1/3">
+              <div className="sticky top-24">
+                <RelatedBlogs />
+              </div>
+            </aside>
           </div>
         )}
       </div>

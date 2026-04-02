@@ -1,24 +1,43 @@
-const { Schema, model } = require('mongoose');
-const bcrypt = require('bcrypt');
-const userSchema = new Schema({
-    username: {type: String, required: true, unique: true},
-    email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
-    role: { type: String, default: 'user' },
-})
+const { Schema, model } = require("mongoose");
+const bcrypt = require("bcrypt");
+const crypto = require("crypto");
 
-userSchema.pre('save', async function (next) {
-    const user = this;
-    if (!user.isModified('password')) return next();
-    const hashedPassword = await bcrypt.hash(user.password, 10);
-    user.password = hashedPassword;
-    next();
+const userSchema = new Schema({
+  username: { type: String, required: true, unique: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  role: {
+    type: String,
+    enum: ["user", "admin", "superadmin"],
+    default: "user",
+  },
+  resetPasswordToken: { type: String },
+  resetPasswordExpires: { type: Date },
+  createdAt: { type: Date, default: Date.now },
+});
+
+userSchema.pre("save", async function (next) {
+  const user = this;
+  if (!user.isModified("password")) return next();
+  const hashedPassword = await bcrypt.hash(user.password, 10);
+  user.password = hashedPassword;
+  next();
 });
 
 userSchema.methods.comparePassword = function (candidatePassword) {
-    return bcrypt.compare(candidatePassword, this.password);
+  return bcrypt.compare(candidatePassword, this.password);
 };
 
-const User = new model('User', userSchema);
+userSchema.methods.createPasswordResetToken = function () {
+  const resetToken = crypto.randomBytes(32).toString("hex");
+  this.resetPasswordToken = crypto
+    .createHash("sha256")
+    .update(resetToken)
+    .digest("hex");
+  this.resetPasswordExpires = Date.now() + 30 * 60 * 1000; // 30 minutes
+  return resetToken;
+};
+
+const User = model("User", userSchema);
 
 module.exports = User;

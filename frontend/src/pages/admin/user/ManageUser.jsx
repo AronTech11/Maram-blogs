@@ -3,34 +3,27 @@ import {
   useDeleteUserMutation,
   useGetUserQuery,
 } from "../../../redux/features/auth/authApi";
-import { Link, useNavigate } from "react-router-dom";
-import { MdModeEdit } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 import UpdateUserModal from "./UpdateUserModal";
 
 const ManageUser = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
-  const { data: user = [], error, isLoading, refetch } = useGetUserQuery();
-  // console.log(user);
-
+  const { data: users = [], error, isLoading, refetch } = useGetUserQuery();
   const [deleteUser] = useDeleteUserMutation();
-
   const navigate = useNavigate();
 
   const handleDelete = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this user?")) return;
     try {
-      const response = await deleteUser(id).unwrap();
-      console.log(response);
+      await deleteUser(id).unwrap();
       alert("User deleted successfully");
       refetch();
-      navigate("/");
-      // Manually refetch users after deletion
     } catch (error) {
       console.error("Failed to delete user", error);
     }
   };
 
-  // edit role selection
   const handleEdit = (user) => {
     setSelectedUser(user);
     setIsModalOpen(true);
@@ -43,132 +36,91 @@ const ManageUser = () => {
 
   return (
     <>
-      {isLoading && <div>Loading...</div>}
-      {error && <div>Failed to load blogs.</div>}
-      <section className="py-1 bg-blueGray-50">
-        <div className="w-full mb-12 xl:mb-0 px-4 mx-auto">
-          <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
-            <div className="rounded-t mb-0 px-4 py-3 border-0">
-              <div className="flex flex-wrap items-center">
-                <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-                  <h3 className="font-semibold text-base text-blueGray-700">
-                    All Blogs
-                  </h3>
-                </div>
-                <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-                  <Link to="/blogs">
-                    <button
-                      className="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                      type="button"
-                    >
-                      See all
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            </div>
+      {isLoading && <div className="text-primary/50">Loading...</div>}
+      {error && <div className="text-red-500">Failed to load users.</div>}
+      <div className="space-y-6">
+        <h2 className="font-heading text-xl font-bold text-primary">
+          Manage Users
+        </h2>
 
-            <div className="block w-full overflow-x-auto">
-              <table className="items-center bg-transparent w-full border-collapse ">
-                <thead>
-                  <tr>
-                    <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                      No.
-                    </th>
-                    <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                      User email
-                    </th>
-                    <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                      User role
-                    </th>
-                    <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                      Edit or manage
-                    </th>
-                    <th className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                      Delete
-                    </th>
+        <div className="overflow-x-auto rounded-lg border border-soft-gray/50">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="bg-warm-cream text-left">
+                <th className="px-4 py-3 text-xs font-semibold text-primary/60 uppercase">
+                  #
+                </th>
+                <th className="px-4 py-3 text-xs font-semibold text-primary/60 uppercase">
+                  Email
+                </th>
+                <th className="px-4 py-3 text-xs font-semibold text-primary/60 uppercase">
+                  Role
+                </th>
+                <th className="px-4 py-3 text-xs font-semibold text-primary/60 uppercase">
+                  Edit
+                </th>
+                <th className="px-4 py-3 text-xs font-semibold text-primary/60 uppercase">
+                  Delete
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {users &&
+                users.map((u, index) => (
+                  <tr
+                    key={u._id}
+                    className="border-t border-soft-gray/30 hover:bg-bgPrimary/50"
+                  >
+                    <td className="px-4 py-3 text-primary/60">{index + 1}</td>
+                    <td className="px-4 py-3 text-primary font-medium">
+                      {u?.email}
+                    </td>
+                    <td className="px-4 py-3">
+                      <span
+                        className={`text-xs font-medium px-2.5 py-1 rounded-full ${
+                          u?.role === "superadmin"
+                            ? "bg-warm-gold/20 text-warm-gold"
+                            : u?.role === "admin"
+                              ? "bg-accent/10 text-accent"
+                              : "bg-warm-cream text-primary/60"
+                        }`}
+                      >
+                        {u?.role === "superadmin"
+                          ? "🛡️ Super Admin"
+                          : u?.role === "admin"
+                            ? "Admin"
+                            : "User"}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3">
+                      <button
+                        onClick={() => handleEdit(u)}
+                        className="text-accent hover:underline text-xs font-medium"
+                      >
+                        Edit Role
+                      </button>
+                    </td>
+                    <td className="px-4 py-3">
+                      <button
+                        className="text-xs font-medium bg-red-50 text-red-600 px-3 py-1 rounded hover:bg-red-100 transition"
+                        onClick={() => handleDelete(u?._id)}
+                      >
+                        Delete
+                      </button>
+                    </td>
                   </tr>
-                </thead>
-
-                <tbody>
-                  {user &&
-                    user.map((user, index) => (
-                      <tr key={user._id}>
-                        <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
-                          {index + 1}
-                        </th>
-                        <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
-                          {user?.email}
-                        </th>
-
-                        <td className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                          <span
-                            className={`rounded-full py-[2px] px-3 ${
-                              user?.role === "admin"
-                                ? "bg-indigo-500 text-white "
-                                : "bg-amber-300"
-                            }`}
-                          >
-                            {" "}
-                            {user?.role}
-                          </span>
-                        </td>
-                        <td className="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                          <button
-                            onClick={() => handleEdit(user)}
-                            className="flex gap-1 items-center hover:text-blue-700"
-                          >
-                            <MdModeEdit /> Edit
-                          </button>
-                        </td>
-                        <td className="border-t-0  px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                          <button
-                            className="bg-red-600 text-white px-2 py-1"
-                            onClick={() => handleDelete(user?._id)}
-                          >
-                            Delete
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
+                ))}
+            </tbody>
+          </table>
         </div>
-        <footer className="relative pt-8 pb-6 mt-16">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-wrap items-center md:justify-between justify-center">
-              <div className="w-full md:w-6/12 px-4 mx-auto text-center">
-                <div className="text-sm text-blueGray-500 font-semibold py-1">
-                  Made with{" "}
-                  <a
-                    href="https://www.creative-tim.com/product/notus-js"
-                    className="text-blueGray-500 hover:text-gray-800"
-                    target="_blank"
-                  >
-                    Notus JS
-                  </a>{" "}
-                  by{" "}
-                  <a
-                    href="https://www.creative-tim.com"
-                    className="text-blueGray-500 hover:text-blueGray-800"
-                    target="_blank"
-                  >
-                    {" "}
-                    Taluba Aron Hopson
-                  </a>
-                  .
-                </div>
-              </div>
-            </div>
-          </div>
-        </footer>
-      </section>
+      </div>
 
-      {/* modal logic */}
       {isModalOpen && (
-        <UpdateUserModal user={selectedUser} onClose={handleCloseModal} onRoleUpdate={refetch} />
+        <UpdateUserModal
+          user={selectedUser}
+          onClose={handleCloseModal}
+          onRoleUpdate={refetch}
+        />
       )}
     </>
   );

@@ -2,103 +2,81 @@ import React from "react";
 
 const PrivacyPolicy = () => {
   return (
-    <section className="bg-white text-primary container mx-auto mt-8 md:px-24 p-8">
-      <h2 className="md:text-4xl text-3xl font-medium md:leading-tight pt-8 pb-5">
-        Privacy Policy
-      </h2>
+    <div className="pt-20">
+      <section className="bg-deep-brown py-16">
+        <div className="container mx-auto px-6 max-w-4xl text-center">
+          <h1 className="font-heading text-3xl md:text-4xl font-bold text-white">
+            Privacy Policy
+          </h1>
+          <p className="text-white/50 mt-2 text-sm">Last updated: January 2025</p>
+        </div>
+      </section>
 
-      <div className="space-y-6">
-        
-        
-        <p>
-          This Privacy Policy applies only to our online activities and is valid
-          for visitors to our website with regards to the information that they
-          shared and/or collect . This policy is not
-          applicable to any information collected offline or via channels other
-          than this website.
-        </p>
-      </div>
+      <section className="py-16">
+        <div className="container mx-auto px-6 max-w-3xl prose prose-sm text-primary/70 leading-relaxed">
+          <div className="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-soft-gray/50 space-y-6">
+            <div>
+              <h2 className="font-heading text-xl font-bold text-primary mb-3">Introduction</h2>
+              <p>
+                This Privacy Policy applies to our online activities and is valid for visitors to Maram Heritage
+                with regards to the information that they share and/or we collect. This policy is not applicable
+                to any information collected offline or via channels other than this website.
+              </p>
+            </div>
 
-      <div className="space-y-6 pt-5">
-        <h3 className="text-2xl font-medium">Consent</h3>
-        <p>
-          By using our website, you hereby consent to our Privacy Policy and
-          agree to its terms.
-        </p>
+            <div>
+              <h2 className="font-heading text-xl font-bold text-primary mb-3">Consent</h2>
+              <p>
+                By using our website, you hereby consent to our Privacy Policy and agree to its terms.
+              </p>
+            </div>
 
-        <h3 className="text-2xl font-medium">Information we collect</h3>
-        <p>
-          The personal information that you are asked to provide, and the
-          reasons why you are asked to provide it, will be made clear to you at
-          the point we ask you to provide your personal information.
-        </p>
-        <p>
-          If you contact us directly, we may receive additional information
-          about you such as your name, email address, phone number, the contents
-          of the message and/or attachments you may send us, and any other
-          information you may choose to provide.
-        </p>
-        <p>
-          When you register for an Account, we may ask for your contact
-          information, including items such as name, company name, address,
-          email address, and telephone number.
-        </p>
-      </div>
+            <div>
+              <h2 className="font-heading text-xl font-bold text-primary mb-3">Information We Collect</h2>
+              <p>
+                The personal information that you are asked to provide, and the reasons why you are asked
+                to provide it, will be made clear to you at the point we ask you to provide your personal
+                information.
+              </p>
+              <p className="mt-2">
+                When you register for an account, we may ask for your contact information, including items
+                such as name and email address.
+              </p>
+            </div>
 
-      <div className="space-y-6 pt-5">
-        <h3 className="text-2xl font-medium">How we use your information</h3>
-        <p>We use the information we collect in various ways, including to:</p>
-        <ul className="list-disc pl-8">
-          <li>Provide, operate, and maintain our website</li>
-          <li>Improve, personalize, and expand our website</li>
-          <li>Understand and analyze how you use our website</li>
-          <li>Develop new products, services, features, and functionality</li>
-          <li>
-            Communicate with you, either directly or through one of our
-            partners, including for customer service,
-            <br />
-            to provide you with updates and other information relating to the
-            website, and for marketing and promotional purposes
-          </li>
-          <li>Send you emails</li>
-          <li>Find and prevent fraud</li>
-        </ul>
-      </div>
+            <div>
+              <h2 className="font-heading text-xl font-bold text-primary mb-3">How We Use Your Information</h2>
+              <ul className="list-disc pl-6 space-y-1">
+                <li>Provide, operate, and maintain our website</li>
+                <li>Improve, personalize, and expand our website</li>
+                <li>Understand and analyze how you use our website</li>
+                <li>Communicate with you for updates and notifications</li>
+                <li>Find and prevent fraud</li>
+              </ul>
+            </div>
 
-      <div className="space-y-6 pt-5">
-        <h3 className="text-2xl font-medium">Log Files</h3>
-        <p>
-          hotels-with.com follows a standard procedure of using log files. These
-          files log visitors when they visit websites. All hosting companies do
-          this and a part of hosting services’ analytics. The information
-          collected by log files include internet protocol (IP) addresses,
-          browser type, Internet Service Provider (ISP), date and time stamp,
-          referring/exit pages, and possibly the number of clicks. These are not
-          linked to any information that is personally identifiable. The purpose
-          of the information is for analyzing trends, administering the site,
-          tracking users’ movement on the website, and gathering demographic
-          information.
-        </p>
+            <div>
+              <h2 className="font-heading text-xl font-bold text-primary mb-3">Cookies</h2>
+              <p>
+                Maram Heritage uses cookies to store authentication tokens and user preferences.
+                These cookies are essential for the functioning of the website and are not used
+                for tracking or advertising purposes.
+              </p>
+            </div>
 
-        <h3 className="text-2xl font-medium">Cookies and Web Beacons</h3>
-        <p>
-          Like any other website, hotels-with.com uses ‘cookies’. These cookies
-          are used to store information including visitors’ preferences, and the
-          pages on the website that the visitor accessed or visited. The
-          information is used to optimize the users’ experience by customizing
-          our web page content based on visitors’ browser type and/or other
-          information.
-        </p>
-
-        <h3 className="text-2xl font-medium">Our Advertising Partners</h3>
-        <p>
-          Some of advertisers on our site may use cookies and web beacons. Our
-          advertising partners are listed below. Each of our advertising
-          partners has their own Privacy Policy for their policies on user data.
-          For easier access, we hyperlinked to their Privacy Policies below.
-        </p>
-      </div>
-    </section>
+            <div>
+              <h2 className="font-heading text-xl font-bold text-primary mb-3">Contact Us</h2>
+              <p>
+                If you have questions about this Privacy Policy, please contact us at{" "}
+                <a href="mailto:arontech11@gmail.com" className="text-accent hover:underline">
+                  arontech11@gmail.com
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 
