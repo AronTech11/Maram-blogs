@@ -15,6 +15,8 @@ const navLists = [
       { name: "History & People", path: "/about-maram/culture" },
       { name: "Villages", path: "/about-maram/village" },
       { name: "Festivals", path: "/about-maram/festival" },
+      { name: "Folk Songs", path: "/about-maram/folk-songs" },
+      { name: "Stories & Legends", path: "/about-maram/stories" },
       { name: "Education", path: "/about-maram/education" },
       { name: "Maram Union", path: "/about-maram/maram-union" },
       { name: "MKS", path: "/about-maram/mks" },

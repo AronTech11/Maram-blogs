@@ -30,6 +30,8 @@ const Footer = () => {
                 { name: "History & Culture", path: "/about-maram/culture" },
                 { name: "Festivals", path: "/about-maram/festival" },
                 { name: "Villages", path: "/about-maram/village" },
+                { name: "Folk Songs", path: "/about-maram/folk-songs" },
+                { name: "Stories & Legends", path: "/about-maram/stories" },
               ].map((link) => (
                 <li key={link.path}>
                   <Link

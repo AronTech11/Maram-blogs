@@ -190,41 +190,53 @@ const Home = () => {
               Discover the Maram World
             </h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <FeatureCard
               icon="🏔️"
-              title="Villages & Geography"
-              description="Over 30 villages scattered across the hills, with Maram Khullen as the cultural epicenter."
+              title="Villages"
+              description="22 villages across the Senapati hills, with Maram Khullen as the cultural epicenter."
               link="/about-maram/village"
             />
             <FeatureCard
               icon="🎭"
-              title="Festivals & Rituals"
-              description="Punghi (July), Kanghi (December) & Mangkang: vibrant celebrations of life and harvest."
+              title="Festivals"
+              description="Kanghi, Punghi, Mangkang and more: vibrant celebrations of harvest and community."
               link="/about-maram/festival"
             />
             <FeatureCard
               icon="📖"
               title="History & Culture"
-              description="Centuries of traditions, monarchy, folk tales, songs, and the unique Maram way of life."
+              description="Centuries of monarchy, warrior traditions, and a unique way of life."
               link="/about-maram/culture"
             />
             <FeatureCard
+              icon="🎵"
+              title="Folk Songs"
+              description="Harvest songs, war chants, lullabies, and love songs passed down through generations."
+              link="/about-maram/folk-songs"
+            />
+            <FeatureCard
+              icon="🗿"
+              title="Stories & Legends"
+              description="The Rangtaiba stone, the founding of Willong, tales of warriors and sacred monoliths."
+              link="/about-maram/stories"
+            />
+            <FeatureCard
               icon="🗣️"
-              title="Language & Identity"
+              title="Language"
               description="The Maram language, classified as 'vulnerable' by UNESCO, is a treasure worth preserving."
               link="/about-maram/education"
             />
             <FeatureCard
               icon="📰"
-              title="News & Updates"
+              title="News"
               description="Stay updated with the latest happenings in the Maram community and beyond."
               link="/about-maram/news"
             />
             <FeatureCard
               icon="✍️"
-              title="Community Blogs"
-              description="Read and write stories, share knowledge, and connect with the Maram community worldwide."
+              title="Blogs"
+              description="Read and share stories, knowledge, and traditions with the global Maram community."
               link="/blogs"
             />
           </div>

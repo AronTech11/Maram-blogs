@@ -25,6 +25,8 @@ import MaramUnion from "../pages/AboutMaram/MaramUnion";
 import Festival from "../pages/AboutMaram/Festival";
 import Village from "../pages/AboutMaram/Village";
 import Culture from "../pages/AboutMaram/Culture";
+import FolkSongs from "../pages/AboutMaram/FolkSongs";
+import Stories from "../pages/AboutMaram/Stories";
 import CareerGuidance from "../pages/Resources/CareerCounselling";
 import Scholarship from "../pages/Resources/Scolarship";
 import Disclaimer from "../pages/miniPage/Disclaimer";
@@ -78,6 +80,14 @@ const router = createBrowserRouter([
       {
         path: "/about-maram/culture",
         element: <Culture />,
+      },
+      {
+        path: "/about-maram/folk-songs",
+        element: <FolkSongs />,
+      },
+      {
+        path: "/about-maram/stories",
+        element: <Stories />,
       },
       {
         path: "/resources/career-guidance",
