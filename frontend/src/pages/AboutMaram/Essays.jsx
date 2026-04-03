@@ -216,9 +216,9 @@ const Essays = () => {
             Write for the Community
           </h2>
           <p className="text-primary/70 leading-relaxed mb-6">
-            Have thoughts on the Maram community, its future, or its
-            challenges? Your voice matters. Write an essay, share an opinion, or
-            contribute knowledge through the blog platform.
+            Have thoughts on the Maram community, its future, or its challenges?
+            Your voice matters. Write an essay, share an opinion, or contribute
+            knowledge through the blog platform.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link

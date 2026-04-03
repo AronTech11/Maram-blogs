@@ -32,8 +32,7 @@ const Senapati = () => {
             District Headquarter
           </p>
           <h1 className="font-heading text-3xl md:text-5xl font-bold text-white mb-4">
-            Senapati{" "}
-            <span className="text-warm-gold">(Tahamzam)</span>
+            Senapati <span className="text-warm-gold">(Tahamzam)</span>
           </h1>
           <p className="text-white/60 max-w-2xl mx-auto">
             Tahamzam (or Tiihamjang) literally means &ldquo;hill of the
@@ -115,8 +114,8 @@ const Senapati = () => {
             <p className="text-primary/70 leading-relaxed mb-4">
               The District is located in the northern part of Manipur and is
               bounded by the Imphal West and Imphal East Districts to the south,
-              Phek District of Nagaland to the north, Tamenglong District to
-              the west, and Ukhrul District to the east.
+              Phek District of Nagaland to the north, Tamenglong District to the
+              west, and Ukhrul District to the east.
             </p>
             <h3 className="font-heading text-lg font-bold text-primary mb-3">
               Six Subdivisions

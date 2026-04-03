@@ -38,10 +38,10 @@ const BattleOfMaram = () => {
               against external threats.
             </p>
             <p className="text-primary/70 leading-relaxed mb-4">
-              A monument commemorating this historic battle stands in Maram as
-              a tribute to the courage and sacrifice of the warriors. The Battle
-              of Maram Monument is one of the important tourist landmarks in
-              the region.
+              A monument commemorating this historic battle stands in Maram as a
+              tribute to the courage and sacrifice of the warriors. The Battle
+              of Maram Monument is one of the important tourist landmarks in the
+              region.
             </p>
             <p className="text-primary/70 leading-relaxed">
               The full account of the Battle of Maram has been documented in a

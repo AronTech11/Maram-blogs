@@ -222,28 +222,10 @@ const Home = () => {
               link="/about-maram/stories"
             />
             <FeatureCard
-              icon="😂"
-              title="Humour"
-              description="Light-hearted jokes and funny anecdotes from the Maram community."
-              link="/about-maram/humour"
-            />
-            <FeatureCard
-              icon="�"
-              title="Months & Weekdays"
-              description="The traditional Maram lunar calendar and weekday names in the Maram language."
-              link="/about-maram/months-weekdays"
-            />
-            <FeatureCard
-              icon="📚"
-              title="Publications"
-              description="Tinghaa journal, Maram Folk Tales, Maram Voice, and other community publications."
-              link="/about-maram/publications"
-            />
-            <FeatureCard
-              icon="🦋"
-              title="Senapati"
-              description="Tahamzam, the hill of butterflies, now Senapati district headquarter."
-              link="/about-maram/senapati"
+              icon="✍️"
+              title="Essays"
+              description="Thought-provoking essays on society, culture, and the future of Maram."
+              link="/about-maram/essays"
             />
             <FeatureCard
               icon="🏞️"
@@ -252,41 +234,32 @@ const Home = () => {
               link="/about-maram/tourist-spots"
             />
             <FeatureCard
-              icon="🌟"
-              title="Young Achievers"
-              description="Celebrating Maram men and women excelling in their fields across India."
-              link="/about-maram/young-achievers"
-            />
-            <FeatureCard
-              icon="⚔️"
-              title="Battle of Maram"
-              description="A pivotal chapter in Maram history, a testament to warrior courage."
-              link="/about-maram/battle-of-maram"
-            />
-            <FeatureCard
-              icon="✍️"
-              title="Essays"
-              description="Thought-provoking essays on society, culture, and the future of Maram."
-              link="/about-maram/essays"
-            />
-            <FeatureCard
-              icon="📰"
-              title="News"
-              description="Stay updated with the latest happenings in the Maram community."
-              link="/about-maram/news"
-            />
-            <FeatureCard
-              icon="🗣️"
-              title="Education"
-              description="The Maram language, schools, and educational institutions."
-              link="/about-maram/education"
-            />
-            <FeatureCard
               icon="📝"
               title="Blogs"
               description="Read and share stories with the global Maram community."
               link="/blogs"
             />
+          </div>
+          <div className="text-center mt-8">
+            <Link
+              to="/blogs"
+              className="inline-flex items-center gap-2 text-accent font-semibold hover:gap-3 transition-all"
+            >
+              Browse all 16 topics on the Blogs page
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </Link>
           </div>
         </div>
       </section>

@@ -87,10 +87,10 @@ const Humour = () => {
             Got a Funny Story?
           </h2>
           <p className="text-primary/70 leading-relaxed mb-4">
-            As one commenter put it: &ldquo;It is really worth calling humour!&rdquo; If you
-            have a joke, a funny story, or a humorous memory from the village,
-            share it with the community. Stories in both Maram and English are
-            welcome.
+            As one commenter put it: &ldquo;It is really worth calling
+            humour!&rdquo; If you have a joke, a funny story, or a humorous
+            memory from the village, share it with the community. Stories in
+            both Maram and English are welcome.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
