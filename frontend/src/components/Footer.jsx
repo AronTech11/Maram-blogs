@@ -30,15 +30,12 @@ const Footer = () => {
                 { name: "History & Culture", path: "/about-maram/culture" },
                 { name: "Festivals", path: "/about-maram/festival" },
                 { name: "Villages", path: "/about-maram/village" },
-                { name: "Folk Songs", path: "/about-maram/folk-songs" },
-                { name: "Folk Tales", path: "/about-maram/stories" },
-                { name: "Humour", path: "/about-maram/humour" },
-                { name: "Tourist Spots", path: "/about-maram/tourist-spots" },
+                { name: "Tourism (Blogs)", path: "/blogs?category=tourism" },
+                { name: "Essays (Blogs)", path: "/blogs?category=essays" },
                 {
-                  name: "Young Achievers",
-                  path: "/about-maram/young-achievers",
+                  name: "Folk Tales & Songs (Blogs)",
+                  path: "/blogs?category=folk%20tales",
                 },
-                { name: "Essays", path: "/about-maram/essays" },
               ].map((link) => (
                 <li key={link.path}>
                   <Link

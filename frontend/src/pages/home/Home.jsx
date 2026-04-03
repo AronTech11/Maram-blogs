@@ -5,6 +5,29 @@ import { useSelector } from "react-redux";
 import { useFetchBlogsQuery } from "../../redux/features/blogs/blogsApi";
 import Img5 from "../../assets/hero-carousel/wm5.jpg";
 
+const exploreItems = [
+  {
+    title: "Read Blogs",
+    description: "Explore culture, tourism, essays, folk tales, and more",
+    link: "/blogs",
+  },
+  {
+    title: "About Maram",
+    description: "Learn about education, villages, festivals and people",
+    link: "/about-maram/culture",
+  },
+  {
+    title: "Resources",
+    description: "Scholarships and career counselling",
+    link: "/resources/scholarship",
+  },
+  {
+    title: "Contact",
+    description: "Get in touch with the team",
+    link: "/contact",
+  },
+];
+
 const FeatureCard = ({ icon, title, description, link }) => (
   <Link
     to={link}
@@ -45,60 +68,9 @@ const Home = () => {
               <p className="font-heading text-2xl md:text-3xl font-bold text-warm-gold">
                 {stat.number}
               </p>
-              <p className="text-white/60 text-sm mt-1">{stat.label}</p>
+              <p className="text-white/70 text-sm mt-1">{stat.label}</p>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* ====== WHY THIS WEBSITE ====== */}
-      <section className="py-16 md:py-20 bg-warm-cream">
-        <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="text-accent font-medium text-sm tracking-[0.15em] uppercase mb-3">
-              Our Mission
-            </p>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary mb-6">
-              Why <span className="text-accent">Maram Heritage?</span>
-            </h2>
-            <p className="text-primary/70 leading-relaxed mb-4 text-base md:text-lg">
-              In a world that is rapidly modernizing, the stories, languages,
-              and traditions of indigenous communities like the Maram Naga are
-              at risk of being lost forever. Our elders carry a wealth of
-              knowledge, from folk tales to farming wisdom, from ceremonial
-              songs to the art of weaving, that no textbook can capture.
-            </p>
-            <p className="text-primary/70 leading-relaxed mb-4 text-base md:text-lg">
-              <strong className="text-primary">Maram Heritage</strong> was born
-              from a simple belief:{" "}
-              <em>
-                if we don&apos;t document our past, our future generations
-                won&apos;t know where they came from.
-              </em>{" "}
-              This website is a digital home for our community, a place where
-              anyone, from a student in Imphal to a Maram diaspora member
-              abroad, can learn about, contribute to, and celebrate the rich
-              tapestry of Maram culture.
-            </p>
-            <div className="flex flex-wrap justify-center gap-6 mt-8">
-              {[
-                { icon: "📝", text: "Document Our Stories" },
-                { icon: "🌍", text: "Connect the Diaspora" },
-                { icon: "📚", text: "Educate Future Generations" },
-                { icon: "🤝", text: "Unite the Community" },
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-2 bg-white px-4 py-2.5 rounded-full shadow-sm"
-                >
-                  <span className="text-lg">{item.icon}</span>
-                  <span className="text-sm font-medium text-primary/80">
-                    {item.text}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
@@ -210,34 +182,28 @@ const Home = () => {
               link="/about-maram/culture"
             />
             <FeatureCard
-              icon="🎵"
-              title="Folk Songs"
-              description="Harvest songs, war chants, lullabies, and love songs passed down through generations."
-              link="/about-maram/folk-songs"
-            />
-            <FeatureCard
-              icon="🗿"
-              title="Folk Tales"
-              description="The Rangtaiba stone, Kafiipungna, creation myths, and tales of warriors."
-              link="/about-maram/stories"
-            />
-            <FeatureCard
-              icon="✍️"
-              title="Essays"
-              description="Thought-provoking essays on society, culture, and the future of Maram."
-              link="/about-maram/essays"
-            />
-            <FeatureCard
-              icon="🏞️"
-              title="Tourist Spots"
-              description="Sadim Pukhri, Willong Stonehenge, and more landmarks of the Maram hills."
-              link="/about-maram/tourist-spots"
-            />
-            <FeatureCard
               icon="📝"
               title="Blogs"
               description="Read and share stories with the global Maram community."
               link="/blogs"
+            />
+            <FeatureCard
+              icon="🏞️"
+              title="Tourism"
+              description="Explore tourist spots and travel stories (now in Blogs)."
+              link="/blogs?category=tourism"
+            />
+            <FeatureCard
+              icon="📚"
+              title="Essays"
+              description="Community essays and reflections (now in Blogs)."
+              link="/blogs?category=essays"
+            />
+            <FeatureCard
+              icon="🗿"
+              title="Folk Tales & Songs"
+              description="Oral traditions, folk tales, and folk songs (now in Blogs)."
+              link="/blogs?category=folk%20tales"
             />
           </div>
           <div className="text-center mt-8">
@@ -245,7 +211,7 @@ const Home = () => {
               to="/blogs"
               className="inline-flex items-center gap-2 text-accent font-semibold hover:gap-3 transition-all"
             >
-              Browse all 16 topics on the Blogs page
+              Browse all blog categories
               <svg
                 className="w-4 h-4"
                 fill="none"
