@@ -20,9 +20,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // CORS — allow frontend origins
 const allowedOrigins = [
-  process.env.FRONTEND_URL, // Production frontend
-  "https://maram-heritage.netlify.app",
-  "https://maram-blogs-feeee.vercel.app",
+  process.env.FRONTEND_URL, // Production frontend (set in Render env vars)
   "http://localhost:5173",
   "http://localhost:3000",
 ].filter(Boolean);
