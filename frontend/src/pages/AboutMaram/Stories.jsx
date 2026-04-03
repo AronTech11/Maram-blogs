@@ -3,9 +3,26 @@ import { Link } from "react-router-dom";
 
 const stories = [
   {
+    title: "Folk Tales of Maram: A Critical View",
+    type: "Creation Myth",
+    village: "All Maram villages",
+    author: "Kanga Monica",
+    story:
+      "Most primitive cultures, religions and their oral stories share many things in common. Each presupposes the existence of a creator god responsible for creation. This is exactly what we have in the Maram folk tale that describes the creation of Grandfather Madungkashii and Grandmother Samutingdangpui. Madungkashii was made out of N'set (worm), symbolic of the male principle, and Samutingdangpui was made out of Atingpui (water creature), symbolic of fertility and regeneration. God placed the worm in his right palm, spat on it, blew his breath on it and commanded it to turn into a man. Then God came across a lake, found the Atingpui, and in the same way created the first woman. From their union came two sons: Rapii (human) and Dipii (beast). Earlier, man and beast lived together.",
+  },
+  {
+    title: "Kafiipungna",
+    type: "Folk Tale",
+    village: "Oral tradition",
+    author: "Peter Ki",
+    story:
+      "Once upon a time there lived a man named Kafiipungna. Still unmarried, tell-tale signs of years passing him by were becoming obvious. He lived in a village perched magnificently on a hilltop surrounded by greenery. Life was slow and predictable, but Kafiipungna could not have been more different, for he was blessed with godly power, a secret he kept to himself. He owned a big house, the front left room of which served as the Rahangki (common dormitory) for young unmarried men. Traditionally the Rahangki was a very lively place where all unmarried young men slept. For girls, the dormitory was called Raliiki. The Morung (common dormitory) is a distinguishing feature of the Naga ethnic group.",
+  },
+  {
     title: "The Rangtaiba Stone of Maram Khullen",
     type: "Legend",
     village: "Maram Khullen",
+    author: "Oral tradition",
     story:
       "In the heart of Maram Khullen stands the legendary Rangtaiba stone, one of the most sacred and mysterious landmarks of the Maram Nagas. According to oral tradition, the Rangtaiba stone was erected during a great Feast of Merit by a chief of extraordinary wealth and courage. The stone is said to carry a curse: anyone who disrespects it or attempts to move it will face misfortune. Elders recount that the stone was dragged from a distant quarry by hundreds of men over several days, with the chief providing endless feasts of rice, meat, and rice beer to fuel the effort. The erection of the stone required precise coordination. Deep holes were dug, wooden levers were used, and the entire village participated in raising the massive monolith upright. The chief fasted for days before the event as a spiritual purification, and priests performed rituals to bless the stone. To this day, the Rangtaiba stone stands as a monument to community strength and the Maram tradition of honoring achievement through permanent, visible symbols.",
   },
@@ -13,6 +30,7 @@ const stories = [
     title: "How the Monoliths Were Planted",
     type: "Tradition",
     village: "Willong Khullen",
+    author: "Oral tradition",
     story:
       "The hundreds of standing stones at Willong Khullen, often called the 'Stonehenge of the Northeast,' were not simply placed there. Each monolith was erected through an extraordinary process that combined physical labor, spiritual preparation, and communal celebration. The process began with the host of a Feast of Merit selecting a suitable stone from a quarry, sometimes several kilometers away. The stone was shaped roughly at the quarry site, then transported using wooden rollers and the raw strength of dozens, sometimes hundreds, of men. The host was required to fast for several days before the stone-planting ceremony, abstaining from food and sometimes water, as a demonstration of spiritual purity and devotion. On the day of erection, a deep pit was dug at the chosen site. The stone was maneuvered to the edge using wooden levers and ropes made from cane. At a signal, the community heaved together to tilt the stone into the pit, packing earth and smaller stones around the base to secure it. Priests chanted prayers throughout, and animals were sacrificed to consecrate the monolith. Once upright, the stone became a permanent testament to the host's generosity. The bigger the stone, the greater the honor. Some of the largest monoliths at Willong Khullen stand over 3 meters tall and have remained standing for centuries.",
   },
@@ -20,6 +38,7 @@ const stories = [
     title: "The First Maram Ancestors",
     type: "Origin Story",
     village: "All Maram villages",
+    author: "Oral tradition",
     story:
       "According to the oldest Maram folklore, the first parents of the Maram people were Madungkasyii and S'mutingdangpui. The creator fashioned Madungkasyii from N'set (a worm), symbolic of the male principle, strength, and perseverance. S'mutingdangpui was created from Atingpui (a water creature), representing fertility, nurturing, and the life-giving force of water. From this union, the Maram people were born. The story teaches that man and woman are complementary forces, both essential, both sacred. The worm represents the earth and hard work, while the water creature represents adaptability and life. Together, they embody the Maram belief that strength and gentleness must coexist for a community to thrive. This origin story is told to children by their grandparents and is considered one of the most important narratives of Maram identity.",
   },
@@ -27,6 +46,7 @@ const stories = [
     title: "The Queen Apei Hinga",
     type: "Historical Legend",
     village: "Maram Khullen",
+    author: "Oral tradition",
     story:
       "Queen Apei Hinga was the last reigning queen of the Maram Nagas, sitting on the traditional throne until her passing on 27 August 2010. She was not just a figurehead but a transformative leader who brought about significant social changes in Maram society. Elders recall that Apei Hinga mediated disputes between clans, advocated for education (especially for girls), and served as the moral compass of the community during a period of rapid change. Her word was law in matters of tradition, and she was deeply respected by all 22 Maram villages. When she passed away, the entire Maram community mourned. In 2011, K. Namba was crowned as the new Sagong (King), continuing the age-old tradition of Maram monarchy. The story of Apei Hinga is told with reverence, a reminder that leadership in Maram culture is about service, wisdom, and the courage to guide a community through change.",
   },
@@ -34,6 +54,7 @@ const stories = [
     title: "The Warrior and the Tiger",
     type: "Folk Tale",
     village: "Oral tradition",
+    author: "Oral tradition",
     story:
       "Long ago, a young Maram warrior from Willong Khullen ventured deep into the forest to prove his courage. He carried only his spear and dao. On the third day, he encountered a massive tiger blocking the mountain path. Rather than flee, the warrior stood his ground and sang a war chant, his voice echoing through the valley. The tiger, startled by the fearless display, circled the warrior three times. The warrior did not flinch. According to the tale, the tiger bowed its head and retreated into the forest, recognizing a spirit stronger than its own. The warrior returned to the village with a tiger's claw mark on his shield, not from combat, but from the tiger brushing past him as it left. From that day, the warrior was honored with special ceremonial clothes and the right to sit with the elders. The story teaches that true courage is not about fighting but about standing firm in the face of fear.",
   },
@@ -41,6 +62,7 @@ const stories = [
     title: "Why the Marams Did Not Eat Pork",
     type: "Cultural Story",
     village: "All Maram villages",
+    author: "Oral tradition",
     story:
       "One of the most fascinating cultural distinctions of the Maram Nagas is that, unlike most other Naga tribes, they traditionally did not consume pork. The origin of this taboo is the subject of several stories. One popular account says that in ancient times, a wild boar saved a Maram ancestor by leading him out of a dense forest when he was lost for days. In gratitude, the ancestor declared that the Maram people would never eat the flesh of the animal that saved them. Another version links the taboo to spiritual beliefs, where the pig was considered a creature of the underworld, and consuming it could invite the displeasure of ancestral spirits. This dietary practice was strictly followed for generations. With the arrival of Christianity in the region, the taboo gradually relaxed, and today pork is commonly consumed by the Maram people. However, the story of the original prohibition remains an important part of Maram identity, a reminder of the deep connection between the people and the natural world.",
   },
@@ -48,6 +70,7 @@ const stories = [
     title: "The Dormitory and the Moonlit Night",
     type: "Folk Tale",
     village: "Oral tradition",
+    author: "Oral tradition",
     story:
       "In the old days, when young men lived in the Rehangki (boys' dormitory) and young women in the Rulaki (girls' dormitory), the two groups would sometimes sing to each other across the village on moonlit nights. One famous tale tells of a young man who composed a beautiful song for a girl in the Rulaki. He sang it from the Rehangki roof, and the entire village fell silent to listen. The song spoke of the mist on the mountains, the glow of fireflies in the bamboo groves, and a love as enduring as the standing stones. The girl, moved by the song, responded with her own melody. From that night, the two songs became a duet that was sung at every Kanghi festival. The couple eventually married, and elders say their love was blessed by the ancestors because it was born from song. The dormitory system was the heart of Maram youth culture, where skills, values, and traditions were passed between generations.",
   },
@@ -55,12 +78,14 @@ const stories = [
     title: "The Founding of Willong Khullen",
     type: "Foundation Story",
     village: "Willong Khullen",
+    author: "Oral tradition",
     story:
       "According to the elders of Willong Khullen, the village was founded by a brave group of families who migrated from a larger settlement seeking new land for cultivation. They climbed the hills until they found a plateau with fertile soil, fresh water, and a commanding view of the surrounding valleys. The head of the founding group drove his spear into the ground and declared: 'Here we build. Here we stay.' The first act of the new village was to erect a stone monolith to mark the founding, a tradition that would grow into the famous forest of standing stones that Willong Khullen is known for today. The founding families established the first clans, built the first dormitories, and laid down the customary laws that would govern the village for centuries.",
   },
 ];
 
 const typeColors = {
+  "Creation Myth": "bg-amber-50 text-amber-700",
   Legend: "bg-warm-gold/20 text-yellow-700",
   Tradition: "bg-earth-green/10 text-earth-green",
   "Origin Story": "bg-tribal-red/10 text-tribal-red",
@@ -132,6 +157,11 @@ const Stories = () => {
                     <span className="text-xs text-primary/40">
                       📍 {s.village}
                     </span>
+                    {s.author && s.author !== "Oral tradition" && (
+                      <span className="text-xs text-primary/40">
+                        ✍️ {s.author}
+                      </span>
+                    )}
                   </div>
                   <h3 className="font-heading text-xl md:text-2xl font-bold text-primary mb-4">
                     {s.title}

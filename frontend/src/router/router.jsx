@@ -27,6 +27,14 @@ import Village from "../pages/AboutMaram/Village";
 import Culture from "../pages/AboutMaram/Culture";
 import FolkSongs from "../pages/AboutMaram/FolkSongs";
 import Stories from "../pages/AboutMaram/Stories";
+import Humour from "../pages/AboutMaram/Humour";
+import MonthsWeekdays from "../pages/AboutMaram/MonthsWeekdays";
+import Publications from "../pages/AboutMaram/Publications";
+import SenapatiPage from "../pages/AboutMaram/Senapati";
+import TouristSpots from "../pages/AboutMaram/TouristSpots";
+import YoungAchievers from "../pages/AboutMaram/YoungAchievers";
+import BattleOfMaram from "../pages/AboutMaram/BattleOfMaram";
+import Essays from "../pages/AboutMaram/Essays";
 import CareerGuidance from "../pages/Resources/CareerCounselling";
 import Scholarship from "../pages/Resources/Scolarship";
 import Disclaimer from "../pages/miniPage/Disclaimer";
@@ -88,6 +96,38 @@ const router = createBrowserRouter([
       {
         path: "/about-maram/stories",
         element: <Stories />,
+      },
+      {
+        path: "/about-maram/humour",
+        element: <Humour />,
+      },
+      {
+        path: "/about-maram/months-weekdays",
+        element: <MonthsWeekdays />,
+      },
+      {
+        path: "/about-maram/publications",
+        element: <Publications />,
+      },
+      {
+        path: "/about-maram/senapati",
+        element: <SenapatiPage />,
+      },
+      {
+        path: "/about-maram/tourist-spots",
+        element: <TouristSpots />,
+      },
+      {
+        path: "/about-maram/young-achievers",
+        element: <YoungAchievers />,
+      },
+      {
+        path: "/about-maram/battle-of-maram",
+        element: <BattleOfMaram />,
+      },
+      {
+        path: "/about-maram/essays",
+        element: <Essays />,
       },
       {
         path: "/resources/career-guidance",

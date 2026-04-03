@@ -36,6 +36,46 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://maram-heritage.onrender.com/about-maram/humour</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://maram-heritage.onrender.com/about-maram/months-weekdays</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://maram-heritage.onrender.com/about-maram/publications</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://maram-heritage.onrender.com/about-maram/senapati</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://maram-heritage.onrender.com/about-maram/tourist-spots</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maram-heritage.onrender.com/about-maram/young-achievers</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://maram-heritage.onrender.com/about-maram/battle-of-maram</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://maram-heritage.onrender.com/about-maram/essays</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://maram-heritage.onrender.com/about-maram/education</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

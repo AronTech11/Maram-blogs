@@ -217,26 +217,74 @@ const Home = () => {
             />
             <FeatureCard
               icon="🗿"
-              title="Stories & Legends"
-              description="The Rangtaiba stone, the founding of Willong, tales of warriors and sacred monoliths."
+              title="Folk Tales"
+              description="The Rangtaiba stone, Kafiipungna, creation myths, and tales of warriors."
               link="/about-maram/stories"
             />
             <FeatureCard
-              icon="🗣️"
-              title="Language"
-              description="The Maram language, classified as 'vulnerable' by UNESCO, is a treasure worth preserving."
-              link="/about-maram/education"
+              icon="😂"
+              title="Humour"
+              description="Light-hearted jokes and funny anecdotes from the Maram community."
+              link="/about-maram/humour"
+            />
+            <FeatureCard
+              icon="�"
+              title="Months & Weekdays"
+              description="The traditional Maram lunar calendar and weekday names in the Maram language."
+              link="/about-maram/months-weekdays"
+            />
+            <FeatureCard
+              icon="📚"
+              title="Publications"
+              description="Tinghaa journal, Maram Folk Tales, Maram Voice, and other community publications."
+              link="/about-maram/publications"
+            />
+            <FeatureCard
+              icon="🦋"
+              title="Senapati"
+              description="Tahamzam, the hill of butterflies, now Senapati district headquarter."
+              link="/about-maram/senapati"
+            />
+            <FeatureCard
+              icon="🏞️"
+              title="Tourist Spots"
+              description="Sadim Pukhri, Willong Stonehenge, and more landmarks of the Maram hills."
+              link="/about-maram/tourist-spots"
+            />
+            <FeatureCard
+              icon="🌟"
+              title="Young Achievers"
+              description="Celebrating Maram men and women excelling in their fields across India."
+              link="/about-maram/young-achievers"
+            />
+            <FeatureCard
+              icon="⚔️"
+              title="Battle of Maram"
+              description="A pivotal chapter in Maram history, a testament to warrior courage."
+              link="/about-maram/battle-of-maram"
+            />
+            <FeatureCard
+              icon="✍️"
+              title="Essays"
+              description="Thought-provoking essays on society, culture, and the future of Maram."
+              link="/about-maram/essays"
             />
             <FeatureCard
               icon="📰"
               title="News"
-              description="Stay updated with the latest happenings in the Maram community and beyond."
+              description="Stay updated with the latest happenings in the Maram community."
               link="/about-maram/news"
             />
             <FeatureCard
-              icon="✍️"
+              icon="🗣️"
+              title="Education"
+              description="The Maram language, schools, and educational institutions."
+              link="/about-maram/education"
+            />
+            <FeatureCard
+              icon="📝"
               title="Blogs"
-              description="Read and share stories, knowledge, and traditions with the global Maram community."
+              description="Read and share stories with the global Maram community."
               link="/blogs"
             />
           </div>

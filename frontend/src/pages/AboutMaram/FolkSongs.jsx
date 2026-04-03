@@ -80,8 +80,7 @@ const FolkSongs = () => {
             Oral Heritage
           </p>
           <h1 className="font-heading text-3xl md:text-5xl font-bold text-white mb-4">
-            Folk Songs of the{" "}
-            <span className="text-warm-gold">Maram Naga</span>
+            Folk Songs of the <span className="text-warm-gold">Maram Naga</span>
           </h1>
           <p className="text-white/60 max-w-2xl mx-auto">
             The songs of the Maram people carry centuries of wisdom, emotion,

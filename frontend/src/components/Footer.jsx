@@ -31,7 +31,11 @@ const Footer = () => {
                 { name: "Festivals", path: "/about-maram/festival" },
                 { name: "Villages", path: "/about-maram/village" },
                 { name: "Folk Songs", path: "/about-maram/folk-songs" },
-                { name: "Stories & Legends", path: "/about-maram/stories" },
+                { name: "Folk Tales", path: "/about-maram/stories" },
+                { name: "Humour", path: "/about-maram/humour" },
+                { name: "Tourist Spots", path: "/about-maram/tourist-spots" },
+                { name: "Young Achievers", path: "/about-maram/young-achievers" },
+                { name: "Essays", path: "/about-maram/essays" },
               ].map((link) => (
                 <li key={link.path}>
                   <Link
