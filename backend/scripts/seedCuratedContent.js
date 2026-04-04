@@ -14,7 +14,7 @@ Usage (from repo root):
     --dryRun false
 
 Idempotency:
-- This script uses a marker string in the description: "[seed:curated]" and the title to detect duplicates.
+- This script uses the post title to detect duplicates.
 - Run multiple times safely.
 */
 
@@ -157,7 +157,7 @@ function buildEssayPosts(essays) {
 
     return {
       title: e.title,
-      description: `[seed:curated] Essay by ${e.author || "Unknown"}`,
+      description: `Essay by ${e.author || "Unknown"}`,
       category: "essays",
       coverImg: coverFor("essays"),
       content: editorJsDoc(blocks),
@@ -176,7 +176,7 @@ function buildTourismPosts(spots) {
 
     return {
       title: s.name,
-      description: `[seed:curated] Tourist spot in ${s.location || "Maram"}`,
+      description: `Tourist spot in ${s.location || "Maram"}`,
       category: "tourism",
       coverImg: coverFor("tourism"),
       content: editorJsDoc(blocks),
@@ -195,7 +195,7 @@ function buildHumourPosts(jokes) {
 
     return {
       title,
-      description: `[seed:curated] Humour`,
+      description: `Humour`,
       category: "humour",
       coverImg: coverFor("humour"),
       content: editorJsDoc(blocks),
@@ -217,7 +217,7 @@ function buildFolkTalePosts(stories) {
 
     return {
       title: s.title,
-      description: `[seed:curated] Folk tale`,
+      description: `Folk tale`,
       category: "folk tales",
       coverImg: coverFor("folk tales"),
       content: editorJsDoc(blocks),
@@ -238,7 +238,7 @@ function buildFolkSongPosts(songs) {
 
     return {
       title: s.title,
-      description: `[seed:curated] Folk song`,
+      description: `Folk song`,
       category: "folk songs",
       coverImg: coverFor("folk songs"),
       content: editorJsDoc(blocks),
