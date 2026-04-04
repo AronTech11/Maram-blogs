@@ -24,7 +24,7 @@ const team = [
   },
   {
     name: "Thanmi Maram",
-    role: "Community & Spiritual Care",
+    role: "Co-Founder & Community Engagement",
     img: ThanmiImg,
     bio: "Graduate Student and Chaplain at Baylor University. Dedicated to spiritual care, diversity, and community engagement through education and mentorship.",
     location: "Baylor University, TX, US",
