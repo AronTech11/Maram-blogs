@@ -27,12 +27,12 @@ const p = (text) => ({ type: "paragraph", data: { text } });
 const ul = (items) => ({ type: "list", data: { style: "unordered", items } });
 const ol = (items) => ({ type: "list", data: { style: "ordered", items } });
 const COVER = "https://maram-heritage.onrender.com/maram.png";
-const SEED_TAG = "[seed:maram-culture-v1]";
+
 
 const POSTS = [
   {
     title: "Maram Naga: Name, Identity and Origins",
-    description: `${SEED_TAG} Who are the Maram Naga? Their name, geographic spread, ethnic identity, and ancestral cosmology.`,
+    description: `Who are the Maram Naga? Their name, geographic spread, ethnic identity, and ancestral cosmology.`,
     category: "culture",
     coverImg: COVER,
     content: editorJsDoc([
@@ -44,7 +44,7 @@ const POSTS = [
         "The Maram tribe is mainly scattered across three administrative regions of Manipur:",
       ),
       ul([
-        "<b>Senapati District</b> — the primary homeland",
+        "<b>Senapati District</b> the primary homeland",
         "<b>Tadubi Sub-division</b>",
         "<b>Kangpokpi region</b>",
       ]),
@@ -56,14 +56,14 @@ const POSTS = [
         "In broader ethnological terms, the Maram Naga are classified within the <b>Tibeto-Burman language family</b> and are considered part of the <b>Mongoloid racial group</b>. They belong to the wider ethnic world of the <b>Naga peoples</b> of Northeast India.",
       ),
       p(
-        "Earlier anthropological observations also noted remarkable strains of <b>Caucasoid features</b> among the Maram people — a reflection of the diverse migratory and ethnic history of the region, though such racial terminology is largely outdated in contemporary scholarship.",
+        "Earlier anthropological observations also noted remarkable strains of <b>Caucasoid features</b> among the Maram people a reflection of the diverse migratory and ethnic history of the region, though such racial terminology is largely outdated in contemporary scholarship.",
       ),
       h2("Cosmological Origin: Makikangba"),
       p(
-        "At the heart of Maram identity is their traditional cosmology. According to oral tradition, among the three sons of <b>Karambungsa</b>, it is the eldest brother — <b>Makikangba</b> — who is revered as the <b>ancestor of the Maram tribes</b>.",
+        "At the heart of Maram identity is their traditional cosmology. According to oral tradition, among the three sons of <b>Karambungsa</b>, it is the eldest brother <b>Makikangba</b> who is revered as the <b>ancestor of the Maram tribes</b>.",
       ),
       p(
-        "This ancestral narrative is not merely historical. It is <i>cosmological</i> — meaning it connects the present community to a sacred origin, giving their identity spiritual depth. Such origin stories serve to:",
+        "This ancestral narrative is not merely historical. It is <i>cosmological</i> meaning it connects the present community to a sacred origin, giving their identity spiritual depth. Such origin stories serve to:",
       ),
       ul([
         "Explain the tribe's unique place in the world",
@@ -73,14 +73,14 @@ const POSTS = [
       ]),
       h2("Name and Synonyms"),
       p(
-        "The tribe is known by the name <b>Maram</b> or <b>Maram Naga</b>. In historical and colonial-era ethnographic literature they also appear as <i>Marams</i>, often mentioned alongside the <b>Mao Naga</b> — a neighboring group with whom they share a complex history of kinship, conflict, and intermarriage.",
+        "The tribe is known by the name <b>Maram</b> or <b>Maram Naga</b>. In historical and colonial-era ethnographic literature they also appear as <i>Marams</i>, often mentioned alongside the <b>Mao Naga</b> a neighboring group with whom they share a complex history of kinship, conflict, and intermarriage.",
       ),
     ]),
   },
 
   {
     title: "Maram Naga History: Colonial Ethnography and Ancestral Links",
-    description: `${SEED_TAG} Historical references by G. Grierson and Elwin on the origins and relationships of the Maram Naga with the Mao and Angami tribes.`,
+    description: `Historical references by G. Grierson and Elwin on the origins and relationships of the Maram Naga with the Mao and Angami tribes.`,
     category: "culture",
     coverImg: COVER,
     content: editorJsDoc([
@@ -94,9 +94,9 @@ const POSTS = [
       p("Several important points emerge from this account:"),
       ol([
         "<b>Settlement Pattern:</b> At the time of Grierson's writing, the Marams may have been concentrated largely in one major settlement, rather than dispersed across 30+ villages as today.",
-        "<b>Shared Origin with the Mao:</b> Both the Marams and the Maos claimed common origin — suggesting a shared ancestral or migratory stream.",
+        "<b>Shared Origin with the Mao:</b> Both the Marams and the Maos claimed common origin suggesting a shared ancestral or migratory stream.",
         "<b>Perpetual Feud:</b> Despite shared ancestry, the two tribes were described as being frequently in conflict.",
-        "<b>Intermarriage Despite Feud:</b> Crucially, conflict and kinship coexisted — intermarriage continued even amid hostility, indicating a complex relationship of rivalry and alliance.",
+        "<b>Intermarriage Despite Feud:</b> Crucially, conflict and kinship coexisted intermarriage continued even amid hostility, indicating a complex relationship of rivalry and alliance.",
       ]),
       h2("Elwin's Reference to Angami Origins"),
       p(
@@ -117,7 +117,7 @@ const POSTS = [
       ]),
       h2("Caution on Colonial Ethnography"),
       p(
-        "It is important to recognize that these early accounts were written by outsiders under colonial conditions. Community members themselves may hold different accounts of their history. The Maram origin story — rooted in the cosmological lineage of <b>Makikangba</b>, son of Karambungsa — is the <i>internal</i> tradition that the community itself holds authoritative.",
+        "It is important to recognize that these early accounts were written by outsiders under colonial conditions. Community members themselves may hold different accounts of their history. The Maram origin story rooted in the cosmological lineage of <b>Makikangba</b>, son of Karambungsa is the <i>internal</i> tradition that the community itself holds authoritative.",
       ),
       p(
         "A full understanding of Maram history requires holding both external ethnographic records and internal oral traditions with equal respect.",
@@ -127,12 +127,12 @@ const POSTS = [
 
   {
     title: "Maram Naga Demography: Villages, Population and Language",
-    description: `${SEED_TAG} Population data, village distribution across 30+ settlements, and the endangered status of the Maram language.`,
+    description: `Population data, village distribution across 30+ settlements, and the endangered status of the Maram language.`,
     category: "village",
     coverImg: COVER,
     content: editorJsDoc([
       p(
-        "Understanding the Maram Naga as a people requires a look at their demographic reality — how many they are, where they live, and the status of the language that carries their culture forward.",
+        "Understanding the Maram Naga as a people requires a look at their demographic reality how many they are, where they live, and the status of the language that carries their culture forward.",
       ),
       h2("Village Distribution"),
       p(
@@ -151,10 +151,10 @@ const POSTS = [
       ),
       h2("Language: Endangered and Vital"),
       p(
-        "The <b>Maram language</b> is classified on the <b>UNESCO database of endangered languages</b>, with approximately <b>37,000 speakers</b> — closely matching the overall census population.",
+        "The <b>Maram language</b> is classified on the <b>UNESCO database of endangered languages</b>, with approximately <b>37,000 speakers</b> closely matching the overall census population.",
       ),
       p(
-        "The near-equal numbers of ethnic population and language speakers suggests that, for now, language use remains strongly tied to ethnic identity. However, endangered status means the language is at risk — especially as modernization, education in non-indigenous languages, and religious change continue to influence younger generations.",
+        "The near-equal numbers of ethnic population and language speakers suggests that, for now, language use remains strongly tied to ethnic identity. However, endangered status means the language is at risk especially as modernization, education in non-indigenous languages, and religious change continue to influence younger generations.",
       ),
       h2("Script"),
       p(
@@ -162,10 +162,10 @@ const POSTS = [
       ),
       p("This has several implications:"),
       ul([
-        "<b>The language is written</b> — it is not purely oral, which is positive for documentation.",
-        "<b>Roman script enables digitization</b> — content can be typed, archived, and shared online.",
+        "<b>The language is written</b> it is not purely oral, which is positive for documentation.",
+        "<b>Roman script enables digitization</b> content can be typed, archived, and shared online.",
         "<b>No indigenous script</b> means a unique visual-cultural dimension is missing, and developing one could be an important cultural project for future generations.",
-        "<b>Education materials</b> can be produced in the language using the Roman script — a key tool for passing the language to children.",
+        "<b>Education materials</b> can be produced in the language using the Roman script a key tool for passing the language to children.",
       ]),
       h2("Why Demographics Matter for Heritage"),
       p(
@@ -177,7 +177,7 @@ const POSTS = [
         "Every song, story, and tradition documented today is an investment in the future",
       ]),
       p(
-        "This is precisely why platforms like Maram Heritage exist — to document, archive, and celebrate what is living, before it becomes only memory.",
+        "This is precisely why platforms like Maram Heritage exist to document, archive, and celebrate what is living, before it becomes only memory.",
       ),
     ]),
   },
@@ -185,7 +185,7 @@ const POSTS = [
   {
     title:
       "Maram Naga Social Organization: Clans, Lineages and the Three Groups",
-    description: `${SEED_TAG} The three exogamous clan groups of Maram society — Ng'kukui, DikaKuina, Rangbung Raiyinamai — and their internal lineage structure.`,
+    description: `The three exogamous clan groups of Maram society Ng'kukui, DikaKuina, Rangbung Raiyinamai and their internal lineage structure.`,
     category: "culture",
     coverImg: COVER,
     content: editorJsDoc([
@@ -197,13 +197,13 @@ const POSTS = [
         "Maram society is organized into <b>three exogamous social groups</b>, each subdivided into lineages and sub-lineages. The three groups, according to the <b>Maram Khullen dialect</b>, are:",
       ),
       ol([
-        "<b>Ng'kukui</b> — also known as <i>makha</i>, meaning the <b>lower section</b>",
-        "<b>DikaKuina</b> — also known as the <i>Khullakpa</i> or <b>chief's group</b>",
-        "<b>Rangbung Raiyinamai</b> — also known as <i>mathak</i>, meaning the <b>upper section</b>",
+        "<b>Ng'kukui</b> also known as <i>makha</i>, meaning the <b>lower section</b>",
+        "<b>DikaKuina</b> also known as the <i>Khullakpa</i> or <b>chief's group</b>",
+        "<b>Rangbung Raiyinamai</b> also known as <i>mathak</i>, meaning the <b>upper section</b>",
       ]),
       h2("What Exogamy Means"),
       p(
-        "<b>Exogamous</b> means that marriage must take place <i>outside</i> one's own group. A person from Ng'kukui must marry into DikaKuina or Rangbung Raiyinamai — not within their own group.",
+        "<b>Exogamous</b> means that marriage must take place <i>outside</i> one's own group. A person from Ng'kukui must marry into DikaKuina or Rangbung Raiyinamai not within their own group.",
       ),
       p("This system serves several social functions:"),
       ul([
@@ -217,24 +217,24 @@ const POSTS = [
         "Within each of the three groups, society is further divided into <b>lineages</b> and <b>sub-lineages</b>. This layered structure means that Maram social identity operates at multiple levels simultaneously:",
       ),
       ul([
-        "<b>Tribe</b> — Maram Naga",
-        "<b>Clan/Group</b> — one of the three groups above",
-        "<b>Lineage</b> — a named descent group within the clan",
-        "<b>Sub-lineage</b> — a smaller branch of the lineage",
-        "<b>Household</b> — the immediate family unit",
+        "<b>Tribe</b> Maram Naga",
+        "<b>Clan/Group</b> one of the three groups above",
+        "<b>Lineage</b> a named descent group within the clan",
+        "<b>Sub-lineage</b> a smaller branch of the lineage",
+        "<b>Household</b> the immediate family unit",
       ]),
       p(
         "Each of these levels carries meaning for daily life: who you can marry, who your ritual allies are, which king you are subject to, and what land or property you can claim.",
       ),
       h2("Patrilineal Descent"),
       p(
-        "Maram society is <b>patrilineal</b> — descent is traced through the <b>father's line</b>. This means:",
+        "Maram society is <b>patrilineal</b> descent is traced through the <b>father's line</b>. This means:",
       ),
       ul([
         "A child belongs to their father's clan, lineage, and sub-lineage",
         "Property is inherited by <b>sons</b>",
         "Family name and social standing follow the male line",
-        "Land — the most important form of property — passes from father to son",
+        "Land the most important form of property passes from father to son",
       ]),
       h2("Why This Structure Matters Today"),
       p(
@@ -246,20 +246,20 @@ const POSTS = [
   {
     title:
       "The Sagong: Traditional Governance and Kingship Among the Maram Naga",
-    description: `${SEED_TAG} The Sagong (king) system, the Lamkhana authority, King's House and its role in Maram political and ritual life.`,
+    description: `The Sagong (king) system, the Lamkhana authority, King's House and its role in Maram political and ritual life.`,
     category: "culture",
     coverImg: COVER,
     content: editorJsDoc([
       p(
-        "Among the Maram Naga, traditional political authority was not centralized in a distant ruler but embedded within the village itself — in the institution of the <b>Sagong</b>, a term meaning <i>King</i>. This kingship system was both politically functional and ritually significant.",
+        "Among the Maram Naga, traditional political authority was not centralized in a distant ruler but embedded within the village itself in the institution of the <b>Sagong</b>, a term meaning <i>King</i>. This kingship system was both politically functional and ritually significant.",
       ),
       h2("The Sagong: Village King"),
       p(
-        "Every lineage in a traditional Maram village had its own <b>Sagong</b> — a king or chief who served as the head of that lineage group. The Sagong was described as both:",
+        "Every lineage in a traditional Maram village had its own <b>Sagong</b> a king or chief who served as the head of that lineage group. The Sagong was described as both:",
       ),
       ul([
-        "<b>De facto head</b> — the actual, practicing leader in daily life",
-        "<b>De jure head</b> — the legitimately recognized authority in principle",
+        "<b>De facto head</b> the actual, practicing leader in daily life",
+        "<b>De jure head</b> the legitimately recognized authority in principle",
       ]),
       p(
         "This means Sagong leadership was not merely symbolic. It was a real, functioning political office with practical authority over the lineage and village.",
@@ -272,15 +272,15 @@ const POSTS = [
         "The Lamkhana Sagong held supreme authority specifically in matters of:",
       ),
       ul([
-        "<b>Cult</b> — religious and ritual affairs",
-        "<b>Morals</b> — social conduct, disputes, and community standards",
+        "<b>Cult</b> religious and ritual affairs",
+        "<b>Morals</b> social conduct, disputes, and community standards",
       ]),
       p(
         "This arrangement created a layered governance system where local Sagongs managed day-to-day affairs while the Lamkhana Sagong maintained overarching spiritual and moral authority.",
       ),
       h2("Sagongki: The King's House"),
       p(
-        "Every Sagong had a <b>Sagongki</b> — the King's House. But this was not merely a private residence. Each Sagongki was directly associated with its own <b>morung</b> (youth dormitory).",
+        "Every Sagong had a <b>Sagongki</b> the King's House. But this was not merely a private residence. Each Sagongki was directly associated with its own <b>morung</b> (youth dormitory).",
       ),
       p(
         "This connection between the King's House and the youth dormitory is deeply significant. It means that:",
@@ -289,52 +289,52 @@ const POSTS = [
         "Political authority was embedded in cultural transmission",
         "The raising of the next generation was tied to the leadership household",
         "Youth training, discipline, and learning took place under the patronage of the king",
-        "Leadership was not separate from community life — it was at the center of it",
+        "Leadership was not separate from community life it was at the center of it",
       ]),
       h2("Governance as Cultural Continuity"),
       p(
-        "The Sagong system shows us that for the Maram Naga, <i>governance</i> and <i>culture</i> were not separate domains. Political authority was exercised through ritual, moral oversight, and the shaping of young people. A king who presided over a morung was not just ruling — he was <b>teaching, transmitting, and sustaining</b> the community's way of life.",
+        "The Sagong system shows us that for the Maram Naga, <i>governance</i> and <i>culture</i> were not separate domains. Political authority was exercised through ritual, moral oversight, and the shaping of young people. A king who presided over a morung was not just ruling he was <b>teaching, transmitting, and sustaining</b> the community's way of life.",
       ),
       p(
-        "With the decline of traditional institutions under the influence of Christianity and modern governance structures, the Sagong system has weakened. But its memory remains alive in clan identity, lineage names, and oral traditions — a reminder of how the Maram Naga once governed themselves from within.",
+        "With the decline of traditional institutions under the influence of Christianity and modern governance structures, the Sagong system has weakened. But its memory remains alive in clan identity, lineage names, and oral traditions a reminder of how the Maram Naga once governed themselves from within.",
       ),
     ]),
   },
 
   {
     title: "The Morung: Maram Naga Youth Dormitory and Traditional Education",
-    description: `${SEED_TAG} The Maram morung system — Rehangki, Raliiki, Hangsaki, Kailiu — as centers of cultural transmission, discipline, and community identity.`,
+    description: `The Maram morung system Rehangki, Raliiki, Hangsaki, Kailiu as centers of cultural transmission, discipline, and community identity.`,
     category: "culture",
     coverImg: COVER,
     content: editorJsDoc([
       p(
-        "Among all the traditional institutions of the Maram Naga, none was more central to cultural transmission than the <b>morung</b> — the youth dormitory. Far more than a sleeping place for unmarried young people, the morung was a <i>living school of civilization</i> where the knowledge, values, and traditions of the community were passed from one generation to the next.",
+        "Among all the traditional institutions of the Maram Naga, none was more central to cultural transmission than the <b>morung</b> the youth dormitory. Far more than a sleeping place for unmarried young people, the morung was a <i>living school of civilization</i> where the knowledge, values, and traditions of the community were passed from one generation to the next.",
       ),
       h2("Names of the Maram Dormitories"),
       p(
         "The Maram Naga used several terms for their youth dormitories, reflecting possible dialect variations and distinctions between different functions:",
       ),
       ul([
-        "<b>Rehangki</b> — boy's morung (associated with the King's House / Sagongki)",
-        "<b>Raliiki</b> — girl's morung (associated with the King's House / Sagongki)",
-        "<b>Hangsaki</b> — dormitory for unmarried boys",
-        "<b>Kailiu</b> — dormitory for girls",
+        "<b>Rehangki</b> boy's morung (associated with the King's House / Sagongki)",
+        "<b>Raliiki</b> girl's morung (associated with the King's House / Sagongki)",
+        "<b>Hangsaki</b> dormitory for unmarried boys",
+        "<b>Kailiu</b> dormitory for girls",
       ]),
       h2("What Was Taught in the Morung"),
       p(
         "The morung was not a formal school in the modern sense, but it was a complete educational institution. Members learned from seniors, elders, and community leaders:",
       ),
       ul([
-        "<b>Customs</b> — social rules, protocols, and behavioral norms",
-        "<b>Folklore</b> — the community's oral knowledge and shared narrative memory",
-        "<b>Folktales</b> — stories that carried moral lessons and cultural wisdom",
-        "<b>Dance</b> — traditional performance forms tied to festivals and rituals",
-        "<b>Music</b> — instruments, rhythms, and the songs of the community",
-        "<b>Song</b> — folk songs specific to occasions, seasons, and emotions",
-        "<b>Discipline</b> — respect for elders, collective responsibility, and moral conduct",
+        "<b>Customs</b> social rules, protocols, and behavioral norms",
+        "<b>Folklore</b> the community's oral knowledge and shared narrative memory",
+        "<b>Folktales</b> stories that carried moral lessons and cultural wisdom",
+        "<b>Dance</b> traditional performance forms tied to festivals and rituals",
+        "<b>Music</b> instruments, rhythms, and the songs of the community",
+        "<b>Song</b> folk songs specific to occasions, seasons, and emotions",
+        "<b>Discipline</b> respect for elders, collective responsibility, and moral conduct",
       ]),
       p(
-        "This curriculum — entirely oral and experiential — prepared young Maram men and women for adult life within a deeply structured community. They did not just learn <i>what</i> to do, but <i>why</i>: the meaning behind each custom, the story behind each song.",
+        "This curriculum entirely oral and experiential prepared young Maram men and women for adult life within a deeply structured community. They did not just learn <i>what</i> to do, but <i>why</i>: the meaning behind each custom, the story behind each song.",
       ),
       h2("The Morung and the King's House"),
       p(
@@ -345,7 +345,7 @@ const POSTS = [
         "The text clearly states that <b>due to the influence of Christianity, the role of the youth dormitory is weakening gradually.</b>",
       ),
       p(
-        "This is one of the most significant cultural losses documented among the Maram Naga. The morung did not just house young people — it <i>formed</i> them. Without it:",
+        "This is one of the most significant cultural losses documented among the Maram Naga. The morung did not just house young people it <i>formed</i> them. Without it:",
       ),
       ul([
         "Traditional knowledge is no longer systematically transmitted",
@@ -355,7 +355,7 @@ const POSTS = [
       ]),
       h2("Why the Morung Still Matters"),
       p(
-        "Even as the physical morung fades, its spirit can be carried forward. Platforms like Maram Heritage, cultural events, schools that teach folk dance and song, and community documentation projects all carry the essence of what the morung once provided — <b>a place where the young learn who they are</b>.",
+        "Even as the physical morung fades, its spirit can be carried forward. Platforms like Maram Heritage, cultural events, schools that teach folk dance and song, and community documentation projects all carry the essence of what the morung once provided <b>a place where the young learn who they are</b>.",
       ),
       p(
         "Remembering and honoring the morung system is part of honoring what made the Maram Naga community resilient, coherent, and culturally rich for generations.",
@@ -365,27 +365,27 @@ const POSTS = [
 
   {
     title: "Marriage, Descent and Lifecycle Rituals Among the Maram Naga",
-    description: `${SEED_TAG} Maram marriage customs — monogamy, patrilineal descent, traditional rituals, and how practices have changed over time.`,
+    description: `Maram marriage customs monogamy, patrilineal descent, traditional rituals, and how practices have changed over time.`,
     category: "culture",
     coverImg: COVER,
     content: editorJsDoc([
       p(
-        "Marriage among the Maram Naga is not simply a union of two individuals. It is a social contract, a ritual event, a statement of kinship alliance, and a mechanism for continuing the clan system. Understanding Maram marriage means understanding how their society reproduces itself — socially, biologically, and culturally.",
+        "Marriage among the Maram Naga is not simply a union of two individuals. It is a social contract, a ritual event, a statement of kinship alliance, and a mechanism for continuing the clan system. Understanding Maram marriage means understanding how their society reproduces itself socially, biologically, and culturally.",
       ),
       h2("Form of Marriage: Monogamy"),
       p(
         "<b>Monogamy</b> is the dominant form of marriage among the Maram Naga. Polygamy exists but is described as rare.",
       ),
       p(
-        "The documentation also mentions the practice of <b>serial monogamy</b> and <b>straight monogamy</b> — suggesting that while one spouse at a time is the norm, the life-course may include remarriage after widowhood or separation.",
+        "The documentation also mentions the practice of <b>serial monogamy</b> and <b>straight monogamy</b> suggesting that while one spouse at a time is the norm, the life-course may include remarriage after widowhood or separation.",
       ),
       h2("Patrilineal Descent and Inheritance"),
       p(
-        "The Maram follow a <b>patrilineal</b> system of descent — lineage, clan membership, and property are all traced through and inherited via the <b>father's line</b>:",
+        "The Maram follow a <b>patrilineal</b> system of descent lineage, clan membership, and property are all traced through and inherited via the <b>father's line</b>:",
       ),
       ul([
         "Children belong to the father's clan",
-        "Property — including land, the most important asset — is inherited by <b>sons</b>",
+        "Property including land, the most important asset is inherited by <b>sons</b>",
         "Family identity and ritual obligations pass through the male line",
       ]),
       p(
@@ -400,13 +400,13 @@ const POSTS = [
       ),
       p("The traditional elements that once defined Maram marriage included:"),
       ul([
-        "<b>Negotiation and marriage arrangement</b> — formal discussions between families and lineage representatives",
-        "<b>Divination on slaughtered animals</b> — reading signs in animal sacrifices to seek spiritual approval for the union",
-        "<b>Bride-meat giving and distribution</b> — a communal sharing of meat that formalized the alliance between families and acknowledged the community's participation in the marriage",
+        "<b>Negotiation and marriage arrangement</b> formal discussions between families and lineage representatives",
+        "<b>Divination on slaughtered animals</b> reading signs in animal sacrifices to seek spiritual approval for the union",
+        "<b>Bride-meat giving and distribution</b> a communal sharing of meat that formalized the alliance between families and acknowledged the community's participation in the marriage",
       ]),
       h2("Cultural Change in Marriage Practice"),
       p(
-        "These practices are described as <b>no longer fully observed</b>. Some elements survive in modified form, but the full ritual complex has declined — primarily due to the spread of Christianity and the adoption of church-based marriage ceremonies.",
+        "These practices are described as <b>no longer fully observed</b>. Some elements survive in modified form, but the full ritual complex has declined primarily due to the spread of Christianity and the adoption of church-based marriage ceremonies.",
       ),
       p(
         "This change in marriage ritual is significant not just for the ceremonies themselves, but for what they carried:",
@@ -417,26 +417,26 @@ const POSTS = [
         "Negotiation processes honored <i>elders and lineage authority</i>",
       ]),
       p(
-        "The shift to simpler, church-based marriages represents both cultural adaptation and cultural loss. For young Maram people today, knowing what these rituals meant — even if no longer practiced — is an act of connection to their heritage.",
+        "The shift to simpler, church-based marriages represents both cultural adaptation and cultural loss. For young Maram people today, knowing what these rituals meant even if no longer practiced is an act of connection to their heritage.",
       ),
     ]),
   },
 
   {
     title: "Maram Naga Economy: Terrace Farming, Wet-Rice Cultivation and Land",
-    description: `${SEED_TAG} How the Maram Naga built their economy around wet-rice terrace cultivation and why land is the most important form of property.`,
+    description: `How the Maram Naga built their economy around wet-rice terrace cultivation and why land is the most important form of property.`,
     category: "culture",
     coverImg: COVER,
     content: editorJsDoc([
       p(
-        "The economic life of the Maram Naga is fundamentally shaped by agriculture — and not just any agriculture, but a sophisticated, labor-intensive system of <b>wet-rice cultivation on terraced hill slopes</b>. This is the economic foundation upon which Maram society rests.",
+        "The economic life of the Maram Naga is fundamentally shaped by agriculture and not just any agriculture, but a sophisticated, labor-intensive system of <b>wet-rice cultivation on terraced hill slopes</b>. This is the economic foundation upon which Maram society rests.",
       ),
       h2("Terrace Rice Cultivation"),
       p(
-        "The Marams are known for farming the <b>terraces of hill slopes</b> — a practice that transforms steep hillside terrain into productive paddy fields through careful earthwork, water management, and sustained communal labor.",
+        "The Marams are known for farming the <b>terraces of hill slopes</b> a practice that transforms steep hillside terrain into productive paddy fields through careful earthwork, water management, and sustained communal labor.",
       ),
       p(
-        "They also cultivate the <b>small alluvial plains near rivers</b> — the flat landforms created by sediment deposition in valley areas. These river-adjacent plains are especially productive for wet-rice cultivation.",
+        "They also cultivate the <b>small alluvial plains near rivers</b> the flat landforms created by sediment deposition in valley areas. These river-adjacent plains are especially productive for wet-rice cultivation.",
       ),
       h2("Why Terrace Farming Matters"),
       p("Terrace agriculture is not easy. It requires:"),
@@ -455,10 +455,10 @@ const POSTS = [
       ),
       p("This has profound implications for their social organization:"),
       ul([
-        "<b>Inheritance</b> — land passes from father to son through the patrilineal system",
-        "<b>Marriage</b> — access to land affects family wealth and social standing",
-        "<b>Conflict</b> — disputes over land are among the most serious social conflicts in any agrarian society",
-        "<b>Identity</b> — the land a family farms is tied to their lineage, their village, and their ancestral claim",
+        "<b>Inheritance</b> land passes from father to son through the patrilineal system",
+        "<b>Marriage</b> access to land affects family wealth and social standing",
+        "<b>Conflict</b> disputes over land are among the most serious social conflicts in any agrarian society",
+        "<b>Identity</b> the land a family farms is tied to their lineage, their village, and their ancestral claim",
       ]),
       h2("Connection to Broader Life"),
       p(
@@ -469,10 +469,10 @@ const POSTS = [
       ),
       h2("Food Sovereignty and Heritage"),
       p(
-        "Wet-rice cultivation is also a form of <b>food sovereignty</b> — the ability of a community to feed itself on its own terms, using its own knowledge and its own land. For a small tribe of 37,000 people in the hills of Manipur, this capacity is both a practical and cultural anchor.",
+        "Wet-rice cultivation is also a form of <b>food sovereignty</b> the ability of a community to feed itself on its own terms, using its own knowledge and its own land. For a small tribe of 37,000 people in the hills of Manipur, this capacity is both a practical and cultural anchor.",
       ),
       p(
-        "Documenting and celebrating Maram agricultural traditions — the terraces, the rice varieties, the seasonal knowledge — is as important as preserving folk songs and stories. It is the ground on which everything else stands.",
+        "Documenting and celebrating Maram agricultural traditions the terraces, the rice varieties, the seasonal knowledge is as important as preserving folk songs and stories. It is the ground on which everything else stands.",
       ),
     ]),
   },
@@ -480,22 +480,22 @@ const POSTS = [
   {
     title:
       "Religious Transformation Among the Maram Naga: From Traditional Beliefs to Christianity",
-    description: `${SEED_TAG} How the spread of Christianity and modern education transformed Maram religious life, festivals, and ritual traditions.`,
+    description: `How the spread of Christianity and modern education transformed Maram religious life, festivals, and ritual traditions.`,
     category: "culture",
     coverImg: COVER,
     content: editorJsDoc([
       p(
-        "No aspect of Maram cultural life has changed more dramatically in the last century than religion. The Maram Naga once lived within a rich traditional religious system involving divination, animal sacrifice, seasonal festivals, and ceremonial life. Today, the majority of Maram people are Christian — and the transformation has reshaped almost every dimension of their community life.",
+        "No aspect of Maram cultural life has changed more dramatically in the last century than religion. The Maram Naga once lived within a rich traditional religious system involving divination, animal sacrifice, seasonal festivals, and ceremonial life. Today, the majority of Maram people are Christian and the transformation has reshaped almost every dimension of their community life.",
       ),
       h2("Traditional Religious System"),
       p(
         "Before the spread of Christianity, the Maram Naga practiced a traditional religion that included:",
       ),
       ul([
-        "<b>Divination</b> — reading signs in nature or in slaughtered animals to seek guidance for important decisions",
-        "<b>Animal sacrifice</b> — ritual offerings that marked significant events including marriage, harvest, and community protection",
-        "<b>Festival observances</b> — seasonal and community-wide ceremonies tied to the agricultural and social calendar",
-        "<b>Sacred authority of leaders</b> — the Sagong (king) held both political and ritual authority",
+        "<b>Divination</b> reading signs in nature or in slaughtered animals to seek guidance for important decisions",
+        "<b>Animal sacrifice</b> ritual offerings that marked significant events including marriage, harvest, and community protection",
+        "<b>Festival observances</b> seasonal and community-wide ceremonies tied to the agricultural and social calendar",
+        "<b>Sacred authority of leaders</b> the Sagong (king) held both political and ritual authority",
       ]),
       p(
         "This religious system was not separate from social life. It was woven into governance, marriage, agriculture, youth education (through the morung), and community identity.",
@@ -511,7 +511,7 @@ const POSTS = [
       ]),
       h2("What Changed with Christianity"),
       p(
-        "The spread of Christianity did not only change belief — it changed practice, and through practice, it changed the structure of community life. According to John Du (2015) and the ethnographic record:",
+        "The spread of Christianity did not only change belief it changed practice, and through practice, it changed the structure of community life. According to John Du (2015) and the ethnographic record:",
       ),
       ul([
         "<b>Almost all traditional festivals are no longer observed</b>",
@@ -526,14 +526,14 @@ const POSTS = [
       ),
       h2("Understanding Religious Change Without Judgment"),
       p(
-        "For many Maram people, Christianity has brought community, education, literacy, and social organization — and is a deeply held and valued faith. The point is not to evaluate religious change as good or bad, but to understand what was transformed.",
+        "For many Maram people, Christianity has brought community, education, literacy, and social organization and is a deeply held and valued faith. The point is not to evaluate religious change as good or bad, but to understand what was transformed.",
       ),
       p(
         "When festivals stopped, the songs and dances performed only at those festivals stopped too. When the morung weakened, the transmission of folklore, folk music, and discipline it once provided weakened with it. When divination ended, an entire cosmological knowledge system fell quiet.",
       ),
       h2("Heritage in the Context of Change"),
       p(
-        "The Maram Naga today are a living community navigating two worlds — their indigenous heritage and their contemporary Christian identity. These are not necessarily in opposition. Many Maram Christians actively value and document their pre-Christian heritage as part of who they are as a people.",
+        "The Maram Naga today are a living community navigating two worlds their indigenous heritage and their contemporary Christian identity. These are not necessarily in opposition. Many Maram Christians actively value and document their pre-Christian heritage as part of who they are as a people.",
       ),
       p(
         "This is exactly what projects like Maram Heritage aim to support: <b>holding memory alive</b> even as life changes, so that no generation has to grow up without knowing where their people came from.",
@@ -543,38 +543,38 @@ const POSTS = [
 
   {
     title: "Maram Naga Folk Dances and Traditional Music",
-    description: `${SEED_TAG} The rich dance and music heritage of the Maram Naga — Sarukatu, Pahakatu, Pasuba, Bangkatu and Ngang Katu — and their cultural significance.`,
+    description: `The rich dance and music heritage of the Maram Naga Sarukatu, Pahakatu, Pasuba, Bangkatu and Ngang Katu and their cultural significance.`,
     category: "folk songs",
     coverImg: COVER,
     content: editorJsDoc([
       p(
-        "The Maram Naga are described as <b>very rich in dance, folk songs, and traditional music</b>. These are not merely performances — they are living expressions of identity, community, history, and emotion. They are performed in all major dimensions of life: social, economic, and religious occasions.",
+        "The Maram Naga are described as <b>very rich in dance, folk songs, and traditional music</b>. These are not merely performances they are living expressions of identity, community, history, and emotion. They are performed in all major dimensions of life: social, economic, and religious occasions.",
       ),
       h2("Dance as Community Life"),
       p(
-        "Among the Maram, dance is not a spectator event reserved for special stages. It is embedded in the rhythms of community life — tied to festivals, rites of passage, seasonal transitions, and moments of collective celebration or mourning. When a dance is performed, the community is not watching art; it is <i>being itself</i>.",
+        "Among the Maram, dance is not a spectator event reserved for special stages. It is embedded in the rhythms of community life tied to festivals, rites of passage, seasonal transitions, and moments of collective celebration or mourning. When a dance is performed, the community is not watching art; it is <i>being itself</i>.",
       ),
       h2("The Five Named Dances"),
-      h3("1. Sarukatu — The War Dance"),
+      h3("1. Sarukatu The War Dance"),
       p(
-        "<b>Sarukatu</b> is a <b>war dance</b>, and it is described as <i>very popular</i>. War dances in tribal traditions are not celebrations of violence — they are expressions of <b>martial memory, collective bravery, community defense, and ancestral honor</b>.",
+        "<b>Sarukatu</b> is a <b>war dance</b>, and it is described as <i>very popular</i>. War dances in tribal traditions are not celebrations of violence they are expressions of <b>martial memory, collective bravery, community defense, and ancestral honor</b>.",
       ),
       p(
         "A war dance says: <i>We remember those who fought. We honor their courage. We carry their spirit.</i> For the Maram, Sarukatu is a living link to a past when the community defended itself and its land.",
       ),
-      h3("2. Pahakatu — The Young Women's Dance"),
+      h3("2. Pahakatu The Young Women's Dance"),
       p(
-        "<b>Pahakatu</b> is a <b>traditional female dance performed by young girls</b>. It represents femininity, grace, and the cultural identity of young Maram women. Dances like this also mark the transition of young women into recognized community members — a social and cultural statement as much as a performance.",
+        "<b>Pahakatu</b> is a <b>traditional female dance performed by young girls</b>. It represents femininity, grace, and the cultural identity of young Maram women. Dances like this also mark the transition of young women into recognized community members a social and cultural statement as much as a performance.",
       ),
-      h3("3. Pasuba — The Married Women's Dance"),
+      h3("3. Pasuba The Married Women's Dance"),
       p(
-        "<b>Pasuba</b> is performed by <b>married women</b>. The distinction between a dance for young girls (Pahakatu) and one for married women (Pasuba) is significant — it shows that Maram performance culture recognizes and celebrates different stages of a woman's life. Marriage is not an end to cultural participation; it opens a new form of it.",
+        "<b>Pasuba</b> is performed by <b>married women</b>. The distinction between a dance for young girls (Pahakatu) and one for married women (Pasuba) is significant it shows that Maram performance culture recognizes and celebrates different stages of a woman's life. Marriage is not an end to cultural participation; it opens a new form of it.",
       ),
-      h3("4. Bangkatu — The Festival Dance"),
+      h3("4. Bangkatu The Festival Dance"),
       p(
         "<b>Bangkatu</b> is performed during <b>festival days</b>. It is a communal, celebratory dance that marks the sacred calendar of the Maram year. As traditional festivals have declined under Christian influence, Bangkatu is one of the dances most at risk of being forgotten.",
       ),
-      h3("5. Ngang Katu — Another Festival Dance"),
+      h3("5. Ngang Katu Another Festival Dance"),
       p(
         "<b>Ngang Katu</b> is also performed during <b>festival days</b>. Its specific meaning and context may vary by village or occasion, but it belongs to the same tradition of festival performance that marks the Maram seasonal and communal calendar.",
       ),
@@ -588,7 +588,7 @@ const POSTS = [
       ),
       h2("Preserving Dance and Music"),
       p(
-        "These five dance names — Sarukatu, Pahakatu, Pasuba, Bangkatu, Ngang Katu — are precious cultural data. Documenting their names is a first step. The deeper work of preservation involves:",
+        "These five dance names Sarukatu, Pahakatu, Pasuba, Bangkatu, Ngang Katu are precious cultural data. Documenting their names is a first step. The deeper work of preservation involves:",
       ),
       ul([
         "Recording performances by elders and current practitioners",
@@ -604,16 +604,16 @@ const POSTS = [
 
   {
     title: "Dress, Ornaments and Material Culture of the Maram Naga",
-    description: `${SEED_TAG} Traditional dress and ornaments of the Maram Naga women — earrings, wristlets, bracelets — and what material culture tells us about identity.`,
+    description: `Traditional dress and ornaments of the Maram Naga women earrings, wristlets, bracelets and what material culture tells us about identity.`,
     category: "culture",
     coverImg: COVER,
     content: editorJsDoc([
       p(
-        "Material culture — the objects, garments, and adornments a community creates and wears — is one of the most visible expressions of cultural identity. For the Maram Naga, traditional dress and ornaments are a language of belonging, status, and aesthetic tradition.",
+        "Material culture the objects, garments, and adornments a community creates and wears is one of the most visible expressions of cultural identity. For the Maram Naga, traditional dress and ornaments are a language of belonging, status, and aesthetic tradition.",
       ),
       h2("Women's Ornaments: Simple and Meaningful"),
       p(
-        "The documentation notes that women's ornaments among the Maram are <b>few and simple</b>. This is not a criticism — it is a description of an aesthetic tradition that values <i>restraint and meaning over excess</i>.",
+        "The documentation notes that women's ornaments among the Maram are <b>few and simple</b>. This is not a criticism it is a description of an aesthetic tradition that values <i>restraint and meaning over excess</i>.",
       ),
       p("The traditional ornaments worn by Maram women include:"),
       ul(["<b>Earrings</b>", "<b>Wristlets</b>", "<b>Bracelets</b>"]),
@@ -622,10 +622,10 @@ const POSTS = [
         "These ornaments were made from a variety of metals depending on availability and economic status:",
       ),
       ul([
-        "<b>Brass</b> — the most common material",
-        "<b>Copper</b> — widely used",
-        "<b>Lead</b> — sometimes used",
-        "<b>Silver</b> — used when available, likely indicating higher status",
+        "<b>Brass</b> the most common material",
+        "<b>Copper</b> widely used",
+        "<b>Lead</b> sometimes used",
+        "<b>Silver</b> used when available, likely indicating higher status",
       ]),
       p(
         "The range from brass and lead to silver reflects both the practical realities of a hill community and the social distinctions that material choice can carry. Silver ornaments likely indicated greater wealth or special occasions.",
@@ -635,40 +635,40 @@ const POSTS = [
         "In tribal societies, ornaments are rarely just decoration. They communicate:",
       ),
       ul([
-        "<b>Stage of life</b> — specific ornaments may mark girlhood, marriage, or widowhood",
-        "<b>Clan affiliation</b> — certain patterns or materials may distinguish one lineage from another",
-        "<b>Occasion</b> — everyday wear differs from ceremonial wear",
-        "<b>Aesthetic identity</b> — the Maram sensibility of simplicity is itself a cultural statement",
+        "<b>Stage of life</b> specific ornaments may mark girlhood, marriage, or widowhood",
+        "<b>Clan affiliation</b> certain patterns or materials may distinguish one lineage from another",
+        "<b>Occasion</b> everyday wear differs from ceremonial wear",
+        "<b>Aesthetic identity</b> the Maram sensibility of simplicity is itself a cultural statement",
       ]),
       h2("Men's Dress and Warrior Tradition"),
       p(
-        "While the documentation focuses primarily on women's ornaments, the existence of the <b>Sarukatu war dance</b> and the morung tradition suggests that men's dress — especially in ceremonial, warrior, and festival contexts — would also have been highly meaningful. The recording and documentation of men's traditional attire remains an important area for future heritage work.",
+        "While the documentation focuses primarily on women's ornaments, the existence of the <b>Sarukatu war dance</b> and the morung tradition suggests that men's dress especially in ceremonial, warrior, and festival contexts would also have been highly meaningful. The recording and documentation of men's traditional attire remains an important area for future heritage work.",
       ),
       h2("Material Culture and Preservation"),
       p(
         "Traditional crafts, garments, and ornaments are among the most vulnerable elements of any culture. As market goods replace handmade objects and as new aesthetics replace old ones, the distinctive material culture of the Maram Naga faces the risk of disappearing from living practice.",
       ),
       p(
-        "Photographing, collecting, and documenting traditional ornaments and dress — especially from elders who still possess or remember them — is an urgent preservation task. These objects are not just beautiful; they are <b>material memory</b>.",
+        "Photographing, collecting, and documenting traditional ornaments and dress especially from elders who still possess or remember them is an urgent preservation task. These objects are not just beautiful; they are <b>material memory</b>.",
       ),
     ]),
   },
 
   {
     title: "The Maram Naga Language: Heritage, Endangerment and Preservation",
-    description: `${SEED_TAG} The Maram language — its 37,000 speakers, use of Roman script, endangered status on UNESCO's list, and what language preservation means for cultural survival.`,
+    description: `The Maram language its 37,000 speakers, use of Roman script, endangered status on UNESCO's list, and what language preservation means for cultural survival.`,
     category: "essays",
     coverImg: COVER,
     content: editorJsDoc([
       p(
-        "Language is not merely a communication tool — it is the <b>vessel of a culture's entire world</b>. Every folk tale, every song, every name of a dance, every term for a clan or a king exists first in language. When a language weakens, the cultural knowledge it carries weakens with it. For the Maram Naga, their language is at a critical juncture.",
+        "Language is not merely a communication tool it is the <b>vessel of a culture's entire world</b>. Every folk tale, every song, every name of a dance, every term for a clan or a king exists first in language. When a language weakens, the cultural knowledge it carries weakens with it. For the Maram Naga, their language is at a critical juncture.",
       ),
       h2("UNESCO Endangered Language Status"),
       p(
-        "The <b>Maram language</b> is listed on the <b>UNESCO database of endangered languages</b>. The estimated number of speakers is approximately <b>37,000</b> — closely matching the overall census population of the Maram Naga community.",
+        "The <b>Maram language</b> is listed on the <b>UNESCO database of endangered languages</b>. The estimated number of speakers is approximately <b>37,000</b> closely matching the overall census population of the Maram Naga community.",
       ),
       p(
-        "The fact that speaker population roughly equals ethnic population is both reassuring and revealing: the language is still alive and actively spoken by most community members. But endangered status means the language is under serious threat — particularly from intergenerational transmission gaps, where children grow up with stronger exposure to Hindi, Meitei, or English than to Maram.",
+        "The fact that speaker population roughly equals ethnic population is both reassuring and revealing: the language is still alive and actively spoken by most community members. But endangered status means the language is under serious threat particularly from intergenerational transmission gaps, where children grow up with stronger exposure to Hindi, Meitei, or English than to Maram.",
       ),
       h2("The Roman Script"),
       p(
@@ -691,7 +691,7 @@ const POSTS = [
       ]),
       h2("What Language Carries"),
       p(
-        "Every specialized term in the Maram language — <i>Sagong</i>, <i>Hangsaki</i>, <i>Sarukatu</i>, <i>Ng'kukui</i> — carries cultural information that cannot be fully translated. These words are not just vocabulary; they are <b>compressed cultural knowledge</b>.",
+        "Every specialized term in the Maram language <i>Sagong</i>, <i>Hangsaki</i>, <i>Sarukatu</i>, <i>Ng'kukui</i> carries cultural information that cannot be fully translated. These words are not just vocabulary; they are <b>compressed cultural knowledge</b>.",
       ),
       p(
         "When the Maram language is spoken, the entire social system, the dance names, the clan identities, and the cosmological beliefs are carried with it. When it is lost, they require deliberate effort to recover from documents and archives.",
@@ -699,12 +699,12 @@ const POSTS = [
       h2("The Path to Preservation"),
       p("Language preservation requires action at multiple levels:"),
       ul([
-        "<b>Documentation</b> — recording elders speaking, singing, and narrating in Maram",
-        "<b>Education</b> — teaching children in Maram alongside other languages",
-        "<b>Digital presence</b> — creating websites, apps, and social media content in Maram",
-        "<b>Literature</b> — writing stories, history, and articles in the Maram language",
-        "<b>Music</b> — preserving and creating songs in Maram so the language lives in memory and emotion",
-        "<b>Community commitment</b> — families choosing to speak Maram at home",
+        "<b>Documentation</b> recording elders speaking, singing, and narrating in Maram",
+        "<b>Education</b> teaching children in Maram alongside other languages",
+        "<b>Digital presence</b> creating websites, apps, and social media content in Maram",
+        "<b>Literature</b> writing stories, history, and articles in the Maram language",
+        "<b>Music</b> preserving and creating songs in Maram so the language lives in memory and emotion",
+        "<b>Community commitment</b> families choosing to speak Maram at home",
       ]),
       h2("A Living Language Deserves a Living Platform"),
       p(
@@ -793,7 +793,7 @@ async function main() {
   }
 
   console.log(
-    `\n🎉  Done — ${created} created, ${skipped} skipped out of ${POSTS.length} posts.`,
+    `\n🎉  Done ${created} created, ${skipped} skipped out of ${POSTS.length} posts.`,
   );
 }
 

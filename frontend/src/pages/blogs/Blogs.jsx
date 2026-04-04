@@ -155,7 +155,7 @@ const Blogs = () => {
               ✏️ Community Blog Posts
             </h2>
             <p className="text-primary/50 text-sm mt-1">
-              Written by community members &mdash; {blogs.length}{" "}
+              Written by community members ; {blogs.length}{" "}
               {blogs.length === 1 ? "post" : "posts"}
               {category ? ` in "${category}"` : ""}
             </p>
