@@ -59,9 +59,9 @@ const Home = () => {
       <section className="bg-deep-brown text-white py-6">
         <div className="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
-            { number: "30+", label: "Villages" },
+            { number: "23", label: "Villages" },
             { number: "37,300+", label: "Population" },
-            { number: "3", label: "Major Festivals" },
+            { number: "7", label: "Major Festivals" },
             { number: "100+", label: "Years of Heritage" },
           ].map((stat, i) => (
             <div key={i}>

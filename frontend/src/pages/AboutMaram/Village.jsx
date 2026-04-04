@@ -178,6 +178,14 @@ const villages = [
     highlight: "Storytelling",
     color: "bg-deep-brown",
   },
+  {
+    name: "Tamuyon Khullen",
+    aka: "",
+    description:
+      "Located approximately 22 km south of Senapati district headquarters and 42 km from Imphal, Tamuyon Khullen sits within the Kangpokpi Tehsil and is part of the broader Maram cultural region. Surrounded by hills, forests, and rivers including the Buning Nadi and Thoubal River, the village reflects the traditional nature-dependent lifestyle of the hill communities. Its people are engaged in agriculture and close-knit community life, maintaining strong ties to Maram traditions.",
+    highlight: "Hill Community",
+    color: "bg-accent",
+  },
 ];
 
 const Village = () => {
@@ -213,7 +221,7 @@ const Village = () => {
         <div className="container mx-auto px-6 max-w-4xl">
           <p className="text-primary/70 leading-relaxed mb-4 text-lg">
             The Maram Naga tribe inhabits{" "}
-            <strong className="text-primary">22 villages</strong> scattered
+            <strong className="text-primary">23 villages</strong> scattered
             across the misty hills of the Senapati district in Manipur, India.
             Nestled at altitudes ranging from 1,200 to 1,800 meters, these
             villages are connected by winding mountain roads and surrounded by
@@ -232,7 +240,7 @@ const Village = () => {
       <section className="bg-deep-brown text-white py-8">
         <div className="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
-            { value: "22", label: "Total Villages" },
+            { value: "23", label: "Total Villages" },
             { value: "1,200–1,800m", label: "Altitude Range" },
             { value: "Senapati", label: "District" },
             { value: "Cool & Temperate", label: "Climate" },
