@@ -15,6 +15,7 @@ const AddPost = () => {
   const [coverImg, setCoverImg] = useState("");
   const [coverPreview, setCoverPreview] = useState("");
   const [category, setCategory] = useState("");
+  const [writer, setWriter] = useState("");
   const [rating, setRating] = useState(0);
   const [message, setMessage] = useState("");
   const [uploading, setUploading] = useState(false);
@@ -110,6 +111,7 @@ const AddPost = () => {
         category,
         description: metaDescription,
         author: user._id,
+        writer,
         rating,
       };
       const response = await PostBlog(newPost).unwrap();
@@ -253,7 +255,20 @@ const AddPost = () => {
 
             <div className="space-y-2">
               <label className="font-medium text-sm text-primary/70">
-                Author
+                Writer / Original Author
+              </label>
+              <input
+                type="text"
+                value={writer}
+                onChange={(e) => setWriter(e.target.value)}
+                className="w-full inline-block bg-bgPrimary focus:outline-none focus:ring-2 focus:ring-accent/30 px-4 py-2.5 rounded-lg border border-soft-gray/50 text-sm"
+                placeholder="e.g. Kanga Monica (leave blank if you wrote it)"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label className="font-medium text-sm text-primary/70">
+                Published by
               </label>
               <input
                 type="text"

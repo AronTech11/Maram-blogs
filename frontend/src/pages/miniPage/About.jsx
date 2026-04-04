@@ -1,5 +1,5 @@
 import React from "react";
-import AronImg from "../../assets/aron.png";
+import AronImg from "../../assets/aron.jpeg";
 import HingbaImg from "../../assets/Hingba.png";
 import ThanmiImg from "../../assets/Thanmi.png";
 

@@ -13,10 +13,12 @@ const SingleBlogCard = ({ blog }) => {
     );
   }
 
-  const { title, createdAt, author, content, coverImg, category } = blog || {};
+  const { title, createdAt, author, writer, content, coverImg, category } =
+    blog || {};
   const htmlContent = content ? editorJSHTML.parse(content).join("") : "";
   const formattedDate = createdAt ? formatDate(createdAt) : "N/A";
-  const authorName = author?.username || "Unknown Author";
+  const publisherName = author?.username || "Unknown";
+  const writerName = writer && writer.trim() ? writer.trim() : null;
   const coverImage = coverImg || "";
 
   return (
@@ -49,15 +51,32 @@ const SingleBlogCard = ({ blog }) => {
         </h1>
 
         {/* Author */}
-        <div className="flex items-center gap-3 pb-6 border-b border-soft-gray mb-6">
-          <div className="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center">
-            <span className="text-sm font-bold text-accent">
-              {authorName.charAt(0).toUpperCase()}
-            </span>
-          </div>
-          <div>
-            <p className="font-medium text-primary text-sm">{authorName}</p>
-            <p className="text-xs text-primary/40">Author</p>
+        <div className="flex flex-wrap items-center gap-4 pb-6 border-b border-soft-gray mb-6">
+          {writerName && (
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center">
+                <span className="text-sm font-bold text-accent">
+                  {writerName.charAt(0).toUpperCase()}
+                </span>
+              </div>
+              <div>
+                <p className="font-medium text-primary text-sm">{writerName}</p>
+                <p className="text-xs text-primary/40">Writer</p>
+              </div>
+            </div>
+          )}
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-earth-green/20 rounded-full flex items-center justify-center">
+              <span className="text-sm font-bold text-earth-green">
+                {publisherName.charAt(0).toUpperCase()}
+              </span>
+            </div>
+            <div>
+              <p className="font-medium text-primary text-sm">
+                {publisherName}
+              </p>
+              <p className="text-xs text-primary/40">Published by</p>
+            </div>
           </div>
         </div>
 
