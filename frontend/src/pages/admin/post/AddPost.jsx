@@ -95,9 +95,9 @@ const AddPost = () => {
       }
 
       const data = await response.json();
-  const url = data?.file?.url || data?.imageUrl;
-  if (!url) throw new Error("No image URL returned");
-  setCoverImg(`${BACKEND_URL}${url}`);
+      const url = data?.file?.url || data?.imageUrl;
+      if (!url) throw new Error("No image URL returned");
+      setCoverImg(`${BACKEND_URL}${url}`);
       setMessage("");
     } catch (error) {
       console.error("Image upload error:", error);

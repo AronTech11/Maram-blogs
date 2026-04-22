@@ -116,11 +116,11 @@ const UpdatePosts = () => {
       if (!response.ok) throw new Error("Upload failed");
 
       const data = await response.json();
-  // Backend returns EditorJS-compatible file response
-  const url = data?.file?.url || data?.imageUrl;
-  if (!url) throw new Error("No image URL returned");
-  setCoverImg(`${BACKEND_URL}${url}`);
-  setMessage("Cover image uploaded. Don't forget to click Update Blog.");
+      // Backend returns EditorJS-compatible file response
+      const url = data?.file?.url || data?.imageUrl;
+      if (!url) throw new Error("No image URL returned");
+      setCoverImg(`${BACKEND_URL}${url}`);
+      setMessage("Cover image uploaded. Don't forget to click Update Blog.");
     } catch (error) {
       console.error("Image upload error:", error);
       setMessage("Failed to upload image. Please try again.");
@@ -149,7 +149,7 @@ const UpdatePosts = () => {
         rating: rating || blog.post.rating,
       };
       const response = await PostBlog({ id, ...updatedPost }).unwrap();
-  setMessage(response?.message || "Blog updated successfully.");
+      setMessage(response?.message || "Blog updated successfully.");
       refetch();
       navigate(`/blogs/${id}`);
     } catch (error) {
