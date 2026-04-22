@@ -44,8 +44,10 @@ const UpdatePosts = () => {
   // Set existing cover image preview
   useEffect(() => {
     if (blog.post?.coverImg) {
-      setCoverPreview(blog.post.coverImg);
-      setCoverImg(blog.post.coverImg);
+  // Always store the raw value in `coverImg` (could be '/uploads/..' or absolute).
+  // Always store an absolute URL in `coverPreview` for immediate rendering.
+  setCoverImg(blog.post.coverImg);
+  setCoverPreview(resolvePublicUrl(blog.post.coverImg));
     }
     if (Array.isArray(blog.post?.attachments)) {
       setAttachments(blog.post.attachments);
@@ -166,9 +168,14 @@ const UpdatePosts = () => {
       await refetch();
     } catch (error) {
       console.error(error);
-      setMessage(
-        error?.data?.message || "Failed to update blog post. Please try again.",
-      );
+      const status = error?.status;
+      const apiMessage = error?.data?.message || error?.error;
+      const details = apiMessage
+        ? `${apiMessage}${status ? ` (status ${status})` : ""}`
+        : "Failed to update blog post. Please try again.";
+
+      setMessage(details);
+      setSuccessModalOpen(false);
     }
   };
 
@@ -220,14 +227,14 @@ const UpdatePosts = () => {
       }));
 
       const current = await editorRef.current.save();
-  const nextContent = {
+      const nextContent = {
         time: Date.now(),
         blocks: [...(current?.blocks || []), ...blocks],
         version: current?.version || "2.0.0",
-  };
+      };
 
-  await editorRef.current.render(nextContent);
-  setGalleryPreviewContent(nextContent);
+      await editorRef.current.render(nextContent);
+      setGalleryPreviewContent(nextContent);
     } catch (error) {
       console.error("Gallery upload error:", error);
       setMessage("Failed to upload gallery images. Please try again.");

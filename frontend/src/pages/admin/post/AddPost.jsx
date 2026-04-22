@@ -163,14 +163,14 @@ const AddPost = () => {
       // EditorJS v2 doesn't have a stable native insert API for custom blocks.
       // We append blocks by re-rendering merged content.
       const current = await editorRef.current.save();
-  const nextContent = {
+      const nextContent = {
         time: Date.now(),
         blocks: [...(current?.blocks || []), ...blocks],
         version: current?.version || "2.0.0",
-  };
+      };
 
-  await editorRef.current.render(nextContent);
-  setGalleryPreviewContent(nextContent);
+      await editorRef.current.render(nextContent);
+      setGalleryPreviewContent(nextContent);
     } catch (error) {
       console.error("Gallery upload error:", error);
       setMessage("Failed to upload gallery images. Please try again.");
