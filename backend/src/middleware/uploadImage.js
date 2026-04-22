@@ -21,7 +21,8 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = (req, file, cb) => {
-  const allowedTypes = /jpeg|jpg|png|gif|webp|svg/;
+  // Allow images + PDFs (for newspaper scans / documents)
+  const allowedTypes = /jpeg|jpg|png|gif|webp|svg|pdf/;
   const extMatch = allowedTypes.test(
     path.extname(file.originalname).toLowerCase(),
   );
@@ -32,7 +33,7 @@ const fileFilter = (req, file, cb) => {
   } else {
     cb(
       new Error(
-        "Only image files (jpg, jpeg, png, gif, webp, svg) are allowed",
+  "Only image/pdf files (jpg, jpeg, png, gif, webp, svg, pdf) are allowed",
       ),
       false,
     );
@@ -46,5 +47,11 @@ const upload = multer({
     fileSize: 5 * 1024 * 1024, // 5MB max
   },
 });
+
+// Backwards compatible default export: use as `upload.single("image")`
+// Convenience helpers for new features.
+upload.singleImage = upload.single("image");
+upload.multiImages = upload.array("images", 10);
+upload.attachment = upload.single("file");
 
 module.exports = upload;

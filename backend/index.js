@@ -12,8 +12,9 @@ const port = process.env.PORT || 4000;
 // Middleware setup
 app.use(express.json());
 app.use(cookieParser());
-app.use(bodyParser.json({ limit: "10mb" }));
-app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
+// Allow larger payloads for EditorJS content with multiple embedded images and optional attachments.
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
 // Serve uploaded images as static files
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));

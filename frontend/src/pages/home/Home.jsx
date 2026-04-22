@@ -105,8 +105,8 @@ const Home = () => {
               </p>
               <p className="text-primary/70 leading-relaxed mb-6">
                 Today, the Maram community numbers over 37,000 and is united
-                under the Maram Union and MKS (Maram Khullen Students&apos;
-                Union). While modernization has brought schools and
+                under the Maram Union and MKS (Maralui Karalimei Swijoikang
+                &apos; Union). While modernization has brought schools and
                 infrastructure, the community continues to celebrate its
                 identity through festivals like <strong>Punghi</strong> (harvest
                 festival in July), <strong>Kanghi</strong> (December), and the

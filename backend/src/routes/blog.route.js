@@ -13,7 +13,7 @@ router.post(
   "/upload-image",
   verifyToken,
   isAdminOrAbove,
-  upload.single("image"),
+  upload.singleImage,
   (req, res) => {
     try {
       if (!req.file) {
@@ -27,6 +27,61 @@ router.post(
     } catch (error) {
       console.error("Error uploading image:", error);
       res.status(500).send({ message: "Failed to upload image" });
+    }
+  },
+);
+
+// ============================================
+// MULTI IMAGE UPLOAD ENDPOINT (gallery)
+// ============================================
+router.post(
+  "/upload-images",
+  verifyToken,
+  isAdminOrAbove,
+  upload.multiImages,
+  (req, res) => {
+    try {
+      const files = req.files || [];
+      if (!files.length) {
+        return res.status(400).send({ message: "No image files provided" });
+      }
+
+      const imageUrls = files.map((f) => `/uploads/${f.filename}`);
+      res.status(200).send({
+        message: "Images uploaded successfully",
+        imageUrls,
+      });
+    } catch (error) {
+      console.error("Error uploading images:", error);
+      res.status(500).send({ message: "Failed to upload images" });
+    }
+  },
+);
+
+// ============================================
+// ATTACHMENT UPLOAD ENDPOINT (pdf/image)
+// ============================================
+router.post(
+  "/upload-attachment",
+  verifyToken,
+  isAdminOrAbove,
+  upload.attachment,
+  (req, res) => {
+    try {
+      if (!req.file) {
+        return res.status(400).send({ message: "No file provided" });
+      }
+      const fileUrl = `/uploads/${req.file.filename}`;
+      res.status(200).send({
+        message: "File uploaded successfully",
+        fileUrl,
+        originalName: req.file.originalname,
+        mimeType: req.file.mimetype,
+        size: req.file.size,
+      });
+    } catch (error) {
+      console.error("Error uploading attachment:", error);
+      res.status(500).send({ message: "Failed to upload attachment" });
     }
   },
 );

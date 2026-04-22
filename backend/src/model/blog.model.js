@@ -13,6 +13,17 @@ const BlogSchema = new mongoose.Schema({
   category: String,
   author: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }, // account that published
   writer: { type: String, default: "" }, // original content writer / credited author
+  attachments: {
+    type: [
+      {
+        url: { type: String, required: true },
+        name: { type: String, default: "" },
+        mimeType: { type: String, default: "" },
+        size: { type: Number, default: 0 },
+      },
+    ],
+    default: [],
+  },
   rating: Number,
   createdAt: { type: Date, default: Date.now },
 });
