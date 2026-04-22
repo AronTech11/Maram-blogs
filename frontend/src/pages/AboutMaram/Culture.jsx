@@ -172,6 +172,17 @@ const Culture = () => {
                 University.
               </li>
               <li>Peter Ki, Infomaram: &quot;About the People&quot;</li>
+              <li>
+                Infomaram (WordPress):{" "}
+                <a
+                  href="https://infomaram.wordpress.com/about-maram-naga-tribe/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline hover:text-primary/60"
+                >
+                  About Maram Naga Tribe
+                </a>
+              </li>
               <li>Wikipedia: Maram people</li>
             </ul>
           </div>
