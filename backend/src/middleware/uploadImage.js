@@ -33,7 +33,7 @@ const fileFilter = (req, file, cb) => {
   } else {
     cb(
       new Error(
-  "Only image/pdf files (jpg, jpeg, png, gif, webp, svg, pdf) are allowed",
+        "Only image/pdf files (jpg, jpeg, png, gif, webp, svg, pdf) are allowed",
       ),
       false,
     );
@@ -44,7 +44,7 @@ const upload = multer({
   storage,
   fileFilter,
   limits: {
-    fileSize: 5 * 1024 * 1024, // 5MB max
+  fileSize: 25 * 1024 * 1024, // 25MB max
   },
 });
 

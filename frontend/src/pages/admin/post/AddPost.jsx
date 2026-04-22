@@ -67,9 +67,9 @@ const AddPost = () => {
     const file = e.target.files[0];
     if (!file) return;
 
-    // Validate file size (5MB)
-    if (file.size > 5 * 1024 * 1024) {
-      setMessage("Image must be less than 5MB");
+    // Validate file size (25MB)
+    if (file.size > 25 * 1024 * 1024) {
+      setMessage("Image must be less than 25MB");
       return;
     }
 
@@ -95,7 +95,9 @@ const AddPost = () => {
       }
 
       const data = await response.json();
-      setCoverImg(`${BACKEND_URL}${data.imageUrl}`);
+  const url = data?.file?.url || data?.imageUrl;
+  if (!url) throw new Error("No image URL returned");
+  setCoverImg(`${BACKEND_URL}${url}`);
       setMessage("");
     } catch (error) {
       console.error("Image upload error:", error);
@@ -116,9 +118,9 @@ const AddPost = () => {
       return;
     }
 
-    const tooLarge = files.find((f) => f.size > 5 * 1024 * 1024);
+    const tooLarge = files.find((f) => f.size > 25 * 1024 * 1024);
     if (tooLarge) {
-      setMessage("Each image must be less than 5MB");
+      setMessage("Each image must be less than 25MB");
       return;
     }
 
@@ -177,9 +179,9 @@ const AddPost = () => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    // 10MB max for PDFs/docs
-    if (file.size > 10 * 1024 * 1024) {
-      setMessage("Attachment must be less than 10MB");
+    // 25MB max for PDFs/docs
+    if (file.size > 25 * 1024 * 1024) {
+      setMessage("Attachment must be less than 25MB");
       return;
     }
 
@@ -189,11 +191,14 @@ const AddPost = () => {
       const formData = new FormData();
       formData.append("file", file);
 
-      const response = await fetch(`${BACKEND_URL}/api/blogs/upload-attachment`, {
-        method: "POST",
-        body: formData,
-        credentials: "include",
-      });
+      const response = await fetch(
+        `${BACKEND_URL}/api/blogs/upload-attachment`,
+        {
+          method: "POST",
+          body: formData,
+          credentials: "include",
+        },
+      );
       if (!response.ok) throw new Error("Upload failed");
       const data = await response.json();
 
@@ -231,7 +236,7 @@ const AddPost = () => {
         description: metaDescription,
         author: user._id,
         writer,
-  attachments,
+        attachments,
         rating,
       };
       const response = await PostBlog(newPost).unwrap();
@@ -366,7 +371,9 @@ const AddPost = () => {
               </label>
               <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-soft-gray/80 rounded-lg cursor-pointer hover:border-accent/50 hover:bg-accent/5 transition-all">
                 <div className="text-center">
-                  <p className="text-xs text-primary/50">Click to upload file</p>
+                  <p className="text-xs text-primary/50">
+                    Click to upload file
+                  </p>
                   <p className="text-[11px] text-primary/30 mt-1">
                     PDF or image (max 10MB)
                   </p>

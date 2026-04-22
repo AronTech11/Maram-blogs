@@ -93,8 +93,8 @@ const UpdatePosts = () => {
     const file = e.target.files[0];
     if (!file) return;
 
-    if (file.size > 5 * 1024 * 1024) {
-      setMessage("Image must be less than 5MB");
+    if (file.size > 25 * 1024 * 1024) {
+      setMessage("Image must be less than 25MB");
       return;
     }
 
@@ -116,7 +116,11 @@ const UpdatePosts = () => {
       if (!response.ok) throw new Error("Upload failed");
 
       const data = await response.json();
-      setCoverImg(`${BACKEND_URL}${data.imageUrl}`);
+  // Backend returns EditorJS-compatible file response
+  const url = data?.file?.url || data?.imageUrl;
+  if (!url) throw new Error("No image URL returned");
+  setCoverImg(`${BACKEND_URL}${url}`);
+  setMessage("Cover image uploaded. Don't forget to click Update Blog.");
     } catch (error) {
       console.error("Image upload error:", error);
       setMessage("Failed to upload image. Please try again.");
@@ -141,11 +145,11 @@ const UpdatePosts = () => {
         description: description || blog.post.description,
         author: user._id,
         writer: writer !== "" ? writer : blog.post.writer || "",
-  attachments,
+        attachments,
         rating: rating || blog.post.rating,
       };
       const response = await PostBlog({ id, ...updatedPost }).unwrap();
-      alert(response.message);
+  setMessage(response?.message || "Blog updated successfully.");
       refetch();
       navigate(`/blogs/${id}`);
     } catch (error) {
@@ -165,9 +169,9 @@ const UpdatePosts = () => {
       return;
     }
 
-    const tooLarge = files.find((f) => f.size > 5 * 1024 * 1024);
+    const tooLarge = files.find((f) => f.size > 25 * 1024 * 1024);
     if (tooLarge) {
-      setMessage("Each image must be less than 5MB");
+      setMessage("Each image must be less than 25MB");
       return;
     }
 
@@ -222,8 +226,8 @@ const UpdatePosts = () => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    if (file.size > 10 * 1024 * 1024) {
-      setMessage("Attachment must be less than 10MB");
+    if (file.size > 25 * 1024 * 1024) {
+      setMessage("Attachment must be less than 25MB");
       return;
     }
 
@@ -233,11 +237,14 @@ const UpdatePosts = () => {
       const formData = new FormData();
       formData.append("file", file);
 
-      const response = await fetch(`${BACKEND_URL}/api/blogs/upload-attachment`, {
-        method: "POST",
-        body: formData,
-        credentials: "include",
-      });
+      const response = await fetch(
+        `${BACKEND_URL}/api/blogs/upload-attachment`,
+        {
+          method: "POST",
+          body: formData,
+          credentials: "include",
+        },
+      );
       if (!response.ok) throw new Error("Upload failed");
       const data = await response.json();
 
@@ -376,7 +383,9 @@ const UpdatePosts = () => {
               </label>
               <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-dashed border-soft-gray/80 rounded-lg cursor-pointer hover:border-accent/50 hover:bg-accent/5 transition-all">
                 <div className="text-center">
-                  <p className="text-xs text-primary/50">Click to upload file</p>
+                  <p className="text-xs text-primary/50">
+                    Click to upload file
+                  </p>
                   <p className="text-[11px] text-primary/30 mt-1">
                     PDF or image (max 10MB)
                   </p>

@@ -26,6 +26,31 @@ const SingleBlog = () => {
           <div className="flex flex-col lg:flex-row gap-8">
             <div className="lg:w-2/3">
               <SingleBlogCard blog={blog.post} />
+
+              {/* Attachments (e.g., newspaper PDF) */}
+              {Array.isArray(blog.post.attachments) &&
+                blog.post.attachments.length > 0 && (
+                  <div className="mt-6 bg-white rounded-xl overflow-hidden shadow-sm border border-soft-gray/50 p-6">
+                    <h2 className="font-heading text-lg font-semibold text-primary mb-3">
+                      Attachments
+                    </h2>
+                    <ul className="space-y-2">
+                      {blog.post.attachments.map((a, idx) => (
+                        <li key={`${a.url}-${idx}`}>
+                          <a
+                            href={a.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-accent underline break-all"
+                          >
+                            {a.name || a.url}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
               <CommentCard comments={blog.comments} />
             </div>
             <aside className="lg:w-1/3">
