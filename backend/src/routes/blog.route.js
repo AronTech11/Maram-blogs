@@ -11,8 +11,6 @@ const Comment = require("../model/comment.model");
 // ============================================
 router.post(
   "/upload-image",
-  verifyToken,
-  isAdminOrAbove,
   upload.singleImage,
   (req, res) => {
     try {
@@ -21,8 +19,10 @@ router.post(
       }
       const imageUrl = `/uploads/${req.file.filename}`;
       res.status(200).send({
-        message: "Image uploaded successfully",
-        imageUrl,
+  // EditorJS ImageTool expects a response like:
+  // { success: 1, file: { url: "..." } }
+  success: 1,
+  file: { url: imageUrl },
       });
     } catch (error) {
       console.error("Error uploading image:", error);
@@ -36,8 +36,6 @@ router.post(
 // ============================================
 router.post(
   "/upload-images",
-  verifyToken,
-  isAdminOrAbove,
   upload.multiImages,
   (req, res) => {
     try {
@@ -63,8 +61,6 @@ router.post(
 // ============================================
 router.post(
   "/upload-attachment",
-  verifyToken,
-  isAdminOrAbove,
   upload.attachment,
   (req, res) => {
     try {
