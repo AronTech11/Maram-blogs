@@ -6,6 +6,7 @@ import EditorJS from "@editorjs/editorjs";
 import List from "@editorjs/list";
 import Header from "@editorjs/header";
 import ImageTool from "@editorjs/image";
+import BlogGallery from "../../../components/BlogGallery";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_BASE_URL;
 
@@ -23,6 +24,8 @@ const AddPost = () => {
   const [uploading, setUploading] = useState(false);
   const [uploadingGallery, setUploadingGallery] = useState(false);
   const [uploadingAttachment, setUploadingAttachment] = useState(false);
+  const [galleryPreviewMode, setGalleryPreviewMode] = useState("grid");
+  const [galleryPreviewContent, setGalleryPreviewContent] = useState(null);
   const [PostBlog, { isLoading }] = usePostBlogMutation();
 
   const { user } = useSelector((state) => state.auth);
@@ -160,11 +163,14 @@ const AddPost = () => {
       // EditorJS v2 doesn't have a stable native insert API for custom blocks.
       // We append blocks by re-rendering merged content.
       const current = await editorRef.current.save();
-      await editorRef.current.render({
+  const nextContent = {
         time: Date.now(),
         blocks: [...(current?.blocks || []), ...blocks],
         version: current?.version || "2.0.0",
-      });
+  };
+
+  await editorRef.current.render(nextContent);
+  setGalleryPreviewContent(nextContent);
     } catch (error) {
       console.error("Gallery upload error:", error);
       setMessage("Failed to upload gallery images. Please try again.");
@@ -362,6 +368,60 @@ const AddPost = () => {
               <p className="text-[11px] text-primary/40">
                 Uploaded photos will be appended into the editor content.
               </p>
+
+              {/* Admin preview (grid/carousel) */}
+              <div className="pt-2">
+                <div className="flex items-center justify-between mb-2">
+                  <p className="text-xs font-medium text-primary/60">
+                    Gallery preview
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={async () => {
+                        try {
+                          const current = await editorRef.current?.save();
+                          setGalleryPreviewContent(current || null);
+                          setGalleryPreviewMode("grid");
+                        } catch {
+                          setGalleryPreviewMode("grid");
+                        }
+                      }}
+                      className={`text-[11px] px-2 py-1 rounded-md border ${
+                        galleryPreviewMode === "grid"
+                          ? "border-accent text-accent"
+                          : "border-soft-gray/60 text-primary/50 hover:border-accent/40"
+                      }`}
+                    >
+                      Grid
+                    </button>
+                    <button
+                      type="button"
+                      onClick={async () => {
+                        try {
+                          const current = await editorRef.current?.save();
+                          setGalleryPreviewContent(current || null);
+                          setGalleryPreviewMode("carousel");
+                        } catch {
+                          setGalleryPreviewMode("carousel");
+                        }
+                      }}
+                      className={`text-[11px] px-2 py-1 rounded-md border ${
+                        galleryPreviewMode === "carousel"
+                          ? "border-accent text-accent"
+                          : "border-soft-gray/60 text-primary/50 hover:border-accent/40"
+                      }`}
+                    >
+                      Carousel
+                    </button>
+                  </div>
+                </div>
+
+                <BlogGallery
+                  content={galleryPreviewContent}
+                  mode={galleryPreviewMode}
+                />
+              </div>
             </div>
 
             {/* PDF / ATTACHMENT */}

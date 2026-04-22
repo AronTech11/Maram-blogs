@@ -4,6 +4,7 @@ import { useFetchBlogByIdQuery } from "../../../redux/features/blogs/blogsApi";
 import SingleBlogCard from "./SingleBlogCard";
 import CommentCard from "../comments/CommentCard";
 import RelatedBlogs from "./RelatedBlogs";
+import BlogGallery from "../../../components/BlogGallery";
 
 const SingleBlog = () => {
   const { id } = useParams();
@@ -25,6 +26,7 @@ const SingleBlog = () => {
         {blog.post && (
           <div className="flex flex-col lg:flex-row gap-8">
             <div className="lg:w-2/3">
+              <BlogGallery content={blog.post.content} mode="grid" />
               <SingleBlogCard blog={blog.post} />
 
               {/* Attachments (e.g., newspaper PDF) */}

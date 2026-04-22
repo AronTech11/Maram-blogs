@@ -15,7 +15,19 @@ const SingleBlogCard = ({ blog }) => {
 
   const { title, createdAt, author, writer, content, coverImg, category } =
     blog || {};
-  const htmlContent = content ? editorJSHTML.parse(content).join("") : "";
+  // Images are rendered via `BlogGallery` for a nicer layout.
+  const contentWithoutImages = content
+    ? {
+        ...content,
+        blocks: Array.isArray(content.blocks)
+          ? content.blocks.filter((b) => b?.type !== "image")
+          : [],
+      }
+    : null;
+
+  const htmlContent = contentWithoutImages
+    ? editorJSHTML.parse(contentWithoutImages).join("")
+    : "";
   const formattedDate = createdAt ? formatDate(createdAt) : "N/A";
   const publisherName = author?.username || "Unknown";
   const writerName = writer && writer.trim() ? writer.trim() : null;

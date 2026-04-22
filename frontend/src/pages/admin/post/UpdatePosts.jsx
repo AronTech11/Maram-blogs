@@ -9,6 +9,7 @@ import EditorJS from "@editorjs/editorjs";
 import List from "@editorjs/list";
 import Header from "@editorjs/header";
 import ImageTool from "@editorjs/image";
+import BlogGallery from "../../../components/BlogGallery";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_BASE_URL;
 
@@ -23,9 +24,12 @@ const UpdatePosts = () => {
   const [attachments, setAttachments] = useState([]);
   const [rating, setRating] = useState(0);
   const [message, setMessage] = useState("");
+  const [successModalOpen, setSuccessModalOpen] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [uploadingGallery, setUploadingGallery] = useState(false);
   const [uploadingAttachment, setUploadingAttachment] = useState(false);
+  const [galleryPreviewMode, setGalleryPreviewMode] = useState("grid");
+  const [galleryPreviewContent, setGalleryPreviewContent] = useState(null);
   const [PostBlog] = useUpdateBlogMutation();
   const { id } = useParams();
   const {
@@ -119,7 +123,14 @@ const UpdatePosts = () => {
       // Backend returns EditorJS-compatible file response
       const url = data?.file?.url || data?.imageUrl;
       if (!url) throw new Error("No image URL returned");
-      setCoverImg(`${BACKEND_URL}${url}`);
+      // Persist the public URL in a consistent format:
+      // - Prefer storing the path returned by backend ("/uploads/...")
+      // - Render as absolute only at display time
+      const nextCoverPath = url.startsWith("http") ? url : url;
+      setCoverImg(nextCoverPath);
+
+      const nextPreview = url.startsWith("http") ? url : `${BACKEND_URL}${url}`;
+      setCoverPreview(nextPreview);
       setMessage("Cover image uploaded. Don't forget to click Update Blog.");
     } catch (error) {
       console.error("Image upload error:", error);
@@ -149,9 +160,10 @@ const UpdatePosts = () => {
         rating: rating || blog.post.rating,
       };
       const response = await PostBlog({ id, ...updatedPost }).unwrap();
-      setMessage(response?.message || "Blog updated successfully.");
-      refetch();
-      navigate(`/blogs/${id}`);
+      setMessage("");
+      setSuccessModalOpen(true);
+      // Keep local state in sync right away
+      await refetch();
     } catch (error) {
       console.error(error);
       setMessage(
@@ -208,11 +220,14 @@ const UpdatePosts = () => {
       }));
 
       const current = await editorRef.current.save();
-      await editorRef.current.render({
+  const nextContent = {
         time: Date.now(),
         blocks: [...(current?.blocks || []), ...blocks],
         version: current?.version || "2.0.0",
-      });
+  };
+
+  await editorRef.current.render(nextContent);
+  setGalleryPreviewContent(nextContent);
     } catch (error) {
       console.error("Gallery upload error:", error);
       setMessage("Failed to upload gallery images. Please try again.");
@@ -264,8 +279,16 @@ const UpdatePosts = () => {
     }
   };
 
+  const resolvePublicUrl = (maybeUrl) => {
+    if (!maybeUrl) return "";
+    if (typeof maybeUrl !== "string") return "";
+    if (maybeUrl.startsWith("http")) return maybeUrl;
+    if (maybeUrl.startsWith("/")) return `${BACKEND_URL}${maybeUrl}`;
+    return `${BACKEND_URL}/${maybeUrl}`;
+  };
+
   return (
-    <div className="bg-white md:p-8 p-2">
+    <div className="bg-white md:p-8 p-2 relative">
       <h2 className="font-heading text-2xl font-bold text-primary pt-5">
         Edit or Update Post
       </h2>
@@ -303,7 +326,7 @@ const UpdatePosts = () => {
                 {coverPreview ? (
                   <div className="relative group">
                     <img
-                      src={coverPreview}
+                      src={coverPreview || resolvePublicUrl(coverImg)}
                       alt="Cover preview"
                       className="w-full h-40 object-cover rounded-lg border border-soft-gray/50"
                     />
@@ -374,6 +397,60 @@ const UpdatePosts = () => {
               <p className="text-[11px] text-primary/40">
                 Uploaded photos will be appended into the editor content.
               </p>
+
+              {/* Admin preview (grid/carousel) */}
+              <div className="pt-2">
+                <div className="flex items-center justify-between mb-2">
+                  <p className="text-xs font-medium text-primary/60">
+                    Gallery preview
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={async () => {
+                        try {
+                          const current = await editorRef.current?.save();
+                          setGalleryPreviewContent(current || null);
+                          setGalleryPreviewMode("grid");
+                        } catch {
+                          setGalleryPreviewMode("grid");
+                        }
+                      }}
+                      className={`text-[11px] px-2 py-1 rounded-md border ${
+                        galleryPreviewMode === "grid"
+                          ? "border-accent text-accent"
+                          : "border-soft-gray/60 text-primary/50 hover:border-accent/40"
+                      }`}
+                    >
+                      Grid
+                    </button>
+                    <button
+                      type="button"
+                      onClick={async () => {
+                        try {
+                          const current = await editorRef.current?.save();
+                          setGalleryPreviewContent(current || null);
+                          setGalleryPreviewMode("carousel");
+                        } catch {
+                          setGalleryPreviewMode("carousel");
+                        }
+                      }}
+                      className={`text-[11px] px-2 py-1 rounded-md border ${
+                        galleryPreviewMode === "carousel"
+                          ? "border-accent text-accent"
+                          : "border-soft-gray/60 text-primary/50 hover:border-accent/40"
+                      }`}
+                    >
+                      Carousel
+                    </button>
+                  </div>
+                </div>
+
+                <BlogGallery
+                  content={galleryPreviewContent || blog.post?.content}
+                  mode={galleryPreviewMode}
+                />
+              </div>
             </div>
 
             {/* PDF / ATTACHMENT */}
@@ -496,6 +573,44 @@ const UpdatePosts = () => {
           {uploading ? "Uploading image..." : "Update Blog"}
         </button>
       </form>
+
+      {/* Success Modal */}
+      {successModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+          <div
+            className="absolute inset-0 bg-black/50"
+            onClick={() => setSuccessModalOpen(false)}
+          />
+          <div className="relative w-full max-w-md bg-white rounded-xl shadow-xl border border-soft-gray/60 p-6">
+            <h3 className="font-heading text-xl font-bold text-primary">
+              Updated successfully
+            </h3>
+            <p className="text-primary/60 text-sm mt-2">
+              Your blog post was saved. What do you want to do next?
+            </p>
+
+            <div className="mt-6 flex flex-col sm:flex-row gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                  setSuccessModalOpen(false);
+                  navigate(`/blogs/${id}`);
+                }}
+                className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-white font-medium px-4 py-2.5 rounded-lg"
+              >
+                View blog
+              </button>
+              <button
+                type="button"
+                onClick={() => setSuccessModalOpen(false)}
+                className="w-full sm:w-auto bg-soft-gray/30 hover:bg-soft-gray/40 text-primary font-medium px-4 py-2.5 rounded-lg"
+              >
+                Keep editing
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

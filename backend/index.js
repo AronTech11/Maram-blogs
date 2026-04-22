@@ -17,7 +17,16 @@ app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
 // Serve uploaded images as static files
+// Uploads live in `backend/uploads`.
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+// Fallback for local/dev where uploads might sit at repo root `/uploads`.
+app.use(
+  "/uploads",
+  express.static(path.join(__dirname, "..", "uploads"), {
+    fallthrough: true,
+  }),
+);
 
 // CORS — allow frontend origins
 const allowedOrigins = [
