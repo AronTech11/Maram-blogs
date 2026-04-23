@@ -51,6 +51,9 @@ router.post("/login", async (req, res) => {
       httpOnly: true,
       secure: isProduction,
       sameSite: isProduction ? "none" : "lax",
+      path: "/",
+      // Match the JWT expiry (1h) so cookie doesn't disappear early.
+      maxAge: 60 * 60 * 1000,
     });
     res.status(200).send({
       message: "Logged in successfully",
@@ -70,7 +73,13 @@ router.post("/login", async (req, res) => {
 
 // Logout endpoint (optional)
 router.post("/logout", (req, res) => {
-  res.clearCookie("token");
+  const isProduction = process.env.NODE_ENV === "production";
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: isProduction,
+    sameSite: isProduction ? "none" : "lax",
+    path: "/",
+  });
   res.status(200).send({ message: "Logged out successfully" });
 });
 

@@ -31,6 +31,7 @@ const UpdatePosts = () => {
   const [galleryPreviewMode, setGalleryPreviewMode] = useState("grid");
   const [galleryPreviewContent, setGalleryPreviewContent] = useState(null);
   const [PostBlog] = useUpdateBlogMutation();
+  const [saving, setSaving] = useState(false);
   const { id } = useParams();
   const {
     data: blog = {},
@@ -44,10 +45,10 @@ const UpdatePosts = () => {
   // Set existing cover image preview
   useEffect(() => {
     if (blog.post?.coverImg) {
-  // Always store the raw value in `coverImg` (could be '/uploads/..' or absolute).
-  // Always store an absolute URL in `coverPreview` for immediate rendering.
-  setCoverImg(blog.post.coverImg);
-  setCoverPreview(resolvePublicUrl(blog.post.coverImg));
+      // Always store the raw value in `coverImg` (could be '/uploads/..' or absolute).
+      // Always store an absolute URL in `coverPreview` for immediate rendering.
+      setCoverImg(blog.post.coverImg);
+      setCoverPreview(resolvePublicUrl(blog.post.coverImg));
     }
     if (Array.isArray(blog.post?.attachments)) {
       setAttachments(blog.post.attachments);
@@ -138,7 +139,7 @@ const UpdatePosts = () => {
       console.error("Image upload error:", error);
       setMessage("Failed to upload image. Please try again.");
       // Revert to old image
-      setCoverPreview(blog.post?.coverImg || "");
+      setCoverPreview(resolvePublicUrl(blog.post?.coverImg || ""));
       setCoverImg(blog.post?.coverImg || "");
     } finally {
       setUploading(false);
@@ -147,6 +148,25 @@ const UpdatePosts = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Make failures visible immediately instead of silently doing nothing.
+    if (saving) return;
+    if (!editorRef.current) {
+      setMessage(
+        "Editor is still loading. Please wait 1-2 seconds and try again.",
+      );
+      return;
+    }
+    if (!user?._id) {
+      setMessage("You must be logged in to update a blog post.");
+      return;
+    }
+    if (!blog?.post?._id) {
+      setMessage("Blog post hasn't loaded yet. Please refresh and try again.");
+      return;
+    }
+
+    setSaving(true);
 
     try {
       const content = await editorRef.current.save();
@@ -161,7 +181,7 @@ const UpdatePosts = () => {
         attachments,
         rating: rating || blog.post.rating,
       };
-      const response = await PostBlog({ id, ...updatedPost }).unwrap();
+      await PostBlog({ id, ...updatedPost }).unwrap();
       setMessage("");
       setSuccessModalOpen(true);
       // Keep local state in sync right away
@@ -176,6 +196,8 @@ const UpdatePosts = () => {
 
       setMessage(details);
       setSuccessModalOpen(false);
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -218,7 +240,8 @@ const UpdatePosts = () => {
       const blocks = urls.map((u) => ({
         type: "image",
         data: {
-          file: { url: `${BACKEND_URL}${u}` },
+          // Store as a path so it works across environments; renderer resolves to absolute.
+          file: { url: u },
           caption: "",
           withBorder: false,
           stretched: false,
@@ -271,7 +294,8 @@ const UpdatePosts = () => {
       const data = await response.json();
 
       const newAttachment = {
-        url: `${BACKEND_URL}${data.fileUrl}`,
+        // Store as a path so it works across environments; display can resolve.
+        url: data.fileUrl,
         name: data.originalName || file.name,
         mimeType: data.mimeType || file.type,
         size: data.size || file.size,
@@ -574,10 +598,14 @@ const UpdatePosts = () => {
         {message && <p className="text-red-500 text-sm">{message}</p>}
         <button
           type="submit"
-          disabled={isLoading || uploading}
+          disabled={isLoading || uploading || saving}
           className="w-full mt-5 bg-accent hover:bg-accent/90 text-white font-medium py-3 rounded-lg transition disabled:opacity-50"
         >
-          {uploading ? "Uploading image..." : "Update Blog"}
+          {uploading
+            ? "Uploading image..."
+            : saving
+              ? "Saving..."
+              : "Update Blog"}
         </button>
       </form>
 

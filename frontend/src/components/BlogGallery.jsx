@@ -1,4 +1,6 @@
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
+
+const BACKEND_URL = import.meta.env.VITE_BACKEND_BASE_URL;
 
 const isImageBlock = (block) =>
   block?.type === "image" && block?.data?.file?.url;
@@ -14,16 +16,23 @@ const normalizeUrl = (url) => {
  * - extracts EditorJS image blocks and renders them as either a grid or a simple carousel
  */
 const BlogGallery = ({ content, mode = "grid" }) => {
+  const resolvePublicUrl = useCallback((maybeUrl) => {
+    if (!maybeUrl || typeof maybeUrl !== "string") return "";
+    if (maybeUrl.startsWith("http")) return maybeUrl;
+    if (maybeUrl.startsWith("/")) return `${BACKEND_URL}${maybeUrl}`;
+    return `${BACKEND_URL}/${maybeUrl}`;
+  }, []);
+
   const images = useMemo(() => {
     const blocks = content?.blocks || [];
     return blocks
       .filter(isImageBlock)
       .map((b) => ({
-        url: normalizeUrl(b.data.file.url),
+        url: resolvePublicUrl(normalizeUrl(b.data.file.url)),
         caption: b.data.caption || "",
       }))
       .filter((img) => !!img.url);
-  }, [content]);
+  }, [content, resolvePublicUrl]);
 
   const [active, setActive] = useState(0);
 
