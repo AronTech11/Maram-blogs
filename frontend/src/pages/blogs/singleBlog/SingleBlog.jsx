@@ -29,7 +29,6 @@ const SingleBlog = () => {
         {blog.post && (
           <div className="flex flex-col lg:flex-row gap-8">
             <div className="lg:w-2/3">
-
               {/* Quick Edit button for admins */}
               {isAdminOrAbove && (
                 <div className="flex justify-end mb-3">
@@ -37,9 +36,18 @@ const SingleBlog = () => {
                     to={`/dashboard/update-items/${id}`}
                     className="inline-flex items-center gap-1.5 bg-accent hover:bg-accent/90 text-white text-sm font-medium px-4 py-2 rounded-lg transition"
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-                      <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-4 h-4"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                      <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
                     </svg>
                     Edit Blog
                   </Link>
