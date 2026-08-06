@@ -281,7 +281,7 @@ const Home = () => {
                     <img
                       src={resolveImg(blog.coverImg)}
                       alt={blog.title}
-                      className="w-full h-48 md:h-56 object-contain bg-soft-gray/10"
+                      className="w-full h-48 md:h-56 object-cover bg-soft-gray/10"
                     />
                   </div>
                   <div className="p-5">
