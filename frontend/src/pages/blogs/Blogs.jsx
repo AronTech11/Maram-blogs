@@ -10,23 +10,29 @@ const resolveImg = (url) => {
   return `${BACKEND_URL}${url.startsWith("/") ? "" : "/"}${url}`;
 };
 
-const categories = [
-  "all",
-  "village",
-  "culture",
-  "festival",
-  "folk songs",
-  "folk tales",
-  "humour",
-  "tourism",
-  "essays",
+// Clean canonical categories shown in the dropdown
+const FILTER_OPTIONS = [
+  { label: "All Blogs",    value: "all" },
+  { label: "Culture",      value: "culture" },
+  { label: "Essays",       value: "essays" },
+  { label: "Folk Songs",   value: "folk songs" },
+  { label: "Folk Tales",   value: "folk tales" },
+  { label: "Tourism",      value: "tourism" },
+  { label: "Festival",     value: "festival" },
+  { label: "Humour",       value: "humour" },
+  { label: "Education",    value: "education" },
+  { label: "Livelihood",   value: "livelihood" },
+  { label: "Villages",     value: "village" },
 ];
+
+// Categories hidden from the "all" view (shown only when specifically filtered)
+const HIDDEN_FROM_ALL = ["village"];
 
 function normalizeCategory(value) {
   if (!value) return "";
   const v = String(value).trim().toLowerCase();
   if (v === "all") return "";
-  return categories.includes(v) ? v : "";
+  return FILTER_OPTIONS.some(o => o.value === v) ? v : "";
 }
 
 function normalizeSearch(value) {
@@ -37,14 +43,11 @@ function normalizeSearch(value) {
 const Blogs = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const initialFromUrl = useMemo(() => {
-    return {
-      search: normalizeSearch(searchParams.get("search")),
-      category: normalizeCategory(searchParams.get("category")),
-    };
-    // Only run on mount (initial render). Subsequent URL changes are handled by the effect below.
+  const initialFromUrl = useMemo(() => ({
+    search: normalizeSearch(searchParams.get("search")),
+    category: normalizeCategory(searchParams.get("category")),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }), []);
 
   const [search, setSearch] = useState(initialFromUrl.search);
   const [category, setCategory] = useState(initialFromUrl.category);
@@ -53,17 +56,21 @@ const Blogs = () => {
     category: initialFromUrl.category,
   });
 
-  // Keep component state in sync when URL changes (back/forward navigation, direct URL entry).
   useEffect(() => {
     const nextSearch = normalizeSearch(searchParams.get("search"));
     const nextCategory = normalizeCategory(searchParams.get("category"));
-
     setSearch(nextSearch);
     setCategory(nextCategory);
     setQuery({ search: nextSearch, category: nextCategory });
   }, [searchParams]);
 
-  const { data: blogs = [], error, isLoading } = useFetchBlogsQuery(query);
+  const { data: blogsRaw = [], error, isLoading } = useFetchBlogsQuery(query);
+
+  // When "all" is selected, hide village blogs so they only show under Villages filter
+  const blogs = useMemo(() => {
+    if (category) return blogsRaw; // specific filter — show everything for that category
+    return blogsRaw.filter(b => !HIDDEN_FROM_ALL.includes((b.category || "").toLowerCase()));
+  }, [blogsRaw, category]);
 
   const handleSearch = () => {
     const next = {
@@ -73,27 +80,26 @@ const Blogs = () => {
     setSearch(next.search);
     setCategory(next.category);
     setQuery(next);
-
     const params = new URLSearchParams();
     if (next.search) params.set("search", next.search);
     if (next.category) params.set("category", next.category);
     setSearchParams(params, { replace: false });
   };
-  const handleCategoryFilter = (cat) => {
-    const newCat = cat === "all" ? "" : cat;
-    const next = {
-      search: normalizeSearch(search),
-      category: normalizeCategory(newCat),
-    };
 
-    setCategory(next.category);
+  const handleCategoryFilter = (val) => {
+    const newCat = val === "all" ? "" : val;
+    const next = { search: normalizeSearch(search), category: newCat };
+    setCategory(newCat);
     setQuery(next);
-
     const params = new URLSearchParams();
     if (next.search) params.set("search", next.search);
     if (next.category) params.set("category", next.category);
     setSearchParams(params, { replace: false });
   };
+
+  const activeLabel = FILTER_OPTIONS.find(o =>
+    category ? o.value === category : o.value === "all"
+  )?.label || "All Blogs";
 
   return (
     <div className="pt-20">
@@ -128,46 +134,39 @@ const Blogs = () => {
         </div>
       </section>
 
-      {/* ====== COMMUNITY BLOGS ====== */}
+      {/* Filter Bar — dropdown */}
       <section className="bg-white border-b border-soft-gray sticky top-[56px] z-30">
-        <div className="container mx-auto px-6 py-3">
-          <div className="flex items-center gap-4 overflow-x-auto">
-            <span className="text-xs font-semibold text-primary/40 uppercase tracking-wider whitespace-nowrap">
-              Filter:
-            </span>
-            <div className="flex gap-2 min-w-max">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => handleCategoryFilter(cat)}
-                  className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
-                    (cat === "all" && !category) || category === cat
-                      ? "bg-accent text-white"
-                      : "bg-soft-gray/50 text-primary/60 hover:bg-soft-gray"
-                  }`}
-                >
-                  {cat.charAt(0).toUpperCase() + cat.slice(1).replace("-", " ")}
-                </button>
-              ))}
-            </div>
-          </div>
+        <div className="container mx-auto px-6 py-3 flex items-center gap-3">
+          <span className="text-xs font-semibold text-primary/40 uppercase tracking-wider whitespace-nowrap">
+            Filter:
+          </span>
+          <select
+            value={category || "all"}
+            onChange={(e) => handleCategoryFilter(e.target.value)}
+            className="bg-soft-gray/30 text-primary text-sm font-medium px-4 py-2 rounded-lg border border-soft-gray/60 focus:outline-none focus:ring-2 focus:ring-accent/30 cursor-pointer"
+          >
+            {FILTER_OPTIONS.map(opt => (
+              <option key={opt.value} value={opt.value}>{opt.label}</option>
+            ))}
+          </select>
+          {category && (
+            <button
+              onClick={() => handleCategoryFilter("all")}
+              className="text-xs text-accent hover:underline"
+            >
+              ✕ Clear
+            </button>
+          )}
+          <span className="ml-auto text-xs text-primary/40">
+            {blogs.length} {blogs.length === 1 ? "post" : "posts"}
+            {category ? ` in "${activeLabel}"` : ""}
+          </span>
         </div>
       </section>
 
       {/* Blog Grid */}
       <section className="py-12">
         <div className="container mx-auto px-6">
-          <div className="mb-8">
-            <h2 className="font-heading text-xl md:text-2xl font-bold text-primary">
-              ✏️ Community Blog Posts
-            </h2>
-            <p className="text-primary/50 text-sm mt-1">
-              Written by community members ; {blogs.length}{" "}
-              {blogs.length === 1 ? "post" : "posts"}
-              {category ? ` in "${category}"` : ""}
-            </p>
-          </div>
-
           {isLoading && (
             <div className="flex justify-center py-20">
               <div className="w-10 h-10 border-4 border-accent/20 border-t-accent rounded-full animate-spin"></div>
@@ -177,9 +176,7 @@ const Blogs = () => {
           {error && (
             <div className="text-center py-20">
               <p className="text-red-500 mb-2">Failed to load blogs</p>
-              <p className="text-primary/50 text-sm">
-                Please check your connection and try again.
-              </p>
+              <p className="text-primary/50 text-sm">Please check your connection and try again.</p>
             </div>
           )}
 
@@ -187,18 +184,13 @@ const Blogs = () => {
             <div className="text-center py-16 bg-soft-gray/20 rounded-xl">
               <p className="text-4xl mb-3">📝</p>
               <p className="font-heading text-xl text-primary/50 mb-2">
-                No blog posts {category ? `in "${category}"` : "found"}
+                No posts {category ? `in "${activeLabel}"` : "found"}
               </p>
               <p className="text-primary/40 text-sm mb-4 max-w-md mx-auto">
-                {category
-                  ? "No community members have written about this topic yet. Be the first!"
-                  : "Try a different search term."}
+                {category ? "No content in this category yet." : "Try a different search term."}
               </p>
               {category && (
-                <button
-                  onClick={() => handleCategoryFilter("all")}
-                  className="text-accent text-sm font-semibold hover:underline"
-                >
+                <button onClick={() => handleCategoryFilter("all")} className="text-accent text-sm font-semibold hover:underline">
                   ← View all posts
                 </button>
               )}
@@ -221,7 +213,7 @@ const Blogs = () => {
                 </div>
                 <div className="p-5">
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="text-xs font-medium text-accent bg-accent/10 px-2.5 py-1 rounded-full">
+                    <span className="text-xs font-medium text-accent bg-accent/10 px-2.5 py-1 rounded-full capitalize">
                       {blog.category}
                     </span>
                     <span className="text-xs text-primary/40">
