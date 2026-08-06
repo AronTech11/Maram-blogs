@@ -2,6 +2,13 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useFetchRelatedBlogsQuery } from "../../../redux/features/blogs/blogsApi";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_BASE_URL;
+const resolveImg = (url) => {
+  if (!url) return "";
+  if (url.startsWith("http")) return url;
+  return `${BACKEND_URL}${url.startsWith("/") ? "" : "/"}${url}`;
+};
+
 const RelatedBlogs = () => {
   const { id } = useParams();
   const { data: blogs = [], error, isLoading } = useFetchRelatedBlogsQuery(id);
@@ -34,7 +41,7 @@ const RelatedBlogs = () => {
               className="flex items-start gap-3 p-4 hover:bg-warm-cream/50 transition-colors"
             >
               <img
-                src={blog.coverImg}
+                src={resolveImg(blog.coverImg)}
                 alt={blog.title}
                 className="w-14 h-14 rounded-lg object-cover flex-shrink-0"
               />

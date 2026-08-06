@@ -3,6 +3,13 @@ import { useFetchBlogsQuery } from "../../redux/features/blogs/blogsApi";
 import { Link, useSearchParams } from "react-router-dom";
 import { formatDate } from "../../utilis/dateFormater";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_BASE_URL;
+const resolveImg = (url) => {
+  if (!url) return "";
+  if (url.startsWith("http")) return url;
+  return `${BACKEND_URL}${url.startsWith("/") ? "" : "/"}${url}`;
+};
+
 const categories = [
   "all",
   "village",
@@ -207,7 +214,7 @@ const Blogs = () => {
               >
                 <div className="img-hover-zoom">
                   <img
-                    src={blog.coverImg}
+                    src={resolveImg(blog.coverImg)}
                     alt={blog.title}
                     className="w-full h-48 md:h-52 object-contain bg-soft-gray/10"
                   />

@@ -14,7 +14,8 @@ router.post("/upload-image", upload.singleImage, (req, res) => {
     if (!req.file) {
       return res.status(400).send({ message: "No image file provided" });
     }
-    const imageUrl = `/uploads/${req.file.filename}`;
+    // Cloudinary returns the full URL in req.file.path; local disk uses filename
+    const imageUrl = req.file.path || `/uploads/${req.file.filename}`;
     res.status(200).send({
       // EditorJS ImageTool expects a response like:
       // { success: 1, file: { url: "..." } }
@@ -37,7 +38,8 @@ router.post("/upload-images", upload.multiImages, (req, res) => {
       return res.status(400).send({ message: "No image files provided" });
     }
 
-    const imageUrls = files.map((f) => `/uploads/${f.filename}`);
+    // Cloudinary: use req.file.path (full URL); local: build path from filename
+    const imageUrls = files.map((f) => f.path || `/uploads/${f.filename}`);
     res.status(200).send({
       message: "Images uploaded successfully",
       imageUrls,
@@ -56,7 +58,8 @@ router.post("/upload-attachment", upload.attachment, (req, res) => {
     if (!req.file) {
       return res.status(400).send({ message: "No file provided" });
     }
-    const fileUrl = `/uploads/${req.file.filename}`;
+    // Cloudinary: use req.file.path (full URL); local: build path from filename
+    const fileUrl = req.file.path || `/uploads/${req.file.filename}`;
     res.status(200).send({
       message: "File uploaded successfully",
       fileUrl,

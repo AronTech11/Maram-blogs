@@ -53,7 +53,7 @@ router.post("/login", async (req, res) => {
       sameSite: isProduction ? "none" : "lax",
       path: "/",
       // Match the JWT expiry (1h) so cookie doesn't disappear early.
-      maxAge: 60 * 60 * 1000,
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
     res.status(200).send({
       message: "Logged in successfully",

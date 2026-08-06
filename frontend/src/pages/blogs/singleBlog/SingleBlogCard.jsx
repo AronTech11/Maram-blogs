@@ -4,6 +4,13 @@ import EditorJSHTML from "editorjs-html";
 
 const editorJSHTML = EditorJSHTML();
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_BASE_URL;
+const resolveImg = (url) => {
+  if (!url) return "";
+  if (url.startsWith("http")) return url;
+  return `${BACKEND_URL}${url.startsWith("/") ? "" : "/"}${url}`;
+};
+
 const SingleBlogCard = ({ blog }) => {
   if (!blog) {
     return (
@@ -31,7 +38,7 @@ const SingleBlogCard = ({ blog }) => {
   const formattedDate = createdAt ? formatDate(createdAt) : "N/A";
   const publisherName = author?.username || "Unknown";
   const writerName = writer && writer.trim() ? writer.trim() : null;
-  const coverImage = coverImg || "";
+  const coverImage = resolveImg(coverImg);
 
   return (
     <article className="bg-white rounded-xl overflow-hidden shadow-sm border border-soft-gray/50">

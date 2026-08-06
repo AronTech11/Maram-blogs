@@ -1,24 +1,24 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const blogsApi = createApi({
-  reducerPath: 'blogsApi',
+  reducerPath: "blogsApi",
   baseQuery: fetchBaseQuery({
     baseUrl: `${import.meta.env.VITE_BACKEND_BASE_URL}/api`, // Corrected base URL
-    credentials: 'include', // Ensure credentials are included globally
+    credentials: "include", // Ensure credentials are included globally
   }),
-  tagTypes: ['Blogs'],
+  tagTypes: ["Blogs"],
   endpoints: (builder) => ({
     fetchBlogs: builder.query({
-      query: ({ search = '', category = '', location = '' }) => {
+      query: ({ search = "", category = "", location = "" }) => {
         // Ensure URL parameters are properly encoded if needed
         return `blogs?search=${encodeURIComponent(search)}&category=${encodeURIComponent(category)}&location=${encodeURIComponent(location)}`;
       },
-      providesTags: ['Blogs'],
+      providesTags: ["Blogs"],
     }),
 
     fetchBlogById: builder.query({
       query: (id) => `blogs/${id}`,
-      providesTags: (result, error, id) => [{ type: 'Blogs', id }],
+      providesTags: (result, error, id) => [{ type: "Blogs", id }],
     }),
 
     fetchRelatedBlogs: builder.query({
@@ -27,29 +27,32 @@ export const blogsApi = createApi({
 
     postBlog: builder.mutation({
       query: (newBlog) => ({
-        url: '/blogs/create-post',
-        method: 'POST',
+        url: "/blogs/create-post",
+        method: "POST",
         body: newBlog,
         // credentials: 'include' // No need to repeat it, it's already set globally
       }),
-      invalidatesTags: ['Blogs'],
+      invalidatesTags: ["Blogs"],
     }),
 
     updateBlog: builder.mutation({
       query: ({ id, ...rest }) => ({
         url: `blogs/update-post/${id}`,
-        method: 'PATCH',
+        method: "PATCH",
         body: rest,
       }),
-      invalidatesTags: (result, error, { id }) => [{ type: 'Blogs', id }],
+      invalidatesTags: (result, error, { id }) => [
+        "Blogs",
+        { type: "Blogs", id },
+      ],
     }),
 
     deleteBlog: builder.mutation({
       query: (id) => ({
         url: `blogs/${id}`,
-        method: 'DELETE',
+        method: "DELETE",
       }),
-      invalidatesTags: (result, error, id) => [{ type: 'Blogs', id }],
+      invalidatesTags: (result, error, id) => [{ type: "Blogs", id }],
     }),
   }),
 });

@@ -9,7 +9,6 @@ import EditorJS from "@editorjs/editorjs";
 import List from "@editorjs/list";
 import Header from "@editorjs/header";
 import ImageTool from "@editorjs/image";
-import BlogGallery from "../../../components/BlogGallery";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_BASE_URL;
 
@@ -267,6 +266,23 @@ const UpdatePosts = () => {
     }
   };
 
+  const handleDeleteGalleryImage = async (imgUrl) => {
+    if (!editorRef.current) return;
+    try {
+      const current = await editorRef.current.save();
+      const filtered = {
+        ...current,
+        blocks: current.blocks.filter(
+          (b) => !(b.type === "image" && b.data?.file?.url === imgUrl),
+        ),
+      };
+      await editorRef.current.render(filtered);
+      setGalleryPreviewContent(filtered);
+    } catch (err) {
+      console.error("Error deleting gallery image:", err);
+    }
+  };
+
   const handleAttachmentUpload = async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -477,10 +493,56 @@ const UpdatePosts = () => {
                   </div>
                 </div>
 
-                <BlogGallery
-                  content={galleryPreviewContent || blog.post?.content}
-                  mode={galleryPreviewMode}
-                />
+                {/* Deletable gallery preview */}
+                {(() => {
+                  const content = galleryPreviewContent || blog.post?.content;
+                  const imgBlocks = (content?.blocks || []).filter(
+                    (b) => b?.type === "image" && b?.data?.file?.url,
+                  );
+                  if (!imgBlocks.length) return null;
+                  return (
+                    <div className="grid grid-cols-2 gap-2 mt-1">
+                      {imgBlocks.map((b, idx) => {
+                        const raw = b.data.file.url;
+                        const src = raw.startsWith("http")
+                          ? raw
+                          : `${BACKEND_URL}${raw.startsWith("/") ? "" : "/"}${raw}`;
+                        return (
+                          <div
+                            key={`${raw}-${idx}`}
+                            className="relative group rounded-lg overflow-hidden border border-soft-gray/50"
+                          >
+                            <img
+                              src={src}
+                              alt={`Gallery ${idx + 1}`}
+                              className="w-full h-24 object-cover"
+                            />
+                            <button
+                              type="button"
+                              onClick={() => handleDeleteGalleryImage(raw)}
+                              className="absolute top-1 right-1 bg-red-500 hover:bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center opacity-0 group-hover:opacity-100 transition shadow"
+                              title="Delete photo"
+                            >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="w-3.5 h-3.5"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              >
+                                <line x1="18" y1="6" x2="6" y2="18" />
+                                <line x1="6" y1="6" x2="18" y2="18" />
+                              </svg>
+                            </button>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })()}
               </div>
             </div>
 
@@ -510,12 +572,45 @@ const UpdatePosts = () => {
               </label>
 
               {attachments.length > 0 && (
-                <div className="space-y-1">
-                  <p className="text-xs text-primary/50">Attachments:</p>
-                  <ul className="text-xs text-primary/40 list-disc pl-5">
+                <div className="space-y-2">
+                  <p className="text-xs text-primary/50 font-medium">
+                    Attachments:
+                  </p>
+                  <ul className="space-y-1.5">
                     {attachments.map((a, idx) => (
-                      <li key={`${a.url}-${idx}`} className="break-all">
-                        {a.name || a.url}
+                      <li
+                        key={`${a.url}-${idx}`}
+                        className="flex items-center justify-between gap-2 bg-soft-gray/20 rounded-lg px-3 py-2"
+                      >
+                        <span className="text-xs text-primary/70 break-all line-clamp-1 flex-1">
+                          {a.name || a.url}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setAttachments((prev) =>
+                              prev.filter((_, i) => i !== idx),
+                            )
+                          }
+                          className="flex-shrink-0 text-red-400 hover:text-red-600 transition p-1 rounded hover:bg-red-50"
+                          title="Remove attachment"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="w-4 h-4"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <polyline points="3 6 5 6 21 6" />
+                            <path d="M19 6l-1 14H6L5 6" />
+                            <path d="M10 11v6M14 11v6" />
+                            <path d="M9 6V4h6v2" />
+                          </svg>
+                        </button>
                       </li>
                     ))}
                   </ul>
